@@ -1,0 +1,455 @@
+/* ===================================
+   ESTILOS GLOBAIS PARA RELATÓRIOS PDF
+   Jornada do Empreendedor de Sucesso
+   =================================== */
+
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@page {
+    size: A4;
+    margin: 1.5cm 1.5cm 2cm 1.5cm;
+
+    @bottom-center {
+        content: counter(page) " / " counter(pages);
+        font-family: 'Arial', sans-serif;
+        font-size: 10pt;
+        color: #666;
+    }
+}
+
+body {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #333;
+    background: white;
+}
+
+/* Typography */
+h1 {
+    font-size: 28pt;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 0.8em;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 20pt;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 0.3em;
+    page-break-after: avoid;
+}
+
+h3 {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #34495e;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #555;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    page-break-after: avoid;
+}
+
+p {
+    margin-bottom: 0.8em;
+    text-align: justify;
+}
+
+strong, b {
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+em, i {
+    font-style: italic;
+}
+
+/* Listas */
+ul, ol {
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+li {
+    margin-bottom: 0.4em;
+    line-height: 1.5;
+}
+
+ul li {
+    list-style-type: disc;
+}
+
+ul ul li {
+    list-style-type: circle;
+}
+
+/* Capa */
+.cover {
+    page-break-after: always;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 25cm;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2cm;
+}
+
+.cover h1 {
+    font-size: 36pt;
+    color: white;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.cover .subtitle {
+    font-size: 18pt;
+    margin-bottom: 2em;
+    opacity: 0.95;
+}
+
+.cover .user-name {
+    font-size: 24pt;
+    font-weight: bold;
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+}
+
+.cover .date {
+    font-size: 14pt;
+    margin-top: 1em;
+    opacity: 0.9;
+}
+
+.cover .logo {
+    max-width: 300px;
+    margin-bottom: 2em;
+}
+
+/* Índice */
+.toc {
+    page-break-after: always;
+}
+
+.toc h2 {
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 1.5em;
+}
+
+.toc-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.toc-item:last-child {
+    border-bottom: none;
+}
+
+.toc-title {
+    font-weight: bold;
+}
+
+.toc-page {
+    color: #666;
+}
+
+/* Seções */
+.section {
+    page-break-inside: avoid;
+    margin-bottom: 2em;
+}
+
+.section-intro {
+    background: #f8f9fa;
+    padding: 1.5em;
+    border-left: 5px solid #3498db;
+    margin-bottom: 1.5em;
+    border-radius: 5px;
+}
+
+/* Cards de Resumo */
+.summary-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5em;
+    border-radius: 10px;
+    margin-bottom: 1.5em;
+    page-break-inside: avoid;
+}
+
+.summary-card h3 {
+    color: white;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.5em;
+    margin-bottom: 0.8em;
+}
+
+.summary-card p {
+    margin-bottom: 0.5em;
+    text-align: left;
+}
+
+/* Boxes Informativos */
+.info-box {
+    background: #e8f4f8;
+    border-left: 5px solid #3498db;
+    padding: 1em 1.5em;
+    margin: 1em 0;
+    border-radius: 5px;
+    page-break-inside: avoid;
+}
+
+.warning-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 1em 1.5em;
+    margin: 1em 0;
+    border-radius: 5px;
+    page-break-inside: avoid;
+}
+
+.success-box {
+    background: #d4edda;
+    border-left: 5px solid #28a745;
+    padding: 1em 1.5em;
+    margin: 1em 0;
+    border-radius: 5px;
+    page-break-inside: avoid;
+}
+
+.danger-box {
+    background: #f8d7da;
+    border-left: 5px solid #dc3545;
+    padding: 1em 1.5em;
+    margin: 1em 0;
+    border-radius: 5px;
+    page-break-inside: avoid;
+}
+
+/* Gráficos */
+.chart-container {
+    text-align: center;
+    margin: 2em 0;
+    page-break-inside: avoid;
+}
+
+.chart-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.chart-caption {
+    font-size: 10pt;
+    color: #666;
+    margin-top: 0.5em;
+    font-style: italic;
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    page-break-inside: avoid;
+}
+
+th {
+    background: #3498db;
+    color: white;
+    padding: 0.8em;
+    text-align: left;
+    font-weight: bold;
+}
+
+td {
+    padding: 0.8em;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+/* Grid de 2 colunas */
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5em;
+    margin: 1em 0;
+}
+
+.column {
+    page-break-inside: avoid;
+}
+
+/* Perfis e Badges */
+.profile-badge {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border-radius: 25px;
+    font-weight: bold;
+    margin: 0.3em;
+    font-size: 11pt;
+}
+
+.disc-badge {
+    background: linear-gradient(135deg, #FF4444, #FFD700);
+    color: white;
+}
+
+.spiral-badge {
+    background: linear-gradient(135deg, #FF8C00, #32CD32);
+    color: white;
+}
+
+.paei-badge {
+    background: linear-gradient(135deg, #8B4513, #4682B4);
+    color: white;
+}
+
+.enneagram-badge {
+    background: linear-gradient(135deg, #9370DB, #FF6347);
+    color: white;
+}
+
+/* Scores */
+.score-display {
+    font-size: 32pt;
+    font-weight: bold;
+    color: #3498db;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+/* Plano de Ação */
+.action-plan {
+    background: #f8f9fa;
+    padding: 1.5em;
+    border-radius: 10px;
+    margin: 1.5em 0;
+    page-break-inside: avoid;
+}
+
+.action-plan h4 {
+    color: #3498db;
+    margin-top: 0;
+}
+
+.action-item {
+    padding: 0.8em;
+    background: white;
+    border-left: 4px solid #3498db;
+    margin-bottom: 0.8em;
+    border-radius: 5px;
+}
+
+.action-item:before {
+    content: "✓ ";
+    color: #28a745;
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
+/* Footer e Branding */
+.footer {
+    margin-top: 3em;
+    padding-top: 1em;
+    border-top: 2px solid #e0e0e0;
+    text-align: center;
+    font-size: 9pt;
+    color: #666;
+}
+
+.brand-footer {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5em;
+    text-align: center;
+    margin-top: 2em;
+    border-radius: 10px;
+}
+
+/* CTA (Call to Action) */
+.cta {
+    background: #ff6b6b;
+    color: white;
+    padding: 1.5em;
+    text-align: center;
+    border-radius: 10px;
+    margin: 2em 0;
+    page-break-inside: avoid;
+}
+
+.cta h3 {
+    color: white;
+    margin-top: 0;
+}
+
+.cta p {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* Quebras de Página */
+.page-break {
+    page-break-after: always;
+}
+
+.avoid-break {
+    page-break-inside: avoid;
+}
+
+/* Cores específicas dos frameworks */
+.color-beige { color: #8B7355; }
+.color-purple { color: #9370DB; }
+.color-red { color: #DC143C; }
+.color-blue { color: #4169E1; }
+.color-orange { color: #FF8C00; }
+.color-green { color: #32CD32; }
+.color-yellow { color: #DAA520; }
+.color-turquoise { color: #40E0D0; }
+
+.bg-beige { background-color: #F5DEB3; }
+.bg-purple { background-color: #9370DB; color: white; }
+.bg-red { background-color: #DC143C; color: white; }
+.bg-blue { background-color: #4169E1; color: white; }
+.bg-orange { background-color: #FF8C00; color: white; }
+.bg-green { background-color: #32CD32; color: white; }
+.bg-yellow { background-color: #FFD700; }
+.bg-turquoise { background-color: #40E0D0; }
+
+/* Utilitários */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+.mb-small { margin-bottom: 0.5em; }
+.mb-medium { margin-bottom: 1em; }
+.mb-large { margin-bottom: 2em; }
+.mt-small { margin-top: 0.5em; }
+.mt-medium { margin-top: 1em; }
+.mt-large { margin-top: 2em; }

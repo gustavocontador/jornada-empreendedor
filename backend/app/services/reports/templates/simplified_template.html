@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Simplificado - Jornada do Empreendedor</title>
+    <style>
+        {{css_content}}
+    </style>
+</head>
+<body>
+    <!-- PÁGINA 1 - CAPA -->
+    <div class="cover">
+        <h1>Jornada do Empreendedor<br>de Sucesso</h1>
+        <div class="subtitle">Relatório de Assessment Personalizado</div>
+
+        <div class="user-name">{{user_name}}</div>
+
+        <div class="date">{{assessment_date}}</div>
+    </div>
+
+    <!-- PÁGINA 2 - RESUMO EXECUTIVO -->
+    <div class="section">
+        <h2>Resumo Executivo</h2>
+
+        <div class="summary-card">
+            <h3>Seu Perfil em Síntese</h3>
+            <p><strong>DISC:</strong> {{disc_profile}} - {{disc_description}}</p>
+            <p><strong>Espiral Dinâmica:</strong> {{spiral_profile}} - {{spiral_description}}</p>
+            <p><strong>PAEI:</strong> {{paei_code}} - {{paei_description}}</p>
+            <p><strong>Eneagrama:</strong> Tipo {{enneagram_type}} - {{enneagram_name}}</p>
+        </div>
+
+        <div class="section-intro">
+            <p>Este relatório apresenta uma visão geral do seu perfil empreendedor baseado em 4 frameworks de psicologia organizacional reconhecidos mundialmente. Cada um revela aspectos diferentes da sua forma de liderar, tomar decisões e construir seu negócio.</p>
+        </div>
+
+        <h3>Perfil DISC: {{disc_profile}}</h3>
+        <div class="info-box">
+            <p><strong>{{disc_profile_title}}</strong></p>
+            <p>{{disc_profile_summary}}</p>
+        </div>
+
+        <h4>Características Dominantes:</h4>
+        <ul>
+            {{disc_traits}}
+        </ul>
+
+        <h3>Espiral Dinâmica: {{spiral_colors}}</h3>
+        <div class="info-box">
+            <p><strong>Cores Dominantes:</strong> {{spiral_primary}} ({{spiral_primary_pct}}%), {{spiral_secondary}} ({{spiral_secondary_pct}}%)</p>
+            <p>{{spiral_combination_summary}}</p>
+        </div>
+
+        <h4>O que isso significa:</h4>
+        <ul>
+            {{spiral_meaning}}
+        </ul>
+
+        <h3>PAEI - Estilo de Gestão: {{paei_code}}</h3>
+        <div class="info-box">
+            <p><strong>{{paei_profile_name}}</strong></p>
+            <p>{{paei_interpretation}}</p>
+        </div>
+
+        <h4>Papéis Organizacionais:</h4>
+        <ul>
+            <li><strong>P (Produtor):</strong> {{paei_p_score}}/10 - {{paei_p_desc}}</li>
+            <li><strong>A (Administrador):</strong> {{paei_a_score}}/10 - {{paei_a_desc}}</li>
+            <li><strong>E (Empreendedor):</strong> {{paei_e_score}}/10 - {{paei_e_desc}}</li>
+            <li><strong>I (Integrador):</strong> {{paei_i_score}}/10 - {{paei_i_desc}}</li>
+        </ul>
+
+        <h3>Eneagrama: Tipo {{enneagram_type}} - {{enneagram_name}}</h3>
+        <div class="warning-box">
+            <p><strong>Padrões de Autossabotagem:</strong></p>
+            <p>{{enneagram_shadow}}</p>
+        </div>
+
+        <h4>Motivações Core:</h4>
+        <ul>
+            {{enneagram_motivations}}
+        </ul>
+
+        <h3>Top 3 Valores Empresariais</h3>
+        <ol>
+            {{top_values}}
+        </ol>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- PÁGINA 3 - GRÁFICOS -->
+    <div class="section">
+        <h2>Visualizações do Seu Perfil</h2>
+
+        <div class="chart-container">
+            <img src="{{disc_chart}}" alt="Gráfico DISC">
+            <p class="chart-caption">Seu perfil DISC mostra como você se comporta em ambientes profissionais</p>
+        </div>
+
+        <div class="chart-container">
+            <img src="{{spiral_chart}}" alt="Gráfico Espiral Dinâmica">
+            <p class="chart-caption">A Espiral Dinâmica revela seus valores e visão de mundo dominantes</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <div class="chart-container">
+            <img src="{{paei_chart}}" alt="Gráfico PAEI">
+            <p class="chart-caption">O PAEI indica seus papéis naturais na gestão e liderança</p>
+        </div>
+
+        <div class="chart-container">
+            <img src="{{enneagram_chart}}" alt="Diagrama Eneagrama">
+            <p class="chart-caption">O Eneagrama revela suas motivações profundas e padrões inconscientes</p>
+        </div>
+    </div>
+
+    <!-- CTA - RELATÓRIO COMPLETO -->
+    <div class="cta">
+        <h3>Quer Ir Mais Fundo?</h3>
+        <p><strong>O Relatório Completo (15-20 páginas) inclui:</strong></p>
+        <ul style="text-align: left; max-width: 500px; margin: 1em auto;">
+            <li>Análise detalhada de cada framework</li>
+            <li>Interpretação de combinações únicas do seu perfil</li>
+            <li>Padrões de autossabotagem específicos</li>
+            <li>Análise de problemas financeiros e com pessoas</li>
+            <li>Recomendações de contratação personalizada</li>
+            <li>Plano de ação 30/60/90 dias</li>
+            <li>Recursos e próximos passos</li>
+        </ul>
+        <p style="margin-top: 1.5em;"><strong>Solicite seu relatório completo agora!</strong></p>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="brand-footer">
+        <p><strong>Jornada do Empreendedor de Sucesso</strong></p>
+        <p>Assessment baseado em frameworks científicos de desenvolvimento humano e organizacional</p>
+        <p style="font-size: 8pt; margin-top: 1em;">DISC • Spiral Dynamics • PAEI • Eneagrama</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Completo - Jornada do Empreendedor</title>
+    <style>
+        {{css_content}}
+    </style>
+</head>
+<body>
+    <!-- CAPA -->
+    <div class="cover">
+        <h1>Jornada do Empreendedor<br>de Sucesso</h1>
+        <div class="subtitle">Relatório Completo de Assessment</div>
+        <div class="user-name">{{user_name}}</div>
+        <div class="date">{{assessment_date}}</div>
+    </div>
+
+    <!-- ÍNDICE -->
+    <div class="toc">
+        <h2>Índice</h2>
+        <div class="toc-item">
+            <span class="toc-title">1. Introdução aos Frameworks</span>
+            <span class="toc-page">3</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-title">2. Perfil DISC Detalhado</span>
+            <span class="toc-page">4</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-title">3. Espiral Dinâmica - Análise Profunda</span>
+            <span class="toc-page">7</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-title">4. PAEI - Gestão e Liderança</span>
+            <span class="toc-page">12</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-title">5. Eneagrama - Autossabotagem</span>
+            <span class="toc-page">15</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-title">6. Valores e Cultura Organizacional</span>
+            <span class="toc-page">18</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-title">7. Síntese Integrada</span>
+            <span class="toc-page">19</span>
+        </div>
+        <div class="toc-item">
+            <span class="toc-title">8. Plano de Ação 30/60/90 Dias</span>
+            <span class="toc-page">21</span>
+        </div>
+    </div>
+
+    <!-- 1. INTRODUÇÃO -->
+    <div class="section">
+        <h2>1. Introdução aos Frameworks</h2>
+
+        <div class="section-intro">
+            <p>Este relatório integra 4 frameworks complementares que, juntos, oferecem uma visão 360° do seu perfil empreendedor:</p>
+        </div>
+
+        <h3>DISC - Comportamento e Comunicação</h3>
+        <p>Criado por William Marston, o DISC mapeia como você age, se comunica e responde a desafios. É observável externamente e contextual.</p>
+
+        <h3>Espiral Dinâmica - Valores e Visão de Mundo</h3>
+        <p>Baseado na pesquisa de Clare Graves, a Espiral mapeia sistemas de valores que emergem em resposta às condições de vida. Explica o "porquê" por trás das suas decisões.</p>
+
+        <h3>PAEI - Papéis de Gestão</h3>
+        <p>Desenvolvido por Ichak Adizes, o PAEI identifica seus papéis naturais na organização e prevê desafios específicos baseados no seu código.</p>
+
+        <h3>Eneagrama - Motivações Profundas</h3>
+        <p>Sistema milenar que revela motivações inconscientes, medos centrais e padrões de autossabotagem. O mais profundo dos 4 frameworks.</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 2. DISC DETALHADO -->
+    <div class="section">
+        <h2>2. Perfil DISC Detalhado</h2>
+
+        <div class="summary-card">
+            <h3>Seu Perfil: {{disc_profile}} - {{disc_profile_title}}</h3>
+            <p>{{disc_profile_full_description}}</p>
+        </div>
+
+        <div class="chart-container">
+            <img src="{{disc_chart}}" alt="Gráfico DISC">
+        </div>
+
+        <h3>Análise dos Componentes</h3>
+
+        <h4>Dominância (D): {{disc_d_score}}/10</h4>
+        <div class="{{disc_d_level_class}}">
+            <p>{{disc_d_interpretation}}</p>
+        </div>
+
+        <h4>Influência (I): {{disc_i_score}}/10</h4>
+        <div class="{{disc_i_level_class}}">
+            <p>{{disc_i_interpretation}}</p>
+        </div>
+
+        <h4>Estabilidade (S): {{disc_s_score}}/10</h4>
+        <div class="{{disc_s_level_class}}">
+            <p>{{disc_s_interpretation}}</p>
+        </div>
+
+        <h4>Conformidade (C): {{disc_c_score}}/10</h4>
+        <div class="{{disc_c_level_class}}">
+            <p>{{disc_c_interpretation}}</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h3>Pontos Fortes do Perfil {{disc_profile}}</h3>
+        <div class="success-box">
+            <ul>
+                {{disc_strengths}}
+            </ul>
+        </div>
+
+        <h3>Pontos Cegos e Desafios</h3>
+        <div class="warning-box">
+            <ul>
+                {{disc_blind_spots}}
+            </ul>
+        </div>
+
+        <h3>Como Você Se Comunica</h3>
+        <div class="info-box">
+            <p>{{disc_communication_style}}</p>
+        </div>
+
+        <h3>Como Você Toma Decisões</h3>
+        <div class="info-box">
+            <p>{{disc_decision_style}}</p>
+        </div>
+
+        <h3>Ambientes Ideais de Trabalho</h3>
+        <ul>
+            {{disc_ideal_environments}}
+        </ul>
+
+        <h3>Estressores Comuns</h3>
+        <ul>
+            {{disc_stressors}}
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 3. ESPIRAL DINÂMICA -->
+    <div class="section">
+        <h2>3. Espiral Dinâmica - Análise Profunda</h2>
+
+        <div class="summary-card">
+            <h3>Suas Cores Dominantes: {{spiral_primary}}-{{spiral_secondary}}</h3>
+            <p>{{spiral_combination_name}}</p>
+        </div>
+
+        <div class="chart-container">
+            <img src="{{spiral_chart}}" alt="Gráfico Espiral Dinâmica">
+        </div>
+
+        <h3>Distribuição dos Níveis</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Cor/Nível</th>
+                    <th>Score</th>
+                    <th>Percentual</th>
+                    <th>Intensidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{spiral_scores_table}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h3>Análise da Cor Primária: {{spiral_primary}}</h3>
+        <div class="{{spiral_primary_bg_class}}">
+            <h4>{{spiral_primary_title}}</h4>
+            <p>{{spiral_primary_description}}</p>
+        </div>
+
+        <h4>Quando {{spiral_primary}} Aparece no Empreendedorismo:</h4>
+        <div class="success-box">
+            <p><strong>Manifestação Saudável:</strong></p>
+            <ul>
+                {{spiral_primary_healthy}}
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <p><strong>Manifestação Não Saudável:</strong></p>
+            <ul>
+                {{spiral_primary_unhealthy}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h3>Análise da Cor Secundária: {{spiral_secondary}}</h3>
+        <div class="{{spiral_secondary_bg_class}}">
+            <h4>{{spiral_secondary_title}}</h4>
+            <p>{{spiral_secondary_description}}</p>
+        </div>
+
+        <h4>Quando {{spiral_secondary}} Aparece no Empreendedorismo:</h4>
+        <div class="success-box">
+            <p><strong>Manifestação Saudável:</strong></p>
+            <ul>
+                {{spiral_secondary_healthy}}
+            </ul>
+        </div>
+
+        <div class="warning-box">
+            <p><strong>Manifestação Não Saudável:</strong></p>
+            <ul>
+                {{spiral_secondary_unhealthy}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h3>Análise de Combinação: {{spiral_primary}}-{{spiral_secondary}}</h3>
+        <div class="section-intro">
+            <p>{{spiral_combination_analysis}}</p>
+        </div>
+
+        <h4>Padrões Únicos desta Combinação:</h4>
+        <ul>
+            {{spiral_combination_patterns}}
+        </ul>
+
+        <h4>Conflitos Internos Possíveis:</h4>
+        <div class="danger-box">
+            <ul>
+                {{spiral_combination_conflicts}}
+            </ul>
+        </div>
+
+        <h4>Como Integrar as Duas Cores:</h4>
+        <div class="success-box">
+            <ul>
+                {{spiral_integration_tips}}
+            </ul>
+        </div>
+
+        <h3>Transições e Próximo Estágio</h3>
+        <div class="info-box">
+            <p><strong>Próxima cor emergente:</strong> {{spiral_next_color}}</p>
+            <p>{{spiral_transition_description}}</p>
+        </div>
+
+        <h4>Sinais de que você está evoluindo para {{spiral_next_color}}:</h4>
+        <ul>
+            {{spiral_transition_signs}}
+        </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h3>Aplicações em Negócios</h3>
+
+        <h4>Estrutura Organizacional Ideal:</h4>
+        <div class="info-box">
+            <p>{{spiral_org_structure}}</p>
+        </div>
+
+        <h4>Cultura e Valores:</h4>
+        <div class="info-box">
+            <p>{{spiral_culture}}</p>
+        </div>
+
+        <h4>Estilo de Liderança:</h4>
+        <div class="info-box">
+            <p>{{spiral_leadership}}</p>
+        </div>
+
+        <h3>Red Flags - Sinais de Alerta</h3>
+        <div class="danger-box">
+            <p><strong>Preste atenção se você notar:</strong></p>
+            <ul>
+                {{spiral_red_flags}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 4. PAEI -->
+    <div class="section">
+        <h2>4. PAEI - Gestão e Liderança</h2>
+
+        <div class="summary-card">
+            <h3>Seu Código PAEI: {{paei_code}}</h3>
+            <p><strong>{{paei_profile_name}}</strong></p>
+            <p>{{paei_full_interpretation}}</p>
+        </div>
+
+        <div class="chart-container">
+            <img src="{{paei_chart}}" alt="Gráfico PAEI">
+        </div>
+
+        <h3>Interpretação do Código</h3>
+
+        <h4>P - Produtor: {{paei_p_score}}/10 {{paei_p_letter}}</h4>
+        <div class="{{paei_p_class}}">
+            <p><strong>{{paei_p_level_name}}</strong></p>
+            <p>{{paei_p_detailed}}</p>
+        </div>
+
+        <h4>A - Administrador: {{paei_a_score}}/10 {{paei_a_letter}}</h4>
+        <div class="{{paei_a_class}}">
+            <p><strong>{{paei_a_level_name}}</strong></p>
+            <p>{{paei_a_detailed}}</p>
+        </div>
+
+        <h4>E - Empreendedor: {{paei_e_score}}/10 {{paei_e_letter}}</h4>
+        <div class="{{paei_e_class}}">
+            <p><strong>{{paei_e_level_name}}</strong></p>
+            <p>{{paei_e_detailed}}</p>
+        </div>
+
+        <h4>I - Integrador: {{paei_i_score}}/10 {{paei_i_letter}}</h4>
+        <div class="{{paei_i_class}}">
+            <p><strong>{{paei_i_level_name}}</strong></p>
+            <p>{{paei_i_detailed}}</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h3>Problemas com Pessoas (Baseado no Código {{paei_code}})</h3>
+        <div class="danger-box">
+            <p>{{paei_people_problems}}</p>
+        </div>
+
+        <h3>Problemas Financeiros (Baseado no Código {{paei_code}})</h3>
+        <div class="warning-box">
+            <p>{{paei_financial_problems}}</p>
+        </div>
+
+        <h3>Recomendações de Contratação</h3>
+        <div class="success-box">
+            <h4>Perfis que complementam o seu:</h4>
+            <ul>
+                {{paei_hiring_recommendations}}
+            </ul>
+        </div>
+
+        <h3>Estrutura de Time Ideal</h3>
+        <div class="info-box">
+            <p>{{paei_team_structure}}</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 5. ENEAGRAMA -->
+    <div class="section">
+        <h2>5. Eneagrama - Autossabotagem e Crescimento</h2>
+
+        <div class="summary-card">
+            <h3>Tipo {{enneagram_type}}: {{enneagram_name}}</h3>
+            <p><strong>Asa:</strong> {{enneagram_wing}}</p>
+            <p><strong>Subtipo:</strong> {{enneagram_subtype_full}}</p>
+        </div>
+
+        <div class="chart-container">
+            <img src="{{enneagram_chart}}" alt="Diagrama Eneagrama">
+        </div>
+
+        <h3>Descrição do Tipo {{enneagram_type}}</h3>
+        <div class="section-intro">
+            <p>{{enneagram_type_description}}</p>
+        </div>
+
+        <h3>Motivações Profundas</h3>
+        <div class="success-box">
+            <h4>O que realmente te move:</h4>
+            <ul>
+                {{enneagram_core_motivations}}
+            </ul>
+        </div>
+
+        <h3>Medos Inconscientes</h3>
+        <div class="danger-box">
+            <h4>O que você evita (conscientemente ou não):</h4>
+            <ul>
+                {{enneagram_core_fears}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="section">
+        <h3>Padrões de Autossabotagem</h3>
+        <div class="warning-box">
+            <p><strong>Como você se sabota sem perceber:</strong></p>
+            <ul>
+                {{enneagram_self_sabotage}}
+            </ul>
+        </div>
+
+        <h3>Impacto no Empreendedorismo</h3>
+        <div class="info-box">
+            <p>{{enneagram_business_impact}}</p>
+        </div>
+
+        <h3>Caminhos de Crescimento</h3>
+        <div class="success-box">
+            <h4>Direção de Integração (quando saudável):</h4>
+            <p>{{enneagram_growth_direction}}</p>
+
+            <h4>Práticas recomendadas:</h4>
+            <ul>
+                {{enneagram_growth_practices}}
+            </ul>
+        </div>
+
+        <h3>Direção de Desintegração (sob estresse)</h3>
+        <div class="danger-box">
+            <p><strong>Quando sob pressão extrema, você pode:</strong></p>
+            <p>{{enneagram_stress_direction}}</p>
+        </div>
+
+        <h3>Influência da Asa {{enneagram_wing}}</h3>
+        <div class="info-box">
+            <p>{{enneagram_wing_influence}}</p>
+        </div>
+
+        <h3>Subtipo {{enneagram_subtype_full}}</h3>
+        <div class="info-box">
+            <p>{{enneagram_subtype_description}}</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 6. VALORES -->
+    <div class="section">
+        <h2>6. Valores e Cultura Organizacional</h2>
+
+        <div class="chart-container">
+            <img src="{{valores_chart}}" alt="Gráfico de Valores">
+        </div>
+
+        <h3>Seus Top 5 Valores</h3>
+        <ol>
+            {{top_5_values_detailed}}
+        </ol>
+
+        <h3>Arquetipos que Você Busca Contratar</h3>
+        <div class="info-box">
+            <p>{{desired_archetypes}}</p>
+        </div>
+
+        <h3>Alinhamento Valores x Perfil</h3>
+        <div class="{{values_alignment_class}}">
+            <p>{{values_alignment_analysis}}</p>
+        </div>
+
+        <h3>Gaps a Endereçar</h3>
+        <div class="warning-box">
+            <ul>
+                {{values_gaps}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 7. SÍNTESE -->
+    <div class="section">
+        <h2>7. Síntese Integrada</h2>
+
+        <div class="section-intro">
+            <p>Esta seção conecta os 4 frameworks para revelar padrões dominantes únicos do seu perfil.</p>
+        </div>
+
+        <h3>Como Tudo Se Conecta</h3>
+        <div class="summary-card">
+            <p>{{integrated_summary}}</p>
+        </div>
+
+        <h3>Padrões Dominantes Cruzados</h3>
+
+        <h4>Comportamento (DISC) + Valores (Espiral):</h4>
+        <div class="info-box">
+            <p>{{pattern_disc_spiral}}</p>
+        </div>
+
+        <h4>Gestão (PAEI) + Motivações (Eneagrama):</h4>
+        <div class="info-box">
+            <p>{{pattern_paei_enneagram}}</p>
+        </div>
+
+        <h4>Espiral + Eneagrama:</h4>
+        <div class="info-box">
+            <p>{{pattern_spiral_enneagram}}</p>
+        </div>
+
+        <h3>Seu "Modo de Operação" Único</h3>
+        <div class="success-box">
+            <p>{{unique_operating_mode}}</p>
+        </div>
+
+        <h3>Maiores Forças Integradas</h3>
+        <ul>
+            {{integrated_strengths}}
+        </ul>
+
+        <h3>Maiores Riscos Integrados</h3>
+        <div class="danger-box">
+            <ul>
+                {{integrated_risks}}
+            </ul>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- 8. PLANO DE AÇÃO -->
+    <div class="section">
+        <h2>8. Plano de Ação 30/60/90 Dias</h2>
+
+        <div class="action-plan">
+            <h3>Primeiros 30 Dias - Autoconsciência</h3>
+            <h4>Foco: Observar e reconhecer padrões</h4>
+            {{action_30_days}}
+        </div>
+
+        <div class="action-plan">
+            <h3>60 Dias - Implementação Inicial</h3>
+            <h4>Foco: Pequenas mudanças estruturais</h4>
+            {{action_60_days}}
+        </div>
+
+        <div class="action-plan">
+            <h3>90 Dias - Consolidação</h3>
+            <h4>Foco: Novos hábitos e sistemas</h4>
+            {{action_90_days}}
+        </div>
+
+        <h3>Contratações Prioritárias (6-12 meses)</h3>
+        <div class="success-box">
+            <ol>
+                {{hiring_priorities}}
+            </ol>
+        </div>
+
+        <h3>Recursos Recomendados</h3>
+        <div class="info-box">
+            <h4>Livros:</h4>
+            <ul>
+                {{recommended_books}}
+            </ul>
+
+            <h4>Práticas:</h4>
+            <ul>
+                {{recommended_practices}}
+            </ul>
+
+            <h4>Ferramentas:</h4>
+            <ul>
+                {{recommended_tools}}
+            </ul>
+        </div>
+    </div>
+
+    <!-- FOOTER FINAL -->
+    <div class="brand-footer">
+        <p><strong>Jornada do Empreendedor de Sucesso</strong></p>
+        <p>Assessment baseado em frameworks científicos de desenvolvimento humano e organizacional</p>
+        <p style="font-size: 9pt; margin-top: 1em;">
+            DISC (William Marston) • Spiral Dynamics (Clare Graves, Don Beck) • PAEI (Ichak Adizes) • Eneagrama (tradição milenar)
+        </p>
+        <p style="font-size: 8pt; margin-top: 1em; opacity: 0.8;">
+            Este relatório foi gerado em {{assessment_date}} baseado nas suas respostas ao assessment completo.
+        </p>
+    </div>
+</body>
+</html>

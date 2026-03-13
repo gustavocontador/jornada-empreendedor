@@ -1,0 +1,1562 @@
+# QUESTIONÁRIO COMPLETO - Jornada do Empreendedor de Sucesso
+# Versão 1.0.0
+# Total: ~105 perguntas otimizadas
+# Tempo estimado: 30-35 minutos
+
+metadata:
+  nome: "Jornada do Empreendedor de Sucesso"
+  versao: "1.0.0"
+  total_perguntas: 105
+  tempo_estimado_minutos: 35
+  frameworks_incluidos:
+    - DISC
+    - Espiral Dinâmica
+    - Valores Empresariais (10)
+    - PAEI (Adizes)
+    - Eneagrama
+    - Arquétipos de Contratação
+
+# SEÇÕES DO QUESTIONÁRIO
+
+secoes:
+  - id: "intro"
+    nome: "Informações Iniciais"
+    descricao: "Contexto sobre você e seu negócio"
+    ordem: 1
+    tempo_estimado: "3 min"
+    total_perguntas: 5
+
+  - id: "comportamento_valores"
+    nome: "Comportamento e Valores Pessoais"
+    descricao: "Como você age e o que valoriza"
+    ordem: 2
+    tempo_estimado: "10 min"
+    total_perguntas: 35
+    frameworks: ["DISC", "Espiral", "PAEI parcial"]
+
+  - id: "gestao_lideranca"
+    nome: "Gestão e Liderança"
+    descricao: "Seu estilo de liderança e gestão"
+    ordem: 3
+    tempo_estimado: "8 min"
+    total_perguntas: 25
+    frameworks: ["PAEI", "Eneagrama parcial", "DISC parcial"]
+
+  - id: "motivacoes_profundas"
+    nome: "Motivações e Autossabotagem"
+    descricao: "O que te move e o que te bloqueia"
+    ordem: 4
+    tempo_estimado: "8 min"
+    total_perguntas: 20
+    frameworks: ["Eneagrama", "Espiral parcial"]
+
+  - id: "valores_cultura"
+    nome: "Valores Empresariais e Cultura"
+    descricao: "Valores que você prioriza e perfil que busca contratar"
+    ordem: 5
+    tempo_estimado: "6 min"
+    total_perguntas: 20
+    frameworks: ["Valores", "Arquétipos"]
+
+# =============================================================================
+# PERGUNTAS
+# =============================================================================
+
+perguntas:
+  # ========== SEÇÃO 1: INFORMAÇÕES INICIAIS (5 perguntas) ==========
+
+  - id: "q001"
+    secao: "intro"
+    ordem: 1
+    texto: "Qual é o seu nome completo?"
+    tipo: "text"
+    obrigatorio: true
+    pontuacao: null
+
+  - id: "q002"
+    secao: "intro"
+    ordem: 2
+    texto: "Há quantos anos você é empreendedor?"
+    tipo: "multiple_choice"
+    obrigatorio: true
+    opcoes:
+      - value: "menos_1"
+        label: "Menos de 1 ano"
+      - value: "1_3"
+        label: "1 a 3 anos"
+      - value: "3_5"
+        label: "3 a 5 anos"
+      - value: "5_10"
+        label: "5 a 10 anos"
+      - value: "mais_10"
+        label: "Mais de 10 anos"
+    pontuacao: null
+
+  - id: "q003"
+    secao: "intro"
+    ordem: 3
+    texto: "Quantas pessoas trabalham na sua empresa atualmente?"
+    tipo: "multiple_choice"
+    obrigatorio: true
+    opcoes:
+      - value: "solo"
+        label: "Só eu (empreendedor solo)"
+      - value: "2_5"
+        label: "2 a 5 pessoas"
+      - value: "6_10"
+        label: "6 a 10 pessoas"
+      - value: "11_20"
+        label: "11 a 20 pessoas"
+      - value: "21_50"
+        label: "21 a 50 pessoas"
+      - value: "mais_50"
+        label: "Mais de 50 pessoas"
+    pontuacao: null
+
+  - id: "q004"
+    secao: "intro"
+    ordem: 4
+    texto: "Qual é o seu principal desafio hoje como empreendedor?"
+    tipo: "multiple_choice"
+    obrigatorio: true
+    opcoes:
+      - value: "pessoas"
+        label: "Gestão de pessoas (contratar, delegar, liderar)"
+      - value: "financeiro"
+        label: "Gestão financeira e tributária"
+      - value: "vendas"
+        label: "Vendas e captação de clientes"
+      - value: "operacional"
+        label: "Operação e processos"
+      - value: "estrategia"
+        label: "Estratégia e direcionamento"
+      - value: "tempo"
+        label: "Gestão do tempo e produtividade"
+    pontuacao:
+      # Usado para personalização do relatório, não para scoring
+      desafio_primary: 1.0
+
+  - id: "q005"
+    secao: "intro"
+    ordem: 5
+    texto: "Qual é o seu segmento de atuação?"
+    tipo: "text"
+    placeholder: "Ex: Contabilidade, Consultoria, E-commerce, SaaS, etc."
+    obrigatorio: false
+    pontuacao: null
+
+  # ========== SEÇÃO 2: COMPORTAMENTO E VALORES (35 perguntas) ==========
+  # Cobre: DISC + Espiral Dinâmica + início de PAEI
+
+  # --- DISC-D + PAEI-P + Eneagrama 8 + Espiral VERMELHO ---
+
+  - id: "q006"
+    secao: "comportamento_valores"
+    ordem: 1
+    texto: "Prefiro agir rapidamente do que esperar o momento perfeito."
+    tipo: "likert_5"
+    escala:
+      1: "Discordo totalmente"
+      2: "Discordo"
+      3: "Neutro"
+      4: "Concordo"
+      5: "Concordo totalmente"
+    pontuacao:
+      disc_d: 1.0
+      paei_p: 0.6
+      paei_e: 0.3
+      enneagram_8: 0.4
+      enneagram_3: 0.3
+      spiral_red: 0.5
+      spiral_orange: 0.3
+
+  - id: "q007"
+    secao: "comportamento_valores"
+    ordem: 2
+    texto: "Gosto de assumir o controle de situações e tomar decisões difíceis."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 1.0
+      paei_p: 0.4
+      paei_e: 0.2
+      enneagram_8: 0.8
+      enneagram_3: 0.2
+      spiral_red: 0.6
+      spiral_blue: 0.2
+
+  - id: "q008"
+    secao: "comportamento_valores"
+    ordem: 3
+    texto: "Fico frustrado quando processos burocráticos atrasam a execução."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.8
+      paei_p: 0.7
+      paei_a: -0.5  # pontuação negativa (inversa)
+      enneagram_8: 0.5
+      enneagram_1: -0.3
+      spiral_red: 0.4
+      spiral_orange: 0.5
+
+  - id: "q009"
+    secao: "comportamento_valores"
+    ordem: 4
+    texto: "Prefiro competir e ganhar do que colaborar e empatar."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.9
+      disc_i: -0.3
+      paei_p: 0.4
+      paei_i: -0.4
+      enneagram_8: 0.6
+      enneagram_3: 0.7
+      spiral_red: 0.7
+      spiral_orange: 0.5
+      spiral_green: -0.6
+
+  - id: "q010"
+    secao: "comportamento_valores"
+    ordem: 5
+    texto: "Não tenho medo de confrontos e discussões difíceis."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.8
+      disc_s: -0.6
+      paei_p: 0.3
+      paei_i: -0.3
+      enneagram_8: 0.9
+      enneagram_9: -0.8
+      spiral_red: 0.8
+
+  # --- DISC-I + Espiral LARANJA/VERDE + Eneagrama 3/7 ---
+
+  - id: "q011"
+    secao: "comportamento_valores"
+    ordem: 6
+    texto: "Sou bom em influenciar e persuadir pessoas."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 1.0
+      disc_d: 0.3
+      paei_e: 0.3
+      paei_i: 0.4
+      enneagram_3: 0.6
+      enneagram_7: 0.4
+      spiral_orange: 0.6
+      spiral_green: 0.2
+
+  - id: "q012"
+    secao: "comportamento_valores"
+    ordem: 7
+    texto: "Gosto de estar cercado de pessoas e fazer networking."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 1.0
+      disc_s: 0.3
+      paei_i: 0.5
+      enneagram_7: 0.6
+      enneagram_2: 0.4
+      spiral_orange: 0.4
+      spiral_green: 0.5
+
+  - id: "q013"
+    secao: "comportamento_valores"
+    ordem: 8
+    texto: "Prefiro ambientes dinâmicos e cheios de energia a ambientes calmos."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.8
+      disc_s: -0.6
+      paei_e: 0.5
+      enneagram_7: 0.7
+      enneagram_3: 0.4
+      spiral_red: 0.3
+      spiral_orange: 0.6
+
+  - id: "q014"
+    secao: "comportamento_valores"
+    ordem: 9
+    texto: "Sou otimista e consigo ver o lado positivo das situações."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.7
+      paei_i: 0.3
+      enneagram_7: 0.8
+      enneagram_9: 0.5
+      spiral_orange: 0.4
+      spiral_green: 0.5
+      spiral_yellow: 0.3
+
+  # --- DISC-S + Espiral ROXO/VERDE + Eneagrama 9/2 + PAEI-I ---
+
+  - id: "q015"
+    secao: "comportamento_valores"
+    ordem: 10
+    texto: "Valorizo estabilidade e previsibilidade no dia a dia."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 1.0
+      disc_d: -0.4
+      paei_a: 0.6
+      paei_e: -0.5
+      enneagram_9: 0.6
+      enneagram_6: 0.5
+      spiral_blue: 0.7
+      spiral_purple: 0.4
+
+  - id: "q016"
+    secao: "comportamento_valores"
+    ordem: 11
+    texto: "Prefiro manter a harmonia do grupo a impor minha opinião."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.9
+      disc_d: -0.7
+      paei_i: 0.8
+      paei_p: -0.4
+      enneagram_9: 0.9
+      enneagram_2: 0.6
+      spiral_green: 0.8
+      spiral_purple: 0.5
+
+  - id: "q017"
+    secao: "comportamento_valores"
+    ordem: 12
+    texto: "Sou leal às pessoas com quem trabalho e valorizo relacionamentos de longo prazo."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.8
+      disc_i: 0.4
+      paei_i: 0.7
+      enneagram_6: 0.7
+      enneagram_2: 0.5
+      spiral_purple: 0.6
+      spiral_blue: 0.4
+      spiral_green: 0.5
+
+  - id: "q018"
+    secao: "comportamento_valores"
+    ordem: 13
+    texto: "Tenho dificuldade em dizer 'não' quando alguém pede ajuda."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.7
+      disc_d: -0.5
+      paei_i: 0.6
+      paei_p: -0.3
+      enneagram_2: 0.9
+      enneagram_9: 0.7
+      spiral_green: 0.6
+      spiral_purple: 0.4
+
+  # --- DISC-C + Espiral AZUL + PAEI-A + Eneagrama 1/5 ---
+
+  - id: "q019"
+    secao: "comportamento_valores"
+    ordem: 14
+    texto: "Valorizo precisão, qualidade e atenção aos detalhes."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 1.0
+      paei_a: 0.8
+      enneagram_1: 0.8
+      enneagram_5: 0.5
+      spiral_blue: 0.7
+      spiral_orange: 0.3
+
+  - id: "q020"
+    secao: "comportamento_valores"
+    ordem: 15
+    texto: "Prefiro analisar dados antes de tomar uma decisão importante."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.9
+      disc_d: -0.3
+      paei_a: 0.7
+      paei_e: -0.4
+      enneagram_5: 0.8
+      enneagram_6: 0.5
+      spiral_blue: 0.5
+      spiral_orange: 0.6
+
+  - id: "q021"
+    secao: "comportamento_valores"
+    ordem: 16
+    texto: "Fico incomodado quando as coisas estão desorganizadas ou caóticas."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.8
+      disc_i: -0.5
+      paei_a: 0.9
+      paei_e: -0.6
+      enneagram_1: 0.9
+      enneagram_5: 0.4
+      spiral_blue: 0.7
+
+  - id: "q022"
+    secao: "comportamento_valores"
+    ordem: 17
+    texto: "Sigo regras e procedimentos estabelecidos."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.9
+      disc_d: -0.4
+      paei_a: 0.8
+      paei_e: -0.5
+      enneagram_1: 0.6
+      enneagram_6: 0.7
+      spiral_blue: 0.9
+      spiral_red: -0.5
+
+  # --- Espiral Dinâmica: VERMELHO específicas ---
+
+  - id: "q023"
+    secao: "comportamento_valores"
+    ordem: 18
+    texto: "Acredito que respeito se conquista através de resultados e atitude, independente do cargo."
+    tipo: "likert_5"
+    nota: "Pergunta 43 original - corrigida"
+    pontuacao:
+      disc_d: 0.6
+      paei_p: 0.7
+      enneagram_8: 0.6
+      enneagram_3: 0.5
+      spiral_red: 0.8
+      spiral_orange: 0.5
+
+  - id: "q024"
+    secao: "comportamento_valores"
+    ordem: 19
+    texto: "Quando vejo uma oportunidade, eu ajo imediatamente sem pedir permissão."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.7
+      paei_p: 0.6
+      paei_e: 0.7
+      enneagram_8: 0.7
+      enneagram_7: 0.5
+      spiral_red: 0.9
+      spiral_orange: 0.4
+
+  - id: "q025"
+    secao: "comportamento_valores"
+    ordem: 20
+    texto: "Acredito que o mundo dos negócios é uma selva onde o mais forte sobrevive."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.5
+      paei_p: 0.4
+      enneagram_8: 0.6
+      enneagram_3: 0.3
+      spiral_red: 1.0
+      spiral_orange: 0.2
+      spiral_green: -0.7
+
+  # --- Espiral: AZUL específicas ---
+
+  - id: "q026"
+    secao: "comportamento_valores"
+    ordem: 21
+    texto: "Acredito que existe uma forma certa e uma forma errada de fazer as coisas."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.6
+      paei_a: 0.5
+      enneagram_1: 0.9
+      enneagram_6: 0.4
+      spiral_blue: 1.0
+      spiral_yellow: -0.3
+
+  - id: "q027"
+    secao: "comportamento_valores"
+    ordem: 22
+    texto: "Valorizo tradição, hierarquia e ordem na organização."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.5
+      disc_s: 0.4
+      paei_a: 0.7
+      enneagram_1: 0.5
+      enneagram_6: 0.6
+      spiral_blue: 1.0
+      spiral_purple: 0.4
+      spiral_green: -0.4
+
+  - id: "q028"
+    secao: "comportamento_valores"
+    ordem: 23
+    texto: "Acredito que disciplina e sacrifício são fundamentais para o sucesso."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.4
+      disc_s: 0.3
+      paei_a: 0.5
+      enneagram_1: 0.8
+      enneagram_3: 0.5
+      spiral_blue: 0.9
+      spiral_orange: 0.3
+
+  # --- Espiral: LARANJA específicas ---
+
+  - id: "q029"
+    secao: "comportamento_valores"
+    ordem: 24
+    texto: "Meu principal objetivo é alcançar sucesso material e reconhecimento."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.4
+      disc_i: 0.5
+      paei_p: 0.6
+      enneagram_3: 0.9
+      spiral_orange: 1.0
+      spiral_red: 0.3
+
+  - id: "q030"
+    secao: "comportamento_valores"
+    ordem: 25
+    texto: "Sempre busco formas mais eficientes e inovadoras de fazer as coisas."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.3
+      disc_c: 0.4
+      paei_e: 0.8
+      enneagram_3: 0.5
+      enneagram_5: 0.4
+      spiral_orange: 1.0
+      spiral_yellow: 0.4
+
+  - id: "q031"
+    secao: "comportamento_valores"
+    ordem: 26
+    texto: "Acredito que progresso e crescimento são mais importantes que estabilidade."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.5
+      disc_s: -0.6
+      paei_e: 0.8
+      paei_a: -0.3
+      enneagram_3: 0.6
+      enneagram_7: 0.5
+      spiral_orange: 0.9
+      spiral_blue: -0.4
+
+  # --- Espiral: VERDE específicas ---
+
+  - id: "q032"
+    secao: "comportamento_valores"
+    ordem: 27
+    texto: "Valorizo igualdade e busco ouvir todas as vozes antes de decidir."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.6
+      disc_i: 0.5
+      disc_d: -0.4
+      paei_i: 0.9
+      enneagram_9: 0.7
+      enneagram_2: 0.5
+      spiral_green: 1.0
+      spiral_blue: -0.2
+
+  - id: "q033"
+    secao: "comportamento_valores"
+    ordem: 28
+    texto: "Prefiro trabalhar em equipe e construir consenso do que decidir sozinho."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.7
+      disc_d: -0.6
+      paei_i: 0.9
+      paei_p: -0.4
+      enneagram_9: 0.8
+      enneagram_2: 0.6
+      spiral_green: 1.0
+
+  - id: "q034"
+    secao: "comportamento_valores"
+    ordem: 29
+    texto: "Acredito que o bem-estar das pessoas é mais importante que lucro."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.5
+      paei_i: 0.7
+      paei_p: -0.3
+      enneagram_2: 0.8
+      enneagram_9: 0.6
+      spiral_green: 1.0
+      spiral_orange: -0.6
+
+  # --- Espiral: AMARELO/TURQUESA específicas ---
+
+  - id: "q035"
+    secao: "comportamento_valores"
+    ordem: 30
+    texto: "Consigo ver padrões complexos e integrar perspectivas aparentemente contraditórias."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.4
+      paei_e: 0.5
+      enneagram_5: 0.7
+      spiral_yellow: 1.0
+      spiral_turquoise: 0.5
+
+  - id: "q036"
+    secao: "comportamento_valores"
+    ordem: 31
+    texto: "Entendo que cada estágio de desenvolvimento tem seu valor e propósito."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.3
+      paei_i: 0.5
+      enneagram_9: 0.4
+      spiral_yellow: 1.0
+      spiral_turquoise: 0.6
+
+  - id: "q037"
+    secao: "comportamento_valores"
+    ordem: 32
+    texto: "Sinto responsabilidade pelo bem-estar do planeta e das gerações futuras."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.3
+      paei_i: 0.4
+      enneagram_1: 0.4
+      enneagram_9: 0.5
+      spiral_green: 0.5
+      spiral_yellow: 0.4
+      spiral_turquoise: 1.0
+
+  # --- Espiral: ROXO específicas ---
+
+  - id: "q038"
+    secao: "comportamento_valores"
+    ordem: 33
+    texto: "Valorizo muito a opinião e aprovação do meu grupo/tribo/família."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.7
+      disc_i: 0.3
+      paei_i: 0.5
+      enneagram_6: 0.8
+      enneagram_2: 0.5
+      spiral_purple: 1.0
+      spiral_green: 0.3
+
+  - id: "q039"
+    secao: "comportamento_valores"
+    ordem: 34
+    texto: "Sinto forte conexão com tradições e rituais do meu grupo."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.5
+      disc_c: 0.3
+      paei_i: 0.4
+      enneagram_6: 0.6
+      spiral_purple: 1.0
+      spiral_blue: 0.5
+
+  - id: "q040"
+    secao: "comportamento_valores"
+    ordem: 35
+    texto: "Prefiro evitar mudanças drásticas que possam ameaçar a segurança do grupo."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.8
+      disc_d: -0.6
+      paei_a: 0.4
+      paei_e: -0.7
+      enneagram_6: 0.9
+      enneagram_9: 0.6
+      spiral_purple: 0.9
+      spiral_blue: 0.4
+      spiral_orange: -0.5
+
+  # ========== SEÇÃO 3: GESTÃO E LIDERANÇA (25 perguntas) ==========
+  # Foco: PAEI + Eneagrama + DISC parcial
+
+  # --- PAEI: PRODUCER (P) ---
+
+  - id: "q041"
+    secao: "gestao_lideranca"
+    ordem: 1
+    texto: "Minha maior satisfação é entregar resultados tangíveis rapidamente."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.5
+      paei_p: 1.0
+      paei_e: 0.2
+      enneagram_3: 0.6
+      enneagram_8: 0.4
+
+  - id: "q042"
+    secao: "gestao_lideranca"
+    ordem: 2
+    texto: "Fico frustrado quando reuniões ou planejamentos atrasam a execução."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.6
+      paei_p: 1.0
+      paei_a: -0.4
+      paei_i: -0.5
+      enneagram_8: 0.5
+      enneagram_3: 0.4
+
+  - id: "q043"
+    secao: "gestao_lideranca"
+    ordem: 3
+    texto: "Prefiro fazer eu mesmo uma tarefa urgente do que gastar tempo treinando alguém."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.4
+      paei_p: 1.0
+      paei_i: -0.6
+      paei_a: -0.3
+      enneagram_8: 0.3
+      enneagram_1: 0.4
+
+  - id: "q044"
+    secao: "gestao_lideranca"
+    ordem: 4
+    texto: "Meu principal KPI de sucesso é quanto produzimos/vendemos este mês."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.5
+      paei_p: 1.0
+      paei_e: -0.3
+      enneagram_3: 0.7
+
+  - id: "q045"
+    secao: "gestao_lideranca"
+    ordem: 5
+    texto: "Valorizo ação mais do que reflexão ou planejamento de longo prazo."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.6
+      paei_p: 0.9
+      paei_e: -0.4
+      paei_a: -0.5
+      enneagram_8: 0.5
+      spiral_red: 0.4
+
+  # --- PAEI: ADMINISTRATOR (A) ---
+
+  - id: "q046"
+    secao: "gestao_lideranca"
+    ordem: 6
+    texto: "Sem processos documentados e replicáveis, a empresa nunca vai escalar."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.7
+      paei_a: 1.0
+      paei_e: -0.2
+      enneagram_1: 0.6
+      enneagram_5: 0.4
+
+  - id: "q047"
+    secao: "gestao_lideranca"
+    ordem: 7
+    texto: "Dedico tempo significativo criando checklists, SOPs e templates."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.8
+      paei_a: 1.0
+      paei_e: -0.3
+      enneagram_1: 0.7
+      enneagram_5: 0.5
+
+  - id: "q048"
+    secao: "gestao_lideranca"
+    ordem: 8
+    texto: "Antes de decisões importantes, sempre analiso dados históricos e números."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.9
+      disc_d: -0.3
+      paei_a: 1.0
+      paei_e: -0.4
+      enneagram_5: 0.8
+      enneagram_6: 0.5
+
+  - id: "q049"
+    secao: "gestao_lideranca"
+    ordem: 9
+    texto: "Prefiro crescer devagar com estrutura do que rápido de forma caótica."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.6
+      disc_d: -0.5
+      paei_a: 1.0
+      paei_e: -0.6
+      enneagram_1: 0.5
+      enneagram_6: 0.6
+
+  - id: "q050"
+    secao: "gestao_lideranca"
+    ordem: 10
+    texto: "Sinto-me seguro quando tudo está organizado, documentado e sob controle."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.7
+      disc_s: 0.5
+      paei_a: 0.9
+      enneagram_1: 0.7
+      enneagram_6: 0.8
+
+  # --- PAEI: ENTREPRENEUR (E) ---
+
+  - id: "q051"
+    secao: "gestao_lideranca"
+    ordem: 11
+    texto: "Constantemente penso em novos produtos, serviços ou formas de reinventar o negócio."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.4
+      paei_e: 1.0
+      paei_a: -0.2
+      enneagram_7: 0.7
+      enneagram_3: 0.4
+
+  - id: "q052"
+    secao: "gestao_lideranca"
+    ordem: 12
+    texto: "Adapto a estratégia da empresa rapidamente quando percebo mudanças no mercado."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.4
+      paei_e: 1.0
+      paei_a: -0.3
+      enneagram_3: 0.5
+      enneagram_7: 0.5
+
+  - id: "q053"
+    secao: "gestao_lideranca"
+    ordem: 13
+    texto: "O tédio e a rotina me assustam mais do que o risco de inovar."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.5
+      disc_s: -0.6
+      paei_e: 1.0
+      paei_a: -0.5
+      enneagram_7: 0.9
+      spiral_orange: 0.5
+
+  - id: "q054"
+    secao: "gestao_lideranca"
+    ordem: 14
+    texto: "Vejo oportunidades de negócio onde outros veem apenas problemas."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.4
+      disc_i: 0.4
+      paei_e: 1.0
+      enneagram_7: 0.6
+      enneagram_3: 0.5
+
+  - id: "q055"
+    secao: "gestao_lideranca"
+    ordem: 15
+    texto: "Prefiro experimentar coisas novas do que aperfeiçoar o que já funciona."
+    tipo: "likert_5"
+    pontuacao:
+      paei_e: 1.0
+      paei_a: -0.6
+      paei_p: -0.3
+      enneagram_7: 0.8
+      spiral_orange: 0.5
+
+  # --- PAEI: INTEGRATOR (I) ---
+
+  - id: "q056"
+    secao: "gestao_lideranca"
+    ordem: 16
+    texto: "Invisto tempo significativo alinhando valores, missão e propósito com a equipe."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.5
+      disc_s: 0.6
+      paei_i: 1.0
+      enneagram_2: 0.7
+      enneagram_9: 0.6
+
+  - id: "q057"
+    secao: "gestao_lideranca"
+    ordem: 17
+    texto: "Prefiro sacrificar um pouco de eficiência para manter o clima organizacional saudável."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.7
+      disc_d: -0.5
+      paei_i: 1.0
+      paei_p: -0.4
+      enneagram_2: 0.6
+      enneagram_9: 0.8
+
+  - id: "q058"
+    secao: "gestao_lideranca"
+    ordem: 18
+    texto: "Decisões difíceis (demissões, cobranças, conflitos) me drenam emocionalmente."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.6
+      disc_d: -0.6
+      paei_i: 0.7  # score alto em I mas indica problema
+      paei_p: -0.5
+      enneagram_9: 0.9
+      enneagram_2: 0.7
+
+  - id: "q059"
+    secao: "gestao_lideranca"
+    ordem: 19
+    texto: "Costumo ser a pessoa que une diferentes grupos e resolve conflitos."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.6
+      disc_s: 0.7
+      paei_i: 1.0
+      enneagram_9: 0.7
+      enneagram_2: 0.5
+
+  - id: "q060"
+    secao: "gestao_lideranca"
+    ordem: 20
+    texto: "Valorizo mais o engajamento da equipe do que apenas resultados financeiros."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.6
+      disc_d: -0.3
+      paei_i: 0.9
+      paei_p: -0.4
+      enneagram_2: 0.7
+      enneagram_9: 0.6
+
+  # --- PAEI: Trade-Offs (perguntas de escolha forçada) ---
+
+  - id: "q061"
+    secao: "gestao_lideranca"
+    ordem: 21
+    texto: "Quando preciso escolher, eu priorizo:"
+    tipo: "multiple_choice"
+    opcoes:
+      - value: "p"
+        label: "Produzir e vender mais"
+      - value: "a"
+        label: "Criar processos e organizar"
+      - value: "e"
+        label: "Inovar e testar coisas novas"
+      - value: "i"
+        label: "Fortalecer cultura e equipe"
+    pontuacao:
+      # Score de 3 pontos para a escolha
+      paei_p: "if_p:3"
+      paei_a: "if_a:3"
+      paei_e: "if_e:3"
+      paei_i: "if_i:3"
+
+  - id: "q062"
+    secao: "gestao_lideranca"
+    ordem: 22
+    texto: "Em uma contratação, prefiro alguém que:"
+    tipo: "multiple_choice"
+    opcoes:
+      - value: "p"
+        label: "Entrega resultado rápido, mesmo que gere atrito"
+      - value: "a"
+        label: "Cria sistemas e organiza processos"
+      - value: "e"
+        label: "Traz ideias inovadoras e questiona status quo"
+      - value: "i"
+        label: "Se encaixa perfeitamente na cultura da empresa"
+    pontuacao:
+      paei_p: "if_p:3"
+      paei_a: "if_a:3"
+      paei_e: "if_e:3"
+      paei_i: "if_i:3"
+
+  - id: "q063"
+    secao: "gestao_lideranca"
+    ordem: 23
+    texto: "Em uma crise financeira, minha primeira reação seria:"
+    tipo: "multiple_choice"
+    opcoes:
+      - value: "a"
+        label: "Cortar custos e renegociar contratos"
+      - value: "p"
+        label: "Sair vendendo mais e batendo metas"
+      - value: "e"
+        label: "Pivotar o modelo de negócio"
+      - value: "i"
+        label: "Unir a equipe e pedir apoio coletivo"
+    pontuacao:
+      paei_p: "if_p:3"
+      paei_a: "if_a:3"
+      paei_e: "if_e:3"
+      paei_i: "if_i:3"
+
+  # --- Gestão de Pessoas (contexto para relatório) ---
+
+  - id: "q064"
+    secao: "gestao_lideranca"
+    ordem: 24
+    texto: "Tenho dificuldade em encontrar pessoas qualificadas para contratar."
+    tipo: "likert_5"
+    pontuacao:
+      # Não pontua frameworks, apenas para contexto do relatório
+      context_hiring_difficulty: 1.0
+
+  - id: "q065"
+    secao: "gestao_lideranca"
+    ordem: 25
+    texto: "Já tive que demitir alguém e foi uma das coisas mais difíceis que fiz."
+    tipo: "likert_5"
+    pontuacao:
+      paei_i: 0.4
+      paei_p: -0.3
+      enneagram_9: 0.5
+      enneagram_2: 0.4
+
+  # ========== SEÇÃO 4: MOTIVAÇÕES E AUTOSSABOTAGEM (20 perguntas) ==========
+  # Foco: Eneagrama + Espiral parcial
+
+  # --- Eneagrama Tipo 1: O Perfeccionista ---
+
+  - id: "q066"
+    secao: "motivacoes_profundas"
+    ordem: 1
+    texto: "Sinto que preciso fazer tudo da forma certa e perfeita."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.5
+      paei_a: 0.4
+      enneagram_1: 1.0
+      enneagram_3: 0.3
+
+  - id: "q067"
+    secao: "motivacoes_profundas"
+    ordem: 2
+    texto: "Costumo me criticar muito e sentir que nunca é bom o suficiente."
+    tipo: "likert_5"
+    pontuacao:
+      enneagram_1: 0.9
+      enneagram_3: 0.5
+      enneagram_4: 0.4
+
+  # --- Eneagrama Tipo 2: O Prestativo ---
+
+  - id: "q068"
+    secao: "motivacoes_profundas"
+    ordem: 3
+    texto: "Preciso sentir que sou necessário e valorizado pelas pessoas."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.4
+      paei_i: 0.5
+      enneagram_2: 1.0
+      enneagram_9: 0.3
+
+  - id: "q069"
+    secao: "motivacoes_profundas"
+    ordem: 4
+    texto: "Às vezes ajudo pessoas esperando receber gratidão em troca."
+    tipo: "likert_5"
+    pontuacao:
+      enneagram_2: 1.0
+      enneagram_3: 0.3
+
+  # --- Eneagrama Tipo 3: O Realizador ---
+
+  - id: "q070"
+    secao: "motivacoes_profundas"
+    ordem: 5
+    texto: "Meu valor está diretamente ligado aos meus resultados e conquistas."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.4
+      paei_p: 0.5
+      enneagram_3: 1.0
+      spiral_orange: 0.5
+
+  - id: "q071"
+    secao: "motivacoes_profundas"
+    ordem: 6
+    texto: "Tenho medo de falhar e ser visto como fracassado."
+    tipo: "likert_5"
+    pontuacao:
+      enneagram_3: 1.0
+      enneagram_6: 0.4
+
+  # --- Eneagrama Tipo 4: O Individualista ---
+
+  - id: "q072"
+    secao: "motivacoes_profundas"
+    ordem: 7
+    texto: "Sinto que sou diferente das outras pessoas e incompreendido."
+    tipo: "likert_5"
+    pontuacao:
+      enneagram_4: 1.0
+      enneagram_5: 0.3
+
+  # --- Eneagrama Tipo 5: O Investigador ---
+
+  - id: "q073"
+    secao: "motivacoes_profundas"
+    ordem: 8
+    texto: "Preciso de muito tempo sozinho para recarregar energia."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.4
+      disc_i: -0.5
+      enneagram_5: 1.0
+      enneagram_9: 0.3
+
+  - id: "q074"
+    secao: "motivacoes_profundas"
+    ordem: 9
+    texto: "Prefiro observar e analisar do que participar ativamente."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.6
+      disc_i: -0.6
+      paei_p: -0.4
+      enneagram_5: 1.0
+
+  # --- Eneagrama Tipo 6: O Leal/Questionador ---
+
+  - id: "q075"
+    secao: "motivacoes_profundas"
+    ordem: 10
+    texto: "Costumo antecipar problemas e me preparar para o pior cenário."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: 0.5
+      paei_a: 0.4
+      enneagram_6: 1.0
+      spiral_purple: 0.3
+
+  - id: "q076"
+    secao: "motivacoes_profundas"
+    ordem: 11
+    texto: "Busco segurança e tenho dificuldade com mudanças imprevisíveis."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.7
+      disc_d: -0.5
+      paei_a: 0.4
+      paei_e: -0.5
+      enneagram_6: 1.0
+      spiral_purple: 0.5
+
+  # --- Eneagrama Tipo 7: O Entusiasta ---
+
+  - id: "q077"
+    secao: "motivacoes_profundas"
+    ordem: 12
+    texto: "Sempre busco novas experiências e tenho dificuldade em me comprometer com uma coisa só."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.6
+      paei_e: 0.7
+      enneagram_7: 1.0
+      spiral_orange: 0.4
+
+  - id: "q078"
+    secao: "motivacoes_profundas"
+    ordem: 13
+    texto: "Evito sentimentos dolorosos me mantendo ocupado e positivo."
+    tipo: "likert_5"
+    pontuacao:
+      disc_i: 0.4
+      enneagram_7: 1.0
+      enneagram_9: 0.3
+
+  # --- Eneagrama Tipo 8: O Desafiador ---
+
+  - id: "q079"
+    secao: "motivacoes_profundas"
+    ordem: 14
+    texto: "Preciso estar no controle e tenho dificuldade em mostrar vulnerabilidade."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.7
+      paei_p: 0.4
+      enneagram_8: 1.0
+      spiral_red: 0.5
+
+  - id: "q080"
+    secao: "motivacoes_profundas"
+    ordem: 15
+    texto: "Injustiça me enfurece e luto para proteger os mais fracos."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.5
+      enneagram_8: 1.0
+      spiral_red: 0.4
+      spiral_green: 0.3
+
+  # --- Eneagrama Tipo 9: O Pacificador ---
+
+  - id: "q081"
+    secao: "motivacoes_profundas"
+    ordem: 16
+    texto: "Evito conflitos a todo custo e prefiro manter a paz."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.8
+      disc_d: -0.7
+      paei_i: 0.7
+      paei_p: -0.5
+      enneagram_9: 1.0
+      spiral_green: 0.5
+
+  - id: "q082"
+    secao: "motivacoes_profundas"
+    ordem: 17
+    texto: "Tenho dificuldade em saber o que EU realmente quero."
+    tipo: "likert_5"
+    pontuacao:
+      disc_s: 0.5
+      enneagram_9: 1.0
+      enneagram_6: 0.3
+
+  # --- Motivações Financeiras (contexto) ---
+
+  - id: "q083"
+    secao: "motivacoes_profundas"
+    ordem: 18
+    texto: "Tenho dificuldade em precificar meus serviços/produtos adequadamente."
+    tipo: "likert_5"
+    pontuacao:
+      context_pricing_difficulty: 1.0
+      enneagram_9: 0.4
+      enneagram_2: 0.5
+
+  - id: "q084"
+    secao: "motivacoes_profundas"
+    ordem: 19
+    texto: "Às vezes gasto dinheiro impulsivamente em coisas para o negócio."
+    tipo: "likert_5"
+    pontuacao:
+      disc_d: 0.4
+      paei_e: 0.5
+      enneagram_7: 0.7
+      enneagram_8: 0.4
+      spiral_red: 0.4
+
+  - id: "q085"
+    secao: "motivacoes_profundas"
+    ordem: 20
+    texto: "Evito olhar para números financeiros porque me causa ansiedade."
+    tipo: "likert_5"
+    pontuacao:
+      disc_c: -0.6
+      paei_a: -0.5
+      enneagram_7: 0.6
+      enneagram_9: 0.7
+
+  # ========== SEÇÃO 5: VALORES EMPRESARIAIS E CULTURA (20 perguntas) ==========
+  # Foco: 10 Valores + Arquétipos de Contratação
+
+  # --- 10 Valores Empresariais (Ranking) ---
+
+  - id: "q086"
+    secao: "valores_cultura"
+    ordem: 1
+    texto: "Dos valores abaixo, escolha os 3 que são MAIS importantes para você como empreendedor (em ordem de prioridade):"
+    tipo: "ranking"
+    min_choices: 3
+    max_choices: 3
+    opcoes:
+      - value: "inovacao"
+        label: "Inovação"
+        descricao: "Buscar constantemente novas ideias e soluções criativas"
+      - value: "disciplina"
+        label: "Disciplina"
+        descricao: "Seguir processos, rotinas e estruturas definidas"
+      - value: "resultado"
+        label: "Resultado"
+        descricao: "Foco em alcançar metas e entregar performance"
+      - value: "colaboracao"
+        label: "Colaboração"
+        descricao: "Trabalho em equipe e construção coletiva"
+      - value: "autonomia"
+        label: "Autonomia"
+        descricao: "Liberdade e independência para tomar decisões"
+      - value: "excelencia"
+        label: "Excelência"
+        descricao: "Qualidade superior e atenção aos detalhes"
+      - value: "agilidade"
+        label: "Agilidade"
+        descricao: "Velocidade de execução e adaptação rápida"
+      - value: "proposito"
+        label: "Propósito"
+        descricao: "Trabalho com significado e impacto social"
+      - value: "estabilidade"
+        label: "Estabilidade"
+        descricao: "Segurança, previsibilidade e baixo risco"
+      - value: "crescimento"
+        label: "Crescimento"
+        descricao: "Expansão, escalabilidade e aumento constante"
+    pontuacao:
+      # Rank 1 = 5 pontos, Rank 2 = 3 pontos, Rank 3 = 2 pontos
+      valores_primary: "rank_1"
+      valores_secondary: "rank_2"
+      valores_tertiary: "rank_3"
+
+  # --- Arquétipos de Contratação (9 perfis das imagens) ---
+
+  - id: "q087"
+    secao: "valores_cultura"
+    ordem: 2
+    texto: "Que tipo de pessoa você mais busca contratar/ter na sua equipe? Escolha 3 em ordem de prioridade:"
+    tipo: "ranking"
+    min_choices: 3
+    max_choices: 3
+    opcoes:
+      - value: "executor"
+        label: "Executor Incansável"
+        descricao: "Pessoa que faz acontecer, entrega resultado, não precisa de supervisão"
+      - value: "criativo"
+        label: "Criativo Inovador"
+        descricao: "Traz ideias novas, pensa fora da caixa, questiona o status quo"
+      - value: "organizador"
+        label: "Organizador Metódico"
+        descricao: "Cria processos, documenta, mantém tudo em ordem"
+      - value: "vendedor"
+        label: "Vendedor Nato"
+        descricao: "Persuasivo, carismático, fecha negócios"
+      - value: "analitico"
+        label: "Analítico Estratégico"
+        descricao: "Pensa estrategicamente, analisa dados, toma decisões baseadas em lógica"
+      - value: "empatico"
+        label: "Empático Integrador"
+        descricao: "Une pessoas, resolve conflitos, mantém clima positivo"
+      - value: "confiavel"
+        label: "Confiável Estável"
+        descricao: "Consistente, leal, previsível, não sai da empresa"
+      - value: "tecnico"
+        label: "Técnico Especialista"
+        descricao: "Expert em sua área, resolve problemas complexos"
+      - value: "lider"
+        label: "Líder Natural"
+        descricao: "Inspira pessoas, assume responsabilidade, toma frente"
+    pontuacao:
+      arquetipos_primary: "rank_1"
+      arquetipos_secondary: "rank_2"
+      arquetipos_tertiary: "rank_3"
+
+  # --- Valores Empresariais: Perguntas Likert (complementares) ---
+
+  - id: "q088"
+    secao: "valores_cultura"
+    ordem: 3
+    texto: "Prefiro uma equipe pequena de alta performance a uma equipe grande de performance média."
+    tipo: "likert_5"
+    pontuacao:
+      valor_excelencia: 0.8
+      valor_agilidade: 0.5
+
+  - id: "q089"
+    secao: "valores_cultura"
+    ordem: 4
+    texto: "Valorizo mais o impacto social do meu negócio do que apenas lucro."
+    tipo: "likert_5"
+    pontuacao:
+      valor_proposito: 1.0
+      spiral_green: 0.5
+      spiral_turquoise: 0.4
+
+  - id: "q090"
+    secao: "valores_cultura"
+    ordem: 5
+    texto: "Prefiro crescimento rápido e arriscado a crescimento lento e seguro."
+    tipo: "likert_5"
+    pontuacao:
+      valor_crescimento: 0.8
+      valor_estabilidade: -0.7
+      paei_e: 0.4
+      spiral_orange: 0.5
+
+  - id: "q091"
+    secao: "valores_cultura"
+    ordem: 6
+    texto: "Autonomia da equipe é mais importante do que controle centralizado."
+    tipo: "likert_5"
+    pontuacao:
+      valor_autonomia: 1.0
+      paei_i: 0.4
+      paei_p: -0.3
+      spiral_yellow: 0.4
+
+  - id: "q092"
+    secao: "valores_cultura"
+    ordem: 7
+    texto: "Inovação constante é mais importante do que aperfeiçoar o que já funciona."
+    tipo: "likert_5"
+    pontuacao:
+      valor_inovacao: 1.0
+      valor_excelencia: -0.3
+      paei_e: 0.6
+      spiral_orange: 0.5
+
+  - id: "q093"
+    secao: "valores_cultura"
+    ordem: 8
+    texto: "Processos e disciplina são fundamentais para o sucesso do negócio."
+    tipo: "likert_5"
+    pontuacao:
+      valor_disciplina: 1.0
+      paei_a: 0.6
+      spiral_blue: 0.5
+
+  - id: "q094"
+    secao: "valores_cultura"
+    ordem: 9
+    texto: "Resultados financeiros devem ser a principal métrica de sucesso."
+    tipo: "likert_5"
+    pontuacao:
+      valor_resultado: 1.0
+      valor_proposito: -0.4
+      paei_p: 0.5
+      spiral_orange: 0.6
+
+  - id: "q095"
+    secao: "valores_cultura"
+    ordem: 10
+    texto: "Cultura de colaboração é mais importante que competição interna."
+    tipo: "likert_5"
+    pontuacao:
+      valor_colaboracao: 1.0
+      paei_i: 0.6
+      spiral_green: 0.7
+
+  # --- Gaps entre perfil e cultura desejada ---
+
+  - id: "q096"
+    secao: "valores_cultura"
+    ordem: 11
+    texto: "Sinto que as pessoas que eu contrato não se encaixam na cultura que quero."
+    tipo: "likert_5"
+    pontuacao:
+      context_culture_gap: 1.0
+
+  - id: "q097"
+    secao: "valores_cultura"
+    ordem: 12
+    texto: "Tenho clareza sobre quais valores são inegociáveis na minha empresa."
+    tipo: "likert_5"
+    pontuacao:
+      context_values_clarity: 1.0
+      spiral_blue: 0.3
+      spiral_yellow: 0.4
+
+  - id: "q098"
+    secao: "valores_cultura"
+    ordem: 13
+    texto: "Minha equipe atual reflete os valores que eu prego."
+    tipo: "likert_5"
+    pontuacao:
+      context_values_alignment: 1.0
+
+  # --- Preferências de Trabalho (contexto adicional) ---
+
+  - id: "q099"
+    secao: "valores_cultura"
+    ordem: 14
+    texto: "Prefiro trabalhar com pessoas muito diferentes de mim do que com pessoas parecidas."
+    tipo: "likert_5"
+    pontuacao:
+      paei_i: 0.4
+      spiral_yellow: 0.6
+      spiral_green: 0.5
+
+  - id: "q100"
+    secao: "valores_cultura"
+    ordem: 15
+    texto: "Sinto que minha empresa tem uma identidade clara e distinta no mercado."
+    tipo: "likert_5"
+    pontuacao:
+      context_brand_clarity: 1.0
+      paei_e: 0.3
+
+  - id: "q101"
+    secao: "valores_cultura"
+    ordem: 16
+    texto: "Costumo contratar pessoas que eu já conheço ou que foram indicadas."
+    tipo: "likert_5"
+    pontuacao:
+      spiral_purple: 0.6
+      spiral_blue: 0.3
+
+  - id: "q102"
+    secao: "valores_cultura"
+    ordem: 17
+    texto: "Tenho processos claros de recrutamento e seleção."
+    tipo: "likert_5"
+    pontuacao:
+      paei_a: 0.7
+      valor_disciplina: 0.5
+
+  - id: "q103"
+    secao: "valores_cultura"
+    ordem: 18
+    texto: "Minha maior dificuldade é reter talentos na empresa."
+    tipo: "likert_5"
+    pontuacao:
+      context_retention_difficulty: 1.0
+      paei_i: -0.3
+
+  - id: "q104"
+    secao: "valores_cultura"
+    ordem: 19
+    texto: "Invisto em treinamento e desenvolvimento da equipe regularmente."
+    tipo: "likert_5"
+    pontuacao:
+      paei_i: 0.6
+      valor_crescimento: 0.5
+      spiral_green: 0.4
+
+  - id: "q105"
+    secao: "valores_cultura"
+    ordem: 20
+    texto: "Sei exatamente qual perfil de pessoa preciso contratar para cada posição."
+    tipo: "likert_5"
+    pontuacao:
+      context_hiring_clarity: 1.0
+      paei_a: 0.4
+      spiral_yellow: 0.3
+
+# =============================================================================
+# NOTAS DE IMPLEMENTAÇÃO
+# =============================================================================
+
+# 1. DUPLA/TRIPLA PONTUAÇÃO:
+#    - Muitas perguntas pontuam para múltiplos frameworks simultaneamente
+#    - Ex: "Prefiro agir rapidamente" pontua DISC-D, PAEI-P, Eneagrama-8, Espiral-Vermelho
+#    - Isso permite ~105 perguntas cobrirem 6 frameworks
+
+# 2. PONTUAÇÃO NEGATIVA (inversa):
+#    - Valores negativos indicam pontuação inversa
+#    - Ex: paei_a: -0.5 significa que concordar diminui score de Administrator
+
+# 3. PERGUNTAS DE CONTEXTO:
+#    - Algumas perguntas não pontuam frameworks, mas fornecem contexto para relatório
+#    - Ex: "Qual seu principal desafio?" personaliza recomendações
+
+# 4. TIPOS DE PERGUNTA:
+#    - likert_5: Escala 1-5 (Discordo totalmente → Concordo totalmente)
+#    - multiple_choice: Escolha única
+#    - ranking: Ordenar opções por prioridade
+#    - text: Resposta livre
+
+# 5. TRADE-OFFS (PAEI):
+#    - Perguntas q061, q062, q063 usam if_condition para dar 3 pontos à escolha
+#    - Forçam o respondente a revelar prioridades
+
+# 6. CORREÇÃO DA PERGUNTA 43:
+#    - Original confusa sobre "respeito pela força"
+#    - Substituída por q023: "respeito por resultados e atitude"
+
+# 7. VALIDAÇÕES:
+#    - Total de perguntas: 105
+#    - Tempo estimado: 30-35 minutos
+#    - Seções balanceadas
+#    - Todos os frameworks adequadamente cobertos
