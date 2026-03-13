@@ -101,7 +101,7 @@ Clique "Deploy" novamente para aplicar.
 ## **PARTE 3: Testar o Sistema** 🧪
 
 ### **3.1. Acessar o Frontend**
-1. Abra `https://seu-projeto.vercel.app`
+1. Abra `https://seu-projeto.vercel.app` (ou `http://localhost:3001` em desenvolvimento)
 2. Deve ver a landing page
 
 ### **3.2. Testar Cadastro**

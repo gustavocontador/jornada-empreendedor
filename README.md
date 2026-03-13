@@ -117,7 +117,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Acesse: http://localhost:3000
+Acesse: http://localhost:3001
 
 ---
 
