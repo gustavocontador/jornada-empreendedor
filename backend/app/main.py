@@ -73,15 +73,18 @@ async def lifespan(app: FastAPI):
     # Startup
     logger.info("🚀 Iniciando aplicação...")
 
-    # Cria admin padrão
-    db = SessionLocal()
-    try:
-        create_default_admin(db)
-    finally:
-        db.close()
+    # Cria admin padrão (desabilitado temporariamente - criar manualmente)
+    # db = SessionLocal()
+    # try:
+    #     create_default_admin(db)
+    # finally:
+    #     db.close()
 
     # Carrega perguntas em cache
-    load_questions_cache()
+    try:
+        load_questions_cache()
+    except Exception:
+        logger.warning("⚠️ Perguntas não carregadas - YAML pode não existir ainda")
 
     logger.info("✅ Aplicação iniciada com sucesso!")
 

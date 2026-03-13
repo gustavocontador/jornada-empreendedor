@@ -27,7 +27,7 @@ class Question(Base):
     section = Column(String(100), nullable=False, index=True)  # intro, comportamento_valores, lideranca, etc
     order_index = Column(Integer, nullable=False, index=True)  # Ordem de apresentação
     is_active = Column(Boolean, default=True, nullable=False, index=True)
-    metadata = Column(JSON, default=dict, nullable=False)  # opcoes, scoring_rules, etc
+    extra_data = Column(JSON, default=dict, nullable=False)  # opcoes, scoring_rules, etc
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
 
     # Relationships

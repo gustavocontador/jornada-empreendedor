@@ -1,9 +1,9 @@
 """
 Configuração central da aplicação usando Pydantic Settings.
 """
-from typing import List
-from pydantic_settings import BaseSettings
-from pydantic import validator
+from typing import List, Union
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import field_validator
 
 
 class Settings(BaseSettings):
@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Jornada do Empreendedor de Sucesso"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
-    BACKEND_CORS_ORIGINS: List[str] = ["http://localhost:3000"]
+    BACKEND_CORS_ORIGINS: Union[List[str], str] = ["http://localhost:3000"]
 
     # File Storage
     UPLOAD_DIR: str = "./uploads"
@@ -35,16 +35,19 @@ class Settings(BaseSettings):
     ADMIN_EMAIL: str
     ADMIN_PASSWORD: str
 
-    @validator("BACKEND_CORS_ORIGINS", pre=True)
+    @field_validator("BACKEND_CORS_ORIGINS", mode="before")
+    @classmethod
     def parse_cors_origins(cls, v):
         """Parse CORS origins from comma-separated string."""
         if isinstance(v, str):
             return [origin.strip() for origin in v.split(",")]
         return v
 
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        case_sensitive=True,
+        extra="ignore"
+    )
 
 
 # Singleton instance

@@ -28,7 +28,7 @@ class Assessment(Base):
     completed_at = Column(DateTime(timezone=True), nullable=True)
     current_question_index = Column(Integer, default=0, nullable=False)
     total_questions = Column(Integer, default=105, nullable=False)
-    metadata = Column(JSON, default=dict, nullable=False)  # Informações adicionais, contexto
+    extra_data = Column(JSON, default=dict, nullable=False)  # Informações adicionais, contexto
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 

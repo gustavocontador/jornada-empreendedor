@@ -26,7 +26,7 @@ class Report(Base):
     report_type = Column(String(50), nullable=False, index=True)  # simplified, complete
     pdf_path = Column(String(500), nullable=True)  # Caminho do PDF gerado
     generated_at = Column(DateTime(timezone=True), default=datetime.utcnow, nullable=False)
-    metadata = Column(JSON, default=dict, nullable=False)  # Informações adicionais (versão, idioma, etc)
+    extra_data = Column(JSON, default=dict, nullable=False)  # Informações adicionais (versão, idioma, etc)
 
     # Relationships
     result = relationship("Result", back_populates="reports")
