@@ -102,7 +102,7 @@ def get_disc_dimension_interpretation(dimension: str, score: float) -> str:
     return interpretations.get(dimension, {}).get(level, "")
 
 
-def get_disc_strengths(profile: str, scores: Dict) -> list[str]:
+def get_disc_strengths(profile: str, scores: dict[str, Any]) -> list[str]:
     """Pontos fortes do perfil DISC."""
     strengths = []
 
@@ -141,7 +141,7 @@ def get_disc_strengths(profile: str, scores: Dict) -> list[str]:
     return strengths if strengths else ["Perfil equilibrado em todas as dimensões"]
 
 
-def get_disc_blind_spots(profile: str, scores: Dict) -> list[str]:
+def get_disc_blind_spots(profile: str, scores: dict[str, Any]) -> list[str]:
     """Pontos cegos do perfil DISC."""
     blind_spots = []
 
@@ -266,7 +266,7 @@ def generate_spiral_content(spiral_scores: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def generate_spiral_scores_table(spiral_scores: Dict) -> str:
+def generate_spiral_scores_table(spiral_scores: dict[str, Any]) -> str:
     """Gera HTML da tabela de scores da Espiral."""
     colors = ["beige", "purple", "red", "blue", "orange", "green", "yellow", "turquoise"]
     total = sum([spiral_scores.get(c, 0) for c in colors])
@@ -875,7 +875,7 @@ def get_enneagram_subtype_description(subtype: str) -> str:
     return "Descrição do seu subtipo."
 
 
-def generate_valores_content(valores_scores: Dict, arquetipos_scores: Dict) -> dict[str, Any]:
+def generate_valores_content(valores_scores: dict[str, Any], arquetipos_scores: dict[str, Any]) -> dict[str, Any]:
     """Gera conteúdo da seção de valores."""
     top_5 = sorted([(k, v) for k, v in valores_scores.items() if k not in ["primary", "secondary", "tertiary"]],
                    key=lambda x: x[1], reverse=True)[:5]
@@ -894,12 +894,12 @@ def get_value_description(value_name: str) -> str:
     return f"Valor fundamental para sua cultura organizacional"
 
 
-def get_desired_archetypes(arquetipos: Dict) -> str:
+def get_desired_archetypes(arquetipos: dict[str, Any]) -> str:
     """Arquetipos que busca contratar."""
     return "Arquetipos complementares ao seu perfil."
 
 
-def generate_integrated_content(disc: Dict, spiral: Dict, paei: Dict, enneagram: Dict) -> dict[str, Any]:
+def generate_integrated_content(disc: dict[str, Any], spiral: dict[str, Any], paei: dict[str, Any], enneagram: dict[str, Any]) -> dict[str, Any]:
     """Gera síntese integrada."""
     return {
         "integrated_summary": "Síntese integrada de todos os frameworks...",
@@ -912,7 +912,7 @@ def generate_integrated_content(disc: Dict, spiral: Dict, paei: Dict, enneagram:
     }
 
 
-def generate_action_plan(disc: Dict, spiral: Dict, paei: Dict, enneagram: Dict) -> dict[str, Any]:
+def generate_action_plan(disc: dict[str, Any], spiral: dict[str, Any], paei: dict[str, Any], enneagram: dict[str, Any]) -> dict[str, Any]:
     """Gera plano de ação 30/60/90."""
     return {
         "action_30_days": format_action_items(["Ação 1", "Ação 2", "Ação 3"]),

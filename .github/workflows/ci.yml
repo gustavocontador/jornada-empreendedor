@@ -39,6 +39,11 @@ jobs:
           cd backend
           pip install -r requirements-dev.txt
 
+      - name: Run Ruff (auto-fix)
+        run: |
+          cd backend
+          ruff check app/ --fix || true
+
       - name: Run Ruff (linting)
         run: |
           cd backend

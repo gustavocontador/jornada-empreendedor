@@ -371,7 +371,7 @@ class ReportGenerator:
         }
         return summaries.get(profile, "Você possui um perfil equilibrado entre as diferentes dimensões do DISC.")
 
-    def _get_disc_traits(self, disc_scores: Dict) -> list:
+    def _get_disc_traits(self, disc_scores: dict[str, Any]) -> list:
         """Retorna lista de traços principais do perfil DISC."""
         traits = []
         profile = disc_scores.get("profile", "")
@@ -398,17 +398,17 @@ class ReportGenerator:
 
         return traits if traits else ["Perfil balanceado em todas as dimensões"]
 
-    def _format_spiral_colors(self, spiral_scores: Dict) -> str:
+    def _format_spiral_colors(self, spiral_scores: dict[str, Any]) -> str:
         """Formata as cores da espiral."""
         primary = spiral_scores.get("primary", "orange").capitalize()
         secondary = spiral_scores.get("secondary", "blue").capitalize()
         return f"{primary}-{secondary}"
 
-    def _format_spiral_colors_text(self, spiral_scores: Dict) -> str:
+    def _format_spiral_colors_text(self, spiral_scores: dict[str, Any]) -> str:
         """Formata texto das cores."""
         return self._format_spiral_colors(spiral_scores)
 
-    def _get_percentage(self, spiral_scores: Dict, color: str) -> str:
+    def _get_percentage(self, spiral_scores: dict[str, Any], color: str) -> str:
         """Calcula percentual de uma cor."""
         score = spiral_scores.get(color, 0)
         total = sum([spiral_scores.get(c, 0) for c in ["beige", "purple", "red", "blue", "orange", "green", "yellow", "turquoise"]])
@@ -417,7 +417,7 @@ class ReportGenerator:
         pct = (score / total) * 100
         return f"{pct:.0f}"
 
-    def _get_spiral_short_description(self, spiral_scores: Dict) -> str:
+    def _get_spiral_short_description(self, spiral_scores: dict[str, Any]) -> str:
         """Descrição curta da combinação Espiral."""
         primary = spiral_scores.get("primary", "orange")
         secondary = spiral_scores.get("secondary", "blue")
@@ -434,7 +434,7 @@ class ReportGenerator:
         key = f"{primary}-{secondary}"
         return names.get(key, "Perfil Multidimensional")
 
-    def _get_spiral_combination_summary(self, spiral_scores: Dict) -> str:
+    def _get_spiral_combination_summary(self, spiral_scores: dict[str, Any]) -> str:
         """Resumo da combinação de cores da Espiral."""
         primary = spiral_scores.get("primary", "orange")
         secondary = spiral_scores.get("secondary", "blue")
@@ -450,7 +450,7 @@ class ReportGenerator:
 
         return f"Você é {summaries.get(primary, 'equilibrado')} ({primary.capitalize()}), com influência de {summaries.get(secondary, 'outros valores')} ({secondary.capitalize()})."
 
-    def _get_spiral_meaning(self, spiral_scores: Dict) -> list:
+    def _get_spiral_meaning(self, spiral_scores: dict[str, Any]) -> list:
         """Significado das cores dominantes."""
         primary = spiral_scores.get("primary", "orange")
         meanings = {
@@ -587,7 +587,7 @@ class ReportGenerator:
         }
         return motivations.get(type_num, ["Motivações únicas do seu tipo"])
 
-    def _get_top_values(self, valores_scores: Dict, n: int = 3) -> list:
+    def _get_top_values(self, valores_scores: dict[str, Any], n: int = 3) -> list:
         """Retorna top N valores ordenados."""
         # Filtrar apenas os valores (excluir metadata como primary, secondary)
         valores_only = {k: v for k, v in valores_scores.items() if k not in ["primary", "secondary", "tertiary"]}
