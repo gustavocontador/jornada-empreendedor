@@ -4,7 +4,7 @@ Exemplo de uso dos calculadores de scoring.
 Este arquivo demonstra como usar o ScoringEngine e os calculadores individuais.
 """
 import yaml
-from typing import Dict, Any
+from typing import Any
 from uuid import uuid4
 from datetime import datetime
 
@@ -111,7 +111,7 @@ def create_sample_responses() -> list:
     return responses
 
 
-def load_questions_data() -> Dict[str, Any]:
+def load_questions_data() -> dict[str, Any]:
     """
     Carrega dados do questionário.
 

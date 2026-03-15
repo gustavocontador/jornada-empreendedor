@@ -2,7 +2,7 @@
 Schemas Pydantic para Report (Relatório).
 """
 from datetime import datetime
-from typing import Optional, Dict, Any
+from typing import Optional, Any
 from uuid import UUID
 
 from pydantic import BaseModel, Field, computed_field
@@ -16,7 +16,7 @@ class ReportBase(BaseModel):
 class ReportCreate(ReportBase):
     """Schema para criação de relatório."""
     assessment_id: UUID
-    metadata: Optional[Dict[str, Any]] = Field(default_factory=dict)
+    metadata: Optional[dict[str, Any]] = Field(default_factory=dict)
 
 
 class ReportInDB(ReportBase):
@@ -27,7 +27,7 @@ class ReportInDB(ReportBase):
     status: str
     file_path: Optional[str]
     created_at: datetime
-    metadata: Dict[str, Any]
+    metadata: dict[str, Any]
 
     class Config:
         from_attributes = True

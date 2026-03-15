@@ -3,7 +3,7 @@ Endpoints administrativos.
 
 Apenas para usuários com is_admin=True.
 """
-from typing import Any, List
+from typing import Any
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status, Query
@@ -22,7 +22,7 @@ from app.schemas import assessment as assessment_schema
 router = APIRouter()
 
 
-@router.get("/users", response_model=List[user_schema.UserPublic])
+@router.get("/users", response_model=list[user_schema.UserPublic])
 def list_all_users(
     skip: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=100),
@@ -38,7 +38,7 @@ def list_all_users(
     return users
 
 
-@router.get("/assessments", response_model=List[assessment_schema.AssessmentPublic])
+@router.get("/assessments", response_model=list[assessment_schema.AssessmentPublic])
 def list_all_assessments(
     skip: int = Query(0, ge=0),
     limit: int = Query(50, ge=1, le=100),

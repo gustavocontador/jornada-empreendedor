@@ -2,7 +2,7 @@
 Modelo User - Usuário do sistema.
 """
 from datetime import datetime
-from typing import List
+
 import uuid
 
 from sqlalchemy import Column, String, Boolean, DateTime, Text

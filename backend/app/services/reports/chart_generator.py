@@ -4,7 +4,7 @@ Usa Plotly para criar visualizações profissionais e converte para base64.
 """
 import plotly.graph_objects as go
 import plotly.express as px
-from typing import Dict
+
 import base64
 from io import BytesIO
 
@@ -35,7 +35,7 @@ PAEI_COLORS = {
 }
 
 
-def generate_disc_chart(disc_scores: Dict[str, float]) -> str:
+def generate_disc_chart(disc_scores: dict[str, float]) -> str:
     """
     Gera gráfico DISC em formato de barras horizontais.
     Retorna imagem em base64 para embedding no HTML.
@@ -100,7 +100,7 @@ def generate_disc_chart(disc_scores: Dict[str, float]) -> str:
     return f"data:image/png;base64,{img_base64}"
 
 
-def generate_spiral_chart(spiral_scores: Dict[str, float]) -> str:
+def generate_spiral_chart(spiral_scores: dict[str, float]) -> str:
     """
     Gera gráfico radar da Espiral Dinâmica com cores corretas.
     Retorna imagem em base64.
@@ -166,7 +166,7 @@ def generate_spiral_chart(spiral_scores: Dict[str, float]) -> str:
     return f"data:image/png;base64,{img_base64}"
 
 
-def generate_paei_chart(paei_scores: Dict[str, float]) -> str:
+def generate_paei_chart(paei_scores: dict[str, float]) -> str:
     """
     Gera gráfico radar PAEI (4 papéis organizacionais).
     Retorna imagem em base64.
@@ -358,7 +358,7 @@ def generate_enneagram_diagram(enneagram_type: int, wing: str = None) -> str:
     return f"data:image/png;base64,{img_base64}"
 
 
-def generate_valores_chart(valores_scores: Dict[str, float], top_n: int = 5) -> str:
+def generate_valores_chart(valores_scores: dict[str, float], top_n: int = 5) -> str:
     """
     Gera gráfico de barras dos valores empresariais principais.
     Retorna imagem em base64.

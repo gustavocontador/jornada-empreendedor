@@ -5,12 +5,12 @@ Identifica os 3 perfis que o empreendedor mais busca contratar:
 - Executor, Criativo, Organizador, Vendedor, Analítico
 - Empático, Confiável, Técnico, Líder
 """
-from typing import List, Dict, Any, Optional
+from typing import Any, Optional
 
 from app.models.response import Response
 
 
-def calculate_arquetipos(responses: List[Response], questions_data: Dict[str, Any]) -> Dict[str, Any]:
+def calculate_arquetipos(responses: list[Response], questions_data: dict[str, Any]) -> dict[str, Any]:
     """
     Calcula arquétipos de contratação a partir das respostas.
 
@@ -21,8 +21,13 @@ def calculate_arquetipos(responses: List[Response], questions_data: Dict[str, An
     Returns:
         Dicionário com top 3 arquétipos
     """
-    # Mapeia respostas
-    response_map = {str(r.question_id): r for r in responses}
+    # Mapeia respostas usando YAML ID (extra_data['id']) ao invés de UUID
+    response_map = {}
+    for r in responses:
+        if hasattr(r, 'question') and r.question and r.question.extra_data:
+            yaml_id = r.question.extra_data.get('id')
+            if yaml_id:
+                response_map[yaml_id] = r
 
     # Busca pergunta de ranking de arquétipos (q087)
     arquetipos_ranking = None
@@ -58,7 +63,7 @@ def calculate_arquetipos(responses: List[Response], questions_data: Dict[str, An
     }
 
 
-def _infer_from_profile(responses: List[Response], questions_data: Dict[str, Any]) -> Dict[str, Any]:
+def _infer_from_profile(responses: list[Response], questions_data: dict[str, Any]) -> dict[str, Any]:
     """
     Infere arquétipos preferidos baseado no próprio perfil (complementaridade).
 
@@ -126,9 +131,9 @@ def _analyze_profile_gaps(
     primary: Optional[str],
     secondary: Optional[str],
     tertiary: Optional[str],
-    responses: List[Response],
-    questions_data: Dict[str, Any]
-) -> List[Dict[str, str]]:
+    responses: list[Response],
+    questions_data: dict[str, Any]
+) -> list[dict[str, str]]:
     """
     Analisa gaps entre o que busca contratar e o próprio perfil.
 

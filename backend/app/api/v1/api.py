@@ -12,7 +12,8 @@ from app.api.v1.endpoints import (
     responses,
     results,
     reports,
-    admin
+    admin,
+    health
 )
 
 # Router principal v1
@@ -59,4 +60,10 @@ api_router.include_router(
     admin.router,
     prefix="/admin",
     tags=["Administração"]
+)
+
+api_router.include_router(
+    health.router,
+    prefix="",
+    tags=["Health"]
 )

@@ -4,21 +4,21 @@ Interpretations Generator - Gera interpretações profundas baseadas em todos os
 Usa conhecimento de Spiral Dynamics, DISC, PAEI, Eneagrama e valores
 para gerar insights personalizados e detectar problemas.
 """
-from typing import List, Dict, Any
+from typing import Any
 
 from app.models.response import Response
 
 
 def generate_interpretations(
-    disc: Dict[str, Any],
-    spiral: Dict[str, Any],
-    paei: Dict[str, Any],
-    enneagram: Dict[str, Any],
-    valores: Dict[str, Any],
-    arquetipos: Dict[str, Any],
-    responses: List[Response],
-    questions_data: Dict[str, Any]
-) -> Dict[str, Any]:
+    disc: dict[str, Any],
+    spiral: dict[str, Any],
+    paei: dict[str, Any],
+    enneagram: dict[str, Any],
+    valores: dict[str, Any],
+    arquetipos: dict[str, Any],
+    responses: list[Response],
+    questions_data: dict[str, Any]
+) -> dict[str, Any]:
     """
     Gera interpretações profundas baseadas em todos os scores.
 
@@ -47,11 +47,11 @@ def generate_interpretations(
 
 
 def _generate_general_profile(
-    disc: Dict[str, Any],
-    spiral: Dict[str, Any],
-    paei: Dict[str, Any],
-    enneagram: Dict[str, Any],
-    valores: Dict[str, Any]
+    disc: dict[str, Any],
+    spiral: dict[str, Any],
+    paei: dict[str, Any],
+    enneagram: dict[str, Any],
+    valores: dict[str, Any]
 ) -> str:
     """Gera descrição geral do perfil do empreendedor."""
     disc_profile = disc.get("profile", "")
@@ -70,12 +70,12 @@ def _generate_general_profile(
 
 
 def _identify_strengths(
-    disc: Dict[str, Any],
-    spiral: Dict[str, Any],
-    paei: Dict[str, Any],
-    enneagram: Dict[str, Any],
-    valores: Dict[str, Any]
-) -> List[Dict[str, str]]:
+    disc: dict[str, Any],
+    spiral: dict[str, Any],
+    paei: dict[str, Any],
+    enneagram: dict[str, Any],
+    valores: dict[str, Any]
+) -> list[dict[str, str]]:
     """Identifica forças do empreendedor."""
     strengths = []
 
@@ -139,12 +139,12 @@ def _identify_strengths(
 
 
 def _identify_challenges(
-    disc: Dict[str, Any],
-    spiral: Dict[str, Any],
-    paei: Dict[str, Any],
-    enneagram: Dict[str, Any],
-    valores: Dict[str, Any]
-) -> List[Dict[str, str]]:
+    disc: dict[str, Any],
+    spiral: dict[str, Any],
+    paei: dict[str, Any],
+    enneagram: dict[str, Any],
+    valores: dict[str, Any]
+) -> list[dict[str, str]]:
     """Identifica desafios e problemas potenciais."""
     challenges = []
 
@@ -196,11 +196,11 @@ def _identify_challenges(
 
 
 def _identify_blind_spots(
-    disc: Dict[str, Any],
-    spiral: Dict[str, Any],
-    paei: Dict[str, Any],
-    enneagram: Dict[str, Any]
-) -> List[Dict[str, str]]:
+    disc: dict[str, Any],
+    spiral: dict[str, Any],
+    paei: dict[str, Any],
+    enneagram: dict[str, Any]
+) -> list[dict[str, str]]:
     """Identifica blind spots (pontos cegos) do empreendedor."""
     blind_spots = []
 
@@ -244,12 +244,12 @@ def _identify_blind_spots(
 
 
 def _analyze_people_management(
-    spiral: Dict[str, Any],
-    paei: Dict[str, Any],
-    enneagram: Dict[str, Any],
-    valores: Dict[str, Any],
-    arquetipos: Dict[str, Any]
-) -> Dict[str, Any]:
+    spiral: dict[str, Any],
+    paei: dict[str, Any],
+    enneagram: dict[str, Any],
+    valores: dict[str, Any],
+    arquetipos: dict[str, Any]
+) -> dict[str, Any]:
     """Analisa capacidade de gestão de pessoas."""
     analysis = {
         "estilo_lideranca": "",
@@ -315,12 +315,12 @@ def _analyze_people_management(
 
 
 def _analyze_financial_management(
-    spiral: Dict[str, Any],
-    paei: Dict[str, Any],
-    enneagram: Dict[str, Any],
-    responses: List[Response],
-    questions_data: Dict[str, Any]
-) -> Dict[str, Any]:
+    spiral: dict[str, Any],
+    paei: dict[str, Any],
+    enneagram: dict[str, Any],
+    responses: list[Response],
+    questions_data: dict[str, Any]
+) -> dict[str, Any]:
     """Analisa potenciais problemas com gestão financeira."""
     analysis = {
         "risco_problemas_financeiros": "low",  # low, medium, high
@@ -328,8 +328,13 @@ def _analyze_financial_management(
         "recomendacoes": []
     }
 
-    # Mapeia respostas específicas sobre finanças
-    response_map = {str(r.question_id): r for r in responses}
+    # Mapeia respostas específicas sobre finanças - usa YAML ID
+    response_map = {}
+    for r in responses:
+        if hasattr(r, 'question') and r.question and r.question.extra_data:
+            yaml_id = r.question.extra_data.get('id')
+            if yaml_id:
+                response_map[yaml_id] = r
 
     # q083: Dificuldade em precificar
     # q084: Gastos impulsivos
@@ -397,10 +402,10 @@ def _analyze_financial_management(
 
 
 def _analyze_growth_potential(
-    spiral: Dict[str, Any],
-    paei: Dict[str, Any],
-    valores: Dict[str, Any]
-) -> Dict[str, Any]:
+    spiral: dict[str, Any],
+    paei: dict[str, Any],
+    valores: dict[str, Any]
+) -> dict[str, Any]:
     """Analisa potencial de crescimento da empresa baseado no perfil."""
     analysis = {
         "potencial_escala": 0,  # 0-10
@@ -456,12 +461,12 @@ def _analyze_growth_potential(
 
 
 def _generate_development_recommendations(
-    disc: Dict[str, Any],
-    spiral: Dict[str, Any],
-    paei: Dict[str, Any],
-    enneagram: Dict[str, Any],
-    valores: Dict[str, Any]
-) -> List[Dict[str, str]]:
+    disc: dict[str, Any],
+    spiral: dict[str, Any],
+    paei: dict[str, Any],
+    enneagram: dict[str, Any],
+    valores: dict[str, Any]
+) -> list[dict[str, str]]:
     """Gera recomendações de desenvolvimento pessoal."""
     recommendations = []
 

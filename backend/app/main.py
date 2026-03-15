@@ -6,7 +6,7 @@ Aplicação principal do backend "Jornada do Empreendedor de Sucesso".
 import logging
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Request, status
+from fastapi import FastAPI, Request, status, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
@@ -14,17 +14,24 @@ from sqlalchemy.orm import Session
 
 from app.api.v1.api import api_router
 from app.core.config import settings
+from app.core.logging_config import setup_logging, get_logger
+from app.core.sentry_config import init_sentry, capture_exception
+from app.middleware.performance import PerformanceMiddleware
 from app.db.session import SessionLocal
 from app.models.user import User
 from app.core.security import get_password_hash
 from app.services.questions_loader import get_questions_data
 
-# Configuração de logging
-logging.basicConfig(
-    level=logging.INFO if not settings.DEBUG else logging.DEBUG,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
+# Configuração de logging estruturado e Sentry
+setup_logging(log_level=settings.LOG_LEVEL)
+if settings.SENTRY_DSN:
+    init_sentry(
+        dsn=settings.SENTRY_DSN,
+        environment=settings.SENTRY_ENVIRONMENT,
+        traces_sample_rate=settings.SENTRY_TRACES_SAMPLE_RATE
+    )
+
+logger = get_logger(__name__)
 
 
 def create_default_admin(db: Session) -> None:
@@ -114,15 +121,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# Middleware de logging
-@app.middleware("http")
-async def log_requests(request: Request, call_next):
-    """Middleware para logging de todas as requisições."""
-    logger.info(f"📥 {request.method} {request.url.path}")
-    response = await call_next(request)
-    logger.info(f"📤 {request.method} {request.url.path} - Status: {response.status_code}")
-    return response
+# Performance monitoring middleware
+app.add_middleware(PerformanceMiddleware)
 
 
 # Exception handlers
@@ -146,10 +146,48 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     )
 
 
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    """Handler para HTTPException - loga detalhes do erro."""
+    logger.error(
+        f"HTTPException: {exc.detail}",
+        extra={
+            "path": str(request.url.path),
+            "method": request.method,
+            "status_code": exc.status_code,
+            "detail": exc.detail
+        }
+    )
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={"detail": exc.detail}
+    )
+
+
 @app.exception_handler(Exception)
 async def general_exception_handler(request: Request, exc: Exception):
     """Handler para exceções não tratadas."""
-    logger.error(f"❌ Erro não tratado: {exc}", exc_info=True)
+    logger.error(
+        "Erro não tratado",
+        exc_info=True,
+        extra={
+            "path": str(request.url.path),
+            "method": request.method,
+            "exception_type": type(exc).__name__
+        }
+    )
+
+    # Capturar exceção no Sentry
+    if settings.SENTRY_DSN:
+        capture_exception(
+            exc,
+            request_context={
+                "path": str(request.url.path),
+                "method": request.method,
+                "url": str(request.url)
+            }
+        )
+
     return JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={

@@ -3,7 +3,7 @@ Endpoints de responses (respostas às perguntas).
 
 Gerencia criação, listagem e atualização de respostas.
 """
-from typing import Any, List
+from typing import Any
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -14,6 +14,7 @@ from app.db.session import get_db
 from app.models.user import User
 from app.models.assessment import Assessment
 from app.models.response import Response
+from app.models.question import Question
 from app.schemas import response as response_schema
 from app.services.questions_loader import get_question_by_id
 
@@ -58,15 +59,24 @@ def create_response(
             detail="Assessment já foi finalizado"
         )
 
-    # Verifica se pergunta existe no YAML
-    # Note: question_id é UUID no banco, mas vem do frontend mapeado
-    # Para simplificar, vamos aceitar qualquer UUID
-    # Em produção, você pode adicionar validação extra
+    # Busca a pergunta no banco pelo question_id do YAML (ex: "q001")
+    # Busca pela extra_data onde está armazenado o ID original do YAML
+    from sqlalchemy import text
+
+    question = db.query(Question).filter(
+        text("extra_data->>'id' = :question_id")
+    ).params(question_id=response_in.question_id).first()
+
+    if not question:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Pergunta não encontrada: {response_in.question_id}"
+        )
 
     # Verifica se já existe resposta para esta pergunta
     existing_response = db.query(Response).filter(
         Response.assessment_id == response_in.assessment_id,
-        Response.question_id == response_in.question_id
+        Response.question_id == question.id
     ).first()
 
     if existing_response:
@@ -74,12 +84,21 @@ def create_response(
         existing_response.answer_value = response_in.answer_value
         db.commit()
         db.refresh(existing_response)
-        return existing_response
+
+        # Retorna com question_id como string (ID do YAML)
+        yaml_id = question.extra_data.get("id", "unknown")
+        return {
+            "id": existing_response.id,
+            "assessment_id": existing_response.assessment_id,
+            "question_id": yaml_id,
+            "answer_value": existing_response.answer_value,
+            "answered_at": existing_response.answered_at
+        }
 
     # Cria nova resposta
     response = Response(
         assessment_id=response_in.assessment_id,
-        question_id=response_in.question_id,
+        question_id=question.id,  # UUID da pergunta do banco
         answer_value=response_in.answer_value
     )
     db.add(response)
@@ -94,10 +113,18 @@ def create_response(
     db.commit()
     db.refresh(response)
 
-    return response
+    # Retorna com question_id como string (ID do YAML)
+    yaml_id = question.extra_data.get("id", "unknown")
+    return {
+        "id": response.id,
+        "assessment_id": response.assessment_id,
+        "question_id": yaml_id,
+        "answer_value": response.answer_value,
+        "answered_at": response.answered_at
+    }
 
 
-@router.get("/{assessment_id}", response_model=List[response_schema.ResponsePublic])
+@router.get("/{assessment_id}")
 def get_assessment_responses(
     assessment_id: UUID,
     db: Session = Depends(get_db),
@@ -123,12 +150,27 @@ def get_assessment_responses(
             detail="Você não tem permissão para acessar estas respostas"
         )
 
-    # Busca todas as respostas
-    responses = db.query(Response).filter(
+    # Busca todas as respostas com join para pegar o extra_data
+    responses = db.query(Response, Question.extra_data).join(
+        Question, Response.question_id == Question.id
+    ).filter(
         Response.assessment_id == assessment_id
     ).order_by(Response.answered_at).all()
 
-    return responses
+    # Converte UUIDs para IDs do YAML usando extra_data['id']
+    result = []
+    for response, extra_data in responses:
+        yaml_id = extra_data.get("id", "unknown")
+        response_dict = {
+            "id": response.id,
+            "assessment_id": response.assessment_id,
+            "question_id": yaml_id,  # ID do YAML (q001, q002, etc)
+            "answer_value": response.answer_value,
+            "answered_at": response.answered_at
+        }
+        result.append(response_dict)
+
+    return result
 
 
 @router.patch("/{response_id}", response_model=response_schema.ResponsePublic)
@@ -175,4 +217,14 @@ def update_response(
     db.commit()
     db.refresh(response)
 
-    return response
+    # Busca question para obter o ID do YAML
+    question = db.query(Question).filter(Question.id == response.question_id).first()
+    yaml_id = question.extra_data.get("id", "unknown") if question else "unknown"
+
+    return {
+        "id": response.id,
+        "assessment_id": response.assessment_id,
+        "question_id": yaml_id,
+        "answer_value": response.answer_value,
+        "answered_at": response.answered_at
+    }

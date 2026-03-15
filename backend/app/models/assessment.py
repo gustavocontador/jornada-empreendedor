@@ -2,7 +2,7 @@
 Modelo Assessment - Avaliação/Questionário respondido pelo usuário.
 """
 from datetime import datetime
-from typing import List, Optional
+from typing import Optional
 import uuid
 
 from sqlalchemy import Column, String, DateTime, ForeignKey, Integer, JSON

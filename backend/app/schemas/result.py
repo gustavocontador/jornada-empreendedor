@@ -2,7 +2,7 @@
 Schemas Pydantic para Result (Resultado da avaliação).
 """
 from datetime import datetime
-from typing import Optional, Dict, Any, List
+from typing import Optional, Any
 from uuid import UUID
 from decimal import Decimal
 
@@ -82,11 +82,11 @@ class ResultComplete(BaseModel):
     arquetipos: ArquetiposScores
 
     # Interpretações e recomendações
-    interpretations: Dict[str, Any] = Field(
+    interpretations: dict[str, Any] = Field(
         ...,
         description="Interpretações profundas baseadas nos resultados"
     )
-    recommendations: Dict[str, Any] = Field(
+    recommendations: dict[str, Any] = Field(
         ...,
         description="Recomendações personalizadas"
     )
@@ -104,7 +104,7 @@ class ResultPublic(BaseModel):
     user_id: UUID
 
     # Scores completos (armazenados como JSON no banco)
-    scores: Dict[str, Any] = Field(
+    scores: dict[str, Any] = Field(
         ...,
         description="Todos os scores calculados (DISC, Spiral, PAEI, etc.)"
     )

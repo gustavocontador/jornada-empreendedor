@@ -1,7 +1,7 @@
 """
 Configuração central da aplicação usando Pydantic Settings.
 """
-from typing import List, Union
+from typing import Union
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import field_validator
 
@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Jornada do Empreendedor de Sucesso"
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
-    BACKEND_CORS_ORIGINS: Union[List[str], str] = ["http://localhost:3000"]
+    BACKEND_CORS_ORIGINS: Union[list[str], str] = ["http://localhost:3000"]
 
     # File Storage
     UPLOAD_DIR: str = "./uploads"
@@ -34,6 +34,12 @@ class Settings(BaseSettings):
     # Admin
     ADMIN_EMAIL: str
     ADMIN_PASSWORD: str
+
+    # Observabilidade e Logging
+    LOG_LEVEL: str = "INFO"
+    SENTRY_DSN: str = ""
+    SENTRY_ENVIRONMENT: str = "development"
+    SENTRY_TRACES_SAMPLE_RATE: float = 1.0
 
     @field_validator("BACKEND_CORS_ORIGINS", mode="before")
     @classmethod

@@ -12,13 +12,13 @@ Eneagrama identifica 9 tipos de personalidade baseados em motivações profundas
 8. Desafiador - Busca controle, evita vulnerabilidade
 9. Pacificador - Busca paz, evita conflito
 """
-from typing import Any, Optional
+from typing import List, Dict, Any, Optional
 from collections import defaultdict
 
 from app.models.response import Response
 
 
-def calculate_enneagram(responses: list[Response], questions_data: dict[str, Any]) -> dict[str, Any]:
+def calculate_enneagram(responses: List[Response], questions_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     Calcula tipo de Eneagrama a partir das respostas.
 
@@ -35,22 +35,13 @@ def calculate_enneagram(responses: list[Response], questions_data: dict[str, Any
     # Contadores para normalização
     question_counts = defaultdict(int)
 
-    # Mapeia respostas usando YAML ID (extra_data['id']) ao invés de UUID
-    response_map = {}
-    for r in responses:
-        if hasattr(r, 'question') and r.question and r.question.extra_data:
-            yaml_id = r.question.extra_data.get('id')
-            if yaml_id:
-                response_map[yaml_id] = r
+    # Mapeia respostas
+    response_map = {str(r.question_id): r for r in responses}
 
     # Processa cada pergunta
     for question in questions_data.get("perguntas", []):
-        question_id = question.get("id")  # YAML ID (q001, q002, etc.)
-        pontuacao = question.get("pontuacao")
-
-        # Pula perguntas sem pontuação ou com pontuação null
-        if not pontuacao or not isinstance(pontuacao, dict):
-            continue
+        question_id = question.get("id")
+        pontuacao = question.get("pontuacao", {})
 
         # Filtra chaves enneagram_
         ennea_keys = [k for k in pontuacao.keys() if k.startswith("enneagram_")]
@@ -123,7 +114,7 @@ def calculate_enneagram(responses: list[Response], questions_data: dict[str, Any
     }
 
 
-def _identify_wing(primary_type: int, scores: dict[str, float]) -> Optional[str]:
+def _identify_wing(primary_type: int, scores: Dict[str, float]) -> Optional[str]:
     """
     Identifica a asa (wing) do tipo primário.
 
@@ -169,9 +160,9 @@ def _identify_wing(primary_type: int, scores: dict[str, float]) -> Optional[str]
 
 def _identify_subtype(
     primary_type: int,
-    responses: list[Response],
-    questions_data: dict[str, Any],
-    ennea_scores: dict[str, float]
+    responses: List[Response],
+    questions_data: Dict[str, Any],
+    ennea_scores: Dict[str, float]
 ) -> Optional[str]:
     """
     Identifica subtipo instintivo (sp/so/sx).
@@ -198,13 +189,8 @@ def _identify_subtype(
         "sx": 0.0   # sexual/one-to-one
     }
 
-    # Analisa padrões específicos - usa YAML ID
-    response_map = {}
-    for r in responses:
-        if hasattr(r, 'question') and r.question and r.question.extra_data:
-            yaml_id = r.question.extra_data.get('id')
-            if yaml_id:
-                response_map[yaml_id] = r
+    # Analisa padrões específicos
+    response_map = {str(r.question_id): r for r in responses}
 
     # sp indicators: segurança, estabilidade, processos
     sp_questions = ["q015", "q049", "q076"]  # Valoriza estabilidade, crescer devagar, busca segurança
@@ -236,7 +222,7 @@ def _identify_subtype(
     return None
 
 
-def _get_enneagram_insights(primary_type: int, wing: Optional[str], score: float) -> list[dict[str, str]]:
+def _get_enneagram_insights(primary_type: int, wing: Optional[str], score: float) -> List[Dict[str, str]]:
     """
     Gera insights específicos do tipo para empreendedores.
 

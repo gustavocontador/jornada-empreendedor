@@ -5,12 +5,12 @@ Identifica os 3 valores principais do empreendedor dentre 10 opções:
 - Inovação, Disciplina, Resultado, Colaboração, Autonomia
 - Excelência, Agilidade, Propósito, Estabilidade, Crescimento
 """
-from typing import List, Dict, Any, Optional
+from typing import Any, Optional
 
 from app.models.response import Response
 
 
-def calculate_valores(responses: List[Response], questions_data: Dict[str, Any]) -> Dict[str, Any]:
+def calculate_valores(responses: list[Response], questions_data: dict[str, Any]) -> dict[str, Any]:
     """
     Calcula valores empresariais a partir das respostas.
 
@@ -21,8 +21,13 @@ def calculate_valores(responses: List[Response], questions_data: Dict[str, Any])
     Returns:
         Dicionário com top 3 valores
     """
-    # Mapeia respostas
-    response_map = {str(r.question_id): r for r in responses}
+    # Mapeia respostas usando YAML ID (extra_data['id']) ao invés de UUID
+    response_map = {}
+    for r in responses:
+        if hasattr(r, 'question') and r.question and r.question.extra_data:
+            yaml_id = r.question.extra_data.get('id')
+            if yaml_id:
+                response_map[yaml_id] = r
 
     # Busca pergunta de ranking de valores (q086)
     valores_ranking = None
@@ -60,7 +65,7 @@ def calculate_valores(responses: List[Response], questions_data: Dict[str, Any])
     }
 
 
-def _infer_from_likert(responses: List[Response], questions_data: Dict[str, Any]) -> Dict[str, Any]:
+def _infer_from_likert(responses: list[Response], questions_data: dict[str, Any]) -> dict[str, Any]:
     """
     Infere valores a partir de perguntas Likert complementares (q088-q095).
 
@@ -84,7 +89,13 @@ def _infer_from_likert(responses: List[Response], questions_data: Dict[str, Any]
         "crescimento": 0.0
     }
 
-    response_map = {str(r.question_id): r for r in responses}
+    # Mapeia respostas usando YAML ID
+    response_map = {}
+    for r in responses:
+        if hasattr(r, 'question') and r.question and r.question.extra_data:
+            yaml_id = r.question.extra_data.get('id')
+            if yaml_id:
+                response_map[yaml_id] = r
 
     # Perguntas Likert que indicam valores
     valor_questions = {
@@ -139,7 +150,7 @@ def _check_valores_alignment(
     primary: Optional[str],
     secondary: Optional[str],
     tertiary: Optional[str]
-) -> List[Dict[str, str]]:
+) -> list[dict[str, str]]:
     """
     Verifica alinhamento e conflitos entre valores.
 

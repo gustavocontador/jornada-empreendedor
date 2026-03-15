@@ -7,7 +7,7 @@ usando os frameworks DISC, Spiral Dynamics, PAEI, Eneagrama e Valores.
 import os
 from datetime import datetime
 from pathlib import Path
-from typing import Dict, Any, Optional
+from typing import Any, Optional
 from sqlalchemy.orm import Session
 
 from app.models.result import Result
@@ -240,7 +240,7 @@ class ReportGenerator:
 
         return str(output_path)
 
-    def _generate_charts(self, scores: Dict[str, Any]) -> Dict[str, str]:
+    def _generate_charts(self, scores: dict[str, Any]) -> dict[str, str]:
         """
         Gera todos os gráficos em base64 para embedding no HTML.
 
@@ -309,7 +309,7 @@ class ReportGenerator:
         with open(css_path, "r", encoding="utf-8") as f:
             return f.read()
 
-    def _render_template(self, template: str, data: Dict[str, Any]) -> str:
+    def _render_template(self, template: str, data: dict[str, Any]) -> str:
         """
         Substitui placeholders no template pelos valores reais.
 

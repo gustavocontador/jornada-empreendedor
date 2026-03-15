@@ -7,14 +7,14 @@ PAEI (Adizes) avalia 4 papéis gerenciais essenciais:
 - E (Entrepreneur): Empreendedorismo, inovação, visão de longo prazo
 - I (Integrator): Integração, cultura, pessoas, alinhamento
 """
-from typing import Any
+from typing import List, Dict, Any
 from decimal import Decimal
 from collections import defaultdict
 
 from app.models.response import Response
 
 
-def calculate_paei(responses: list[Response], questions_data: dict[str, Any]) -> dict[str, Any]:
+def calculate_paei(responses: List[Response], questions_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     Calcula scores PAEI a partir das respostas.
 
@@ -36,22 +36,13 @@ def calculate_paei(responses: list[Response], questions_data: dict[str, Any]) ->
     # Contadores para normalização
     question_counts = defaultdict(int)
 
-    # Mapeia respostas usando YAML ID (extra_data['id']) ao invés de UUID
-    response_map = {}
-    for r in responses:
-        if hasattr(r, 'question') and r.question and r.question.extra_data:
-            yaml_id = r.question.extra_data.get('id')
-            if yaml_id:
-                response_map[yaml_id] = r
+    # Mapeia respostas
+    response_map = {str(r.question_id): r for r in responses}
 
     # Processa cada pergunta
     for question in questions_data.get("perguntas", []):
         question_id = question.get("id")
-        pontuacao = question.get("pontuacao")
-
-        # Pula perguntas sem pontuação ou com pontuação null
-        if not pontuacao or not isinstance(pontuacao, dict):
-            continue
+        pontuacao = question.get("pontuacao", {})
 
         # Filtra chaves paei_
         paei_keys = [k for k in pontuacao.keys() if k.startswith("paei_")]
@@ -176,7 +167,7 @@ def _generate_paei_code(p: float, a: float, e: float, i: float) -> str:
     return code
 
 
-def _detect_paei_issues(p: float, a: float, e: float, i: float, code: str) -> list[dict[str, Any]]:
+def _detect_paei_issues(p: float, a: float, e: float, i: float, code: str) -> List[Dict[str, Any]]:
     """
     Detecta problemas comuns de gestão baseados no perfil PAEI.
 

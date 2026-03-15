@@ -3,7 +3,7 @@ Endpoints de questions (perguntas do questionário).
 
 Retorna perguntas carregadas do YAML.
 """
-from typing import Any, List, Optional
+from typing import Any, Optional
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status, Query
@@ -66,7 +66,7 @@ def list_questions(
     }
 
 
-@router.get("/sections", response_model=List[dict])
+@router.get("/sections", response_model=list[dict])
 def list_sections(
     current_user: User = Depends(get_current_active_user)
 ) -> Any:

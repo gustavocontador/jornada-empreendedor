@@ -4,12 +4,12 @@ Content Generator - Gera conteúdo detalhado para relatório completo.
 Este módulo contém toda a lógica de interpretação profunda baseada na
 knowledge base de Spiral Dynamics e outros frameworks.
 """
-from typing import Dict, Any, List
+from typing import Any
 
 
 # ===== DISC CONTENT =====
 
-def generate_disc_content(disc_scores: Dict[str, Any]) -> Dict[str, Any]:
+def generate_disc_content(disc_scores: dict[str, Any]) -> dict[str, Any]:
     """Gera conteúdo detalhado da seção DISC."""
     profile = disc_scores.get("profile", "")
     d_score = disc_scores.get("D", 0)
@@ -102,7 +102,7 @@ def get_disc_dimension_interpretation(dimension: str, score: float) -> str:
     return interpretations.get(dimension, {}).get(level, "")
 
 
-def get_disc_strengths(profile: str, scores: Dict) -> List[str]:
+def get_disc_strengths(profile: str, scores: Dict) -> list[str]:
     """Pontos fortes do perfil DISC."""
     strengths = []
 
@@ -141,7 +141,7 @@ def get_disc_strengths(profile: str, scores: Dict) -> List[str]:
     return strengths if strengths else ["Perfil equilibrado em todas as dimensões"]
 
 
-def get_disc_blind_spots(profile: str, scores: Dict) -> List[str]:
+def get_disc_blind_spots(profile: str, scores: Dict) -> list[str]:
     """Pontos cegos do perfil DISC."""
     blind_spots = []
 
@@ -198,7 +198,7 @@ def get_disc_decision_style(profile: str) -> str:
     return styles.get(profile, "Seu estilo de decisão é único.")
 
 
-def get_disc_ideal_environments(profile: str) -> List[str]:
+def get_disc_ideal_environments(profile: str) -> list[str]:
     """Ambientes ideais de trabalho."""
     return [
         "Ambientes dinâmicos com autonomia para tomar decisões",
@@ -208,7 +208,7 @@ def get_disc_ideal_environments(profile: str) -> List[str]:
     ]
 
 
-def get_disc_stressors(profile: str) -> List[str]:
+def get_disc_stressors(profile: str) -> list[str]:
     """Estressores comuns."""
     return [
         "Burocracia excessiva e processos lentos",
@@ -220,7 +220,7 @@ def get_disc_stressors(profile: str) -> List[str]:
 
 # ===== SPIRAL DYNAMICS CONTENT =====
 
-def generate_spiral_content(spiral_scores: Dict[str, Any]) -> Dict[str, Any]:
+def generate_spiral_content(spiral_scores: dict[str, Any]) -> dict[str, Any]:
     """Gera conteúdo detalhado da seção Espiral Dinâmica."""
     primary = spiral_scores.get("primary", "orange")
     secondary = spiral_scores.get("secondary", "blue")
@@ -324,7 +324,7 @@ def get_spiral_color_description(color: str) -> str:
     return descriptions.get(color, f"Nível {color.upper()} da Espiral Dinâmica.")
 
 
-def get_spiral_healthy_manifestation(color: str) -> List[str]:
+def get_spiral_healthy_manifestation(color: str) -> list[str]:
     """Manifestação saudável da cor em negócios."""
     manifestations = {
         "orange": [
@@ -363,7 +363,7 @@ def get_spiral_healthy_manifestation(color: str) -> List[str]:
     return manifestations.get(color, ["Manifestação saudável desta cor"])
 
 
-def get_spiral_unhealthy_manifestation(color: str) -> List[str]:
+def get_spiral_unhealthy_manifestation(color: str) -> list[str]:
     """Manifestação não saudável da cor em negócios."""
     manifestations = {
         "orange": [
@@ -427,7 +427,7 @@ def get_spiral_combination_analysis(primary: str, secondary: str) -> str:
     return f"A combinação {primary.upper()}-{secondary.upper()} cria um perfil único de valores."
 
 
-def get_spiral_combination_patterns(primary: str, secondary: str) -> List[str]:
+def get_spiral_combination_patterns(primary: str, secondary: str) -> list[str]:
     """Padrões únicos da combinação."""
     if primary == "orange" and secondary == "blue":
         return [
@@ -439,7 +439,7 @@ def get_spiral_combination_patterns(primary: str, secondary: str) -> List[str]:
     return ["Padrões únicos desta combinação"]
 
 
-def get_spiral_combination_conflicts(primary: str, secondary: str) -> List[str]:
+def get_spiral_combination_conflicts(primary: str, secondary: str) -> list[str]:
     """Conflitos internos da combinação."""
     if primary == "orange" and secondary == "blue":
         return [
@@ -451,7 +451,7 @@ def get_spiral_combination_conflicts(primary: str, secondary: str) -> List[str]:
     return ["Tensões naturais desta combinação"]
 
 
-def get_spiral_integration_tips(primary: str, secondary: str) -> List[str]:
+def get_spiral_integration_tips(primary: str, secondary: str) -> list[str]:
     """Dicas para integrar as cores."""
     return [
         "Reconheça que ambas as cores são válidas e necessárias",
@@ -480,7 +480,7 @@ def get_spiral_transition_description(current: str) -> str:
     return transitions.get(current, "Transição para próximo nível.")
 
 
-def get_spiral_transition_signs(current: str) -> List[str]:
+def get_spiral_transition_signs(current: str) -> list[str]:
     """Sinais de transição."""
     if current == "orange":
         return [
@@ -513,7 +513,7 @@ def get_spiral_leadership(primary: str, secondary: str) -> str:
     return "Estilo de liderança único."
 
 
-def get_spiral_red_flags(primary: str, secondary: str) -> List[str]:
+def get_spiral_red_flags(primary: str, secondary: str) -> list[str]:
     """Red flags - sinais de alerta."""
     if primary == "orange":
         return [
@@ -528,7 +528,7 @@ def get_spiral_red_flags(primary: str, secondary: str) -> List[str]:
 
 # ===== PAEI CONTENT =====
 
-def generate_paei_content(paei_scores: Dict[str, Any]) -> Dict[str, Any]:
+def generate_paei_content(paei_scores: dict[str, Any]) -> dict[str, Any]:
     """Gera conteúdo detalhado da seção PAEI."""
     code = paei_scores.get("code", "")
 
@@ -695,7 +695,7 @@ def get_paei_financial_problems(code: str) -> str:
     return "Seu perfil de administração financeira está em nível adequado."
 
 
-def get_paei_hiring_recommendations(code: str) -> List[str]:
+def get_paei_hiring_recommendations(code: str) -> list[str]:
     """Recomendações de contratação baseadas nos gaps."""
     recommendations = []
 
@@ -727,7 +727,7 @@ def get_paei_team_structure(code: str) -> str:
 
 # ===== ENEAGRAMA, VALORES E SÍNTESE =====
 
-def generate_enneagram_content(enneagram_scores: Dict[str, Any]) -> Dict[str, Any]:
+def generate_enneagram_content(enneagram_scores: dict[str, Any]) -> dict[str, Any]:
     """Gera conteúdo detalhado do Eneagrama."""
     ennea_type = enneagram_scores.get("type", 3)
     wing = enneagram_scores.get("wing", "")
@@ -774,7 +774,7 @@ def get_enneagram_description(type_num: int) -> str:
     return f"Descrição do Tipo {type_num} do Eneagrama."
 
 
-def get_enneagram_motivations(type_num: int) -> List[str]:
+def get_enneagram_motivations(type_num: int) -> list[str]:
     """Motivações core."""
     motivations = {
         3: [
@@ -787,7 +787,7 @@ def get_enneagram_motivations(type_num: int) -> List[str]:
     return motivations.get(type_num, ["Motivações do tipo"])
 
 
-def get_enneagram_fears(type_num: int) -> List[str]:
+def get_enneagram_fears(type_num: int) -> list[str]:
     """Medos inconscientes."""
     fears = {
         3: [
@@ -800,7 +800,7 @@ def get_enneagram_fears(type_num: int) -> List[str]:
     return fears.get(type_num, ["Medos do tipo"])
 
 
-def get_enneagram_sabotage(type_num: int) -> List[str]:
+def get_enneagram_sabotage(type_num: int) -> list[str]:
     """Padrões de autossabotagem."""
     sabotage = {
         3: [
@@ -829,7 +829,7 @@ def get_enneagram_growth_direction(type_num: int) -> str:
     return "Direção de integração do seu tipo."
 
 
-def get_enneagram_practices(type_num: int) -> List[str]:
+def get_enneagram_practices(type_num: int) -> list[str]:
     """Práticas de crescimento."""
     if type_num == 3:
         return [
@@ -875,7 +875,7 @@ def get_enneagram_subtype_description(subtype: str) -> str:
     return "Descrição do seu subtipo."
 
 
-def generate_valores_content(valores_scores: Dict, arquetipos_scores: Dict) -> Dict[str, Any]:
+def generate_valores_content(valores_scores: Dict, arquetipos_scores: Dict) -> dict[str, Any]:
     """Gera conteúdo da seção de valores."""
     top_5 = sorted([(k, v) for k, v in valores_scores.items() if k not in ["primary", "secondary", "tertiary"]],
                    key=lambda x: x[1], reverse=True)[:5]
@@ -899,7 +899,7 @@ def get_desired_archetypes(arquetipos: Dict) -> str:
     return "Arquetipos complementares ao seu perfil."
 
 
-def generate_integrated_content(disc: Dict, spiral: Dict, paei: Dict, enneagram: Dict) -> Dict[str, Any]:
+def generate_integrated_content(disc: Dict, spiral: Dict, paei: Dict, enneagram: Dict) -> dict[str, Any]:
     """Gera síntese integrada."""
     return {
         "integrated_summary": "Síntese integrada de todos os frameworks...",
@@ -912,7 +912,7 @@ def generate_integrated_content(disc: Dict, spiral: Dict, paei: Dict, enneagram:
     }
 
 
-def generate_action_plan(disc: Dict, spiral: Dict, paei: Dict, enneagram: Dict) -> Dict[str, Any]:
+def generate_action_plan(disc: Dict, spiral: Dict, paei: Dict, enneagram: Dict) -> dict[str, Any]:
     """Gera plano de ação 30/60/90."""
     return {
         "action_30_days": format_action_items(["Ação 1", "Ação 2", "Ação 3"]),
@@ -925,7 +925,7 @@ def generate_action_plan(disc: Dict, spiral: Dict, paei: Dict, enneagram: Dict) 
     }
 
 
-def format_action_items(items: List[str]) -> str:
+def format_action_items(items: list[str]) -> str:
     """Formata items de ação."""
     return "".join([f'<div class="action-item">{item}</div>' for item in items])
 
@@ -942,11 +942,11 @@ def get_level_class(score: float) -> str:
         return "warning-box"
 
 
-def format_list_items(items: List[str]) -> str:
+def format_list_items(items: list[str]) -> str:
     """Formata lista de items como HTML <li>."""
     return "\n".join([f"<li>{item}</li>" for item in items])
 
 
-def format_ordered_list(items: List[str]) -> str:
+def format_ordered_list(items: list[str]) -> str:
     """Formata lista ordenada."""
     return "\n".join([f"<li>{item}</li>" for item in items])

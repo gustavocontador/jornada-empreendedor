@@ -11,14 +11,14 @@ Spiral Dynamics mapeia 8 níveis de valores e visão de mundo:
 - Yellow (Integrador): Pensamento sistêmico, flexibilidade
 - Turquoise (Holístico): Visão global, sustentabilidade
 """
-from typing import Any
+from typing import List, Dict, Any, Tuple
 from decimal import Decimal
 from collections import defaultdict
 
 from app.models.response import Response
 
 
-def calculate_spiral(responses: list[Response], questions_data: dict[str, Any]) -> dict[str, Any]:
+def calculate_spiral(responses: List[Response], questions_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     Calcula scores Spiral Dynamics a partir das respostas.
 
@@ -44,30 +44,20 @@ def calculate_spiral(responses: list[Response], questions_data: dict[str, Any]) 
     # Contadores para normalização
     question_counts = defaultdict(int)
 
-    # Mapeia respostas usando YAML ID (extra_data['id']) ao invés de UUID
-    # CRITICAL FIX: Response objects agora vêm com Question eager loaded
-    response_map = {}
-    for r in responses:
-        if hasattr(r, 'question') and r.question and r.question.extra_data:
-            yaml_id = r.question.extra_data.get('id')
-            if yaml_id:
-                response_map[yaml_id] = r
+    # Mapeia respostas
+    response_map = {str(r.question_id): r for r in responses}
 
     # Processa cada pergunta
     for question in questions_data.get("perguntas", []):
-        question_id = question.get("id")  # YAML ID (q001, q002, etc.)
-        pontuacao = question.get("pontuacao")
-
-        # Pula perguntas sem pontuação ou com pontuação null
-        if not pontuacao or not isinstance(pontuacao, dict):
-            continue
+        question_id = question.get("id")
+        pontuacao = question.get("pontuacao", {})
 
         # Filtra chaves spiral_
         spiral_keys = [k for k in pontuacao.keys() if k.startswith("spiral_")]
         if not spiral_keys:
             continue
 
-        # Busca resposta usando YAML ID
+        # Busca resposta
         response = response_map.get(question_id)
         if not response:
             continue
@@ -149,8 +139,8 @@ def _detect_spiral_conflicts(
     primary: str,
     secondary: str,
     tertiary: str,
-    scores: dict[str, float]
-) -> list[dict[str, str]]:
+    scores: Dict[str, float]
+) -> List[Dict[str, str]]:
     """
     Detecta combinações problemáticas entre níveis Spiral.
 

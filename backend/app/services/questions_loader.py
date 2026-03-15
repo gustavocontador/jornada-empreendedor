@@ -5,15 +5,15 @@ Este módulo carrega o questionário completo do arquivo YAML e
 mantém em cache para performance.
 """
 import os
-from typing import Dict, Any, List, Optional
+from typing import Any, Optional
 import yaml
 from pathlib import Path
 
 # Cache global das perguntas
-_QUESTIONS_CACHE: Optional[Dict[str, Any]] = None
+_QUESTIONS_CACHE: Optional[dict[str, Any]] = None
 
 
-def _load_yaml_file() -> Dict[str, Any]:
+def _load_yaml_file() -> dict[str, Any]:
     """
     Carrega arquivo YAML do questionário.
 
@@ -32,7 +32,7 @@ def _load_yaml_file() -> Dict[str, Any]:
     return data
 
 
-def get_questions_data() -> Dict[str, Any]:
+def get_questions_data() -> dict[str, Any]:
     """
     Retorna dados completos do questionário (com cache).
 
@@ -47,7 +47,7 @@ def get_questions_data() -> Dict[str, Any]:
     return _QUESTIONS_CACHE
 
 
-def reload_questions() -> Dict[str, Any]:
+def reload_questions() -> dict[str, Any]:
     """
     Recarrega perguntas do arquivo YAML (ignora cache).
 
@@ -61,7 +61,7 @@ def reload_questions() -> Dict[str, Any]:
     return _QUESTIONS_CACHE
 
 
-def get_question_by_id(question_id: str) -> Optional[Dict[str, Any]]:
+def get_question_by_id(question_id: str) -> Optional[dict[str, Any]]:
     """
     Busca pergunta específica por ID.
 
@@ -81,7 +81,7 @@ def get_question_by_id(question_id: str) -> Optional[Dict[str, Any]]:
     return None
 
 
-def get_questions_by_section(section_id: str) -> List[Dict[str, Any]]:
+def get_questions_by_section(section_id: str) -> list[dict[str, Any]]:
     """
     Retorna todas as perguntas de uma seção específica.
 
@@ -97,7 +97,7 @@ def get_questions_by_section(section_id: str) -> List[Dict[str, Any]]:
     return [p for p in perguntas if p.get("secao") == section_id]
 
 
-def get_sections() -> List[Dict[str, Any]]:
+def get_sections() -> list[dict[str, Any]]:
     """
     Retorna todas as seções do questionário.
 
@@ -108,7 +108,7 @@ def get_sections() -> List[Dict[str, Any]]:
     return data.get("secoes", [])
 
 
-def get_metadata() -> Dict[str, Any]:
+def get_metadata() -> dict[str, Any]:
     """
     Retorna metadata do questionário.
 

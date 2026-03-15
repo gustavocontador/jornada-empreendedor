@@ -4,8 +4,9 @@ Scoring Engine - Orquestrador principal de cálculo de scores.
 Este módulo coordena o cálculo de todos os frameworks psicométricos
 a partir das respostas do usuário ao questionário.
 """
-from typing import List, Dict, Any
+from typing import Any
 from decimal import Decimal
+import logging
 
 from app.models.response import Response
 from app.services.calculators.disc_calculator import calculate_disc
@@ -15,6 +16,8 @@ from app.services.calculators.enneagram_calculator import calculate_enneagram
 from app.services.calculators.valores_calculator import calculate_valores
 from app.services.calculators.arquetipos_calculator import calculate_arquetipos
 from app.services.calculators.interpretations_generator import generate_interpretations
+
+logger = logging.getLogger(__name__)
 
 
 class ScoringEngine:
@@ -26,7 +29,23 @@ class ScoringEngine:
     """
 
     @staticmethod
-    def calculate_all_scores(responses: List[Response], questions_data: Dict[str, Any]) -> Dict[str, Any]:
+    def _convert_decimals_to_float(obj: Any) -> Any:
+        """
+        Converte recursivamente todos os Decimals para float.
+        Necessário para serialização JSON no PostgreSQL.
+        """
+        if isinstance(obj, Decimal):
+            return float(obj)
+        elif isinstance(obj, dict):
+            return {k: ScoringEngine._convert_decimals_to_float(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [ScoringEngine._convert_decimals_to_float(item) for item in obj]
+        elif isinstance(obj, tuple):
+            return tuple(ScoringEngine._convert_decimals_to_float(item) for item in obj)
+        return obj
+
+    @staticmethod
+    def calculate_all_scores(responses: list[Response], questions_data: dict[str, Any]) -> dict[str, Any]:
         """
         Calcula todos os scores a partir das respostas do usuário.
 
@@ -37,38 +56,100 @@ class ScoringEngine:
         Returns:
             Dicionário completo com todos os scores e interpretações
         """
+        logger.info(
+            "Iniciando cálculo de scores",
+            extra={
+                "response_count": len(responses),
+                "total_questions": len(questions_data.get("perguntas", []))
+            }
+        )
+
         # Calcula cada framework individualmente
-        disc_scores = calculate_disc(responses, questions_data)
-        spiral_scores = calculate_spiral(responses, questions_data)
-        paei_scores = calculate_paei(responses, questions_data)
-        enneagram_scores = calculate_enneagram(responses, questions_data)
-        valores_scores = calculate_valores(responses, questions_data)
-        arquetipos_scores = calculate_arquetipos(responses, questions_data)
+        try:
+            logger.info("Calculando DISC scores")
+            disc_scores = calculate_disc(responses, questions_data)
+            logger.info("DISC calculation completed", extra={"scores": disc_scores})
+        except Exception as e:
+            logger.error("DISC calculation failed", exc_info=True, extra={"error": str(e)})
+            raise
+
+        try:
+            logger.info("Calculando Spiral Dynamics scores")
+            spiral_scores = calculate_spiral(responses, questions_data)
+            logger.info("Spiral Dynamics calculation completed", extra={"scores": spiral_scores})
+        except Exception as e:
+            logger.error("Spiral Dynamics calculation failed", exc_info=True, extra={"error": str(e)})
+            raise
+
+        try:
+            logger.info("Calculando PAEI scores")
+            paei_scores = calculate_paei(responses, questions_data)
+            logger.info("PAEI calculation completed", extra={"scores": paei_scores})
+        except Exception as e:
+            logger.error("PAEI calculation failed", exc_info=True, extra={"error": str(e)})
+            raise
+
+        try:
+            logger.info("Calculando Enneagram scores")
+            enneagram_scores = calculate_enneagram(responses, questions_data)
+            logger.info("Enneagram calculation completed", extra={"scores": enneagram_scores})
+        except Exception as e:
+            logger.error("Enneagram calculation failed", exc_info=True, extra={"error": str(e)})
+            raise
+
+        try:
+            logger.info("Calculando Valores scores")
+            valores_scores = calculate_valores(responses, questions_data)
+            logger.info("Valores calculation completed", extra={"scores": valores_scores})
+        except Exception as e:
+            logger.error("Valores calculation failed", exc_info=True, extra={"error": str(e)})
+            raise
+
+        try:
+            logger.info("Calculando Arquetipos scores")
+            arquetipos_scores = calculate_arquetipos(responses, questions_data)
+            logger.info("Arquetipos calculation completed", extra={"scores": arquetipos_scores})
+        except Exception as e:
+            logger.error("Arquetipos calculation failed", exc_info=True, extra={"error": str(e)})
+            raise
 
         # Gera interpretações profundas baseadas nos scores combinados
-        interpretations = generate_interpretations(
-            disc=disc_scores,
-            spiral=spiral_scores,
-            paei=paei_scores,
-            enneagram=enneagram_scores,
-            valores=valores_scores,
-            arquetipos=arquetipos_scores,
-            responses=responses,
-            questions_data=questions_data
-        )
+        try:
+            logger.info("Gerando interpretações")
+            interpretations = generate_interpretations(
+                disc=disc_scores,
+                spiral=spiral_scores,
+                paei=paei_scores,
+                enneagram=enneagram_scores,
+                valores=valores_scores,
+                arquetipos=arquetipos_scores,
+                responses=responses,
+                questions_data=questions_data
+            )
+            logger.info("Interpretations generation completed")
+        except Exception as e:
+            logger.error("Interpretations generation failed", exc_info=True, extra={"error": str(e)})
+            raise
 
         # Gera recomendações personalizadas
-        recommendations = ScoringEngine._generate_recommendations(
-            disc=disc_scores,
-            spiral=spiral_scores,
-            paei=paei_scores,
-            enneagram=enneagram_scores,
-            valores=valores_scores,
-            arquetipos=arquetipos_scores,
-            interpretations=interpretations
-        )
+        try:
+            logger.info("Gerando recomendações")
+            recommendations = ScoringEngine._generate_recommendations(
+                disc=disc_scores,
+                spiral=spiral_scores,
+                paei=paei_scores,
+                enneagram=enneagram_scores,
+                valores=valores_scores,
+                arquetipos=arquetipos_scores,
+                interpretations=interpretations
+            )
+            logger.info("Recommendations generation completed")
+        except Exception as e:
+            logger.error("Recommendations generation failed", exc_info=True, extra={"error": str(e)})
+            raise
 
-        return {
+        # Monta resultado completo
+        result = {
             "disc": disc_scores,
             "spiral": spiral_scores,
             "paei": paei_scores,
@@ -79,16 +160,29 @@ class ScoringEngine:
             "recommendations": recommendations
         }
 
+        # Converte todos os Decimals para float para compatibilidade com JSON/PostgreSQL
+        try:
+            logger.info("Convertendo Decimals para float")
+            final_result = ScoringEngine._convert_decimals_to_float(result)
+            logger.info(
+                "Cálculo de scores completado com sucesso",
+                extra={"frameworks_calculated": 6}
+            )
+            return final_result
+        except Exception as e:
+            logger.error("Decimal conversion failed", exc_info=True, extra={"error": str(e)})
+            raise
+
     @staticmethod
     def _generate_recommendations(
-        disc: Dict[str, Any],
-        spiral: Dict[str, Any],
-        paei: Dict[str, Any],
-        enneagram: Dict[str, Any],
-        valores: Dict[str, Any],
-        arquetipos: Dict[str, Any],
-        interpretations: Dict[str, Any]
-    ) -> Dict[str, Any]:
+        disc: dict[str, Any],
+        spiral: dict[str, Any],
+        paei: dict[str, Any],
+        enneagram: dict[str, Any],
+        valores: dict[str, Any],
+        arquetipos: dict[str, Any],
+        interpretations: dict[str, Any]
+    ) -> dict[str, Any]:
         """
         Gera recomendações personalizadas baseadas em todos os scores.
 

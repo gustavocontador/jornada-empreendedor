@@ -7,14 +7,14 @@ DISC é um modelo de comportamento que avalia 4 dimensões:
 - S (Estabilidade): Paciência, lealdade, consistência
 - C (Conformidade): Precisão, qualidade, análise
 """
-from typing import List, Dict, Any
+from typing import Any
 from decimal import Decimal
 from collections import defaultdict
 
 from app.models.response import Response
 
 
-def calculate_disc(responses: List[Response], questions_data: Dict[str, Any]) -> Dict[str, Any]:
+def calculate_disc(responses: list[Response], questions_data: dict[str, Any]) -> dict[str, Any]:
     """
     Calcula scores DISC a partir das respostas.
 
@@ -36,13 +36,22 @@ def calculate_disc(responses: List[Response], questions_data: Dict[str, Any]) ->
     # Contadores de perguntas que pontuam cada dimensão (para normalização)
     question_counts = defaultdict(int)
 
-    # Mapeia respostas por question_id para lookup rápido
-    response_map = {str(r.question_id): r for r in responses}
+    # Mapeia respostas usando YAML ID (extra_data['id']) ao invés de UUID
+    response_map = {}
+    for r in responses:
+        if hasattr(r, 'question') and r.question and r.question.extra_data:
+            yaml_id = r.question.extra_data.get('id')
+            if yaml_id:
+                response_map[yaml_id] = r
 
     # Processa cada pergunta do questionário
     for question in questions_data.get("perguntas", []):
         question_id = question.get("id")
-        pontuacao = question.get("pontuacao", {})
+        pontuacao = question.get("pontuacao")
+
+        # Pula perguntas sem pontuação ou com pontuação null
+        if not pontuacao or not isinstance(pontuacao, dict):
+            continue
 
         # Pula perguntas sem pontuação DISC
         disc_keys = [k for k in pontuacao.keys() if k.startswith("disc_")]
