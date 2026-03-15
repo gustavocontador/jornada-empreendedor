@@ -49,6 +49,11 @@ jobs:
           cd backend
           ruff check app/
 
+      - name: Run Black (auto-format)
+        run: |
+          cd backend
+          black app/
+
       - name: Run Black (formatting check)
         run: |
           cd backend
