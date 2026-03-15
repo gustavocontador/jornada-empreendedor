@@ -204,13 +204,13 @@ def get_results(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Erro ao formatar resultados: {str(e)}"
-        )
+        ) from e
 
 
 def _extract_recommendations(recommendations: dict) -> list:
     """Extrai recomendações de todas as categorias."""
     all_recs = []
-    for category, recs in recommendations.items():
+    for _category, recs in recommendations.items():
         for rec in recs:
             if isinstance(rec, dict):
                 all_recs.append(rec.get("recommendation", rec.get("action", str(rec))))

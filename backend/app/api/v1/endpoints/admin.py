@@ -77,7 +77,7 @@ def get_admin_dashboard(
     """
     # Total de usuários
     total_users = db.query(func.count(User.id)).scalar()
-    active_users = db.query(func.count(User.id)).filter(User.is_active == True).scalar()
+    active_users = db.query(func.count(User.id)).filter(User.is_active).scalar()
 
     # Total de assessments por status
     total_assessments = db.query(func.count(Assessment.id)).scalar()

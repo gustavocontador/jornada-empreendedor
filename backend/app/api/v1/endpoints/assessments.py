@@ -264,7 +264,7 @@ def complete_assessment(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Erro ao calcular scores: {str(e)}"
-        )
+        ) from e
 
     # Verifica se já existe resultado
     existing_result = db.query(Result).filter(
@@ -329,7 +329,7 @@ def complete_assessment(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Erro ao salvar resultados: {str(e)}"
-        )
+        ) from e
 
     return {
         "message": "Assessment finalizado com sucesso",
