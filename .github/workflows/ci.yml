@@ -1,0 +1,196 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  PYTHON_VERSION: '3.12'
+  NODE_VERSION: '20'
+
+jobs:
+  lint-backend:
+    name: Lint Backend (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.12']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+          cache-dependency-path: backend/requirements-dev.txt
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements-dev.txt
+
+      - name: Run Ruff (linting)
+        run: |
+          cd backend
+          ruff check app/
+
+      - name: Run Black (formatting check)
+        run: |
+          cd backend
+          black --check app/
+
+  lint-frontend:
+    name: Lint Frontend (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Run ESLint
+        run: |
+          cd frontend
+          npm run lint
+
+  test-backend:
+    name: Test Backend (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    needs: lint-backend
+    strategy:
+      matrix:
+        python-version: ['3.12']
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+          cache-dependency-path: backend/requirements-dev.txt
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements-dev.txt
+
+      - name: Run pytest with coverage
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5432/test_db
+        run: |
+          cd backend
+          pytest --cov=app --cov-report=xml --cov-report=term --cov-fail-under=80
+
+      - name: Run mypy (type checking)
+        run: |
+          cd backend
+          mypy app/
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./backend/coverage.xml
+          flags: backend
+          name: backend-coverage
+          fail_ci_if_error: true
+
+  test-frontend:
+    name: Test Frontend (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    needs: lint-frontend
+    strategy:
+      matrix:
+        node-version: ['20']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Run Jest with coverage
+        run: |
+          cd frontend
+          npm run test -- --coverage --coverageThreshold='{"global":{"lines":80,"statements":80,"functions":80,"branches":80}}'
+
+      - name: Run TypeScript type checking
+        run: |
+          cd frontend
+          npm run typecheck
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./frontend/coverage/coverage-final.json
+          flags: frontend
+          name: frontend-coverage
+          fail_ci_if_error: true
+
+  quality-summary:
+    name: Quality Summary
+    runs-on: ubuntu-latest
+    needs: [test-backend, test-frontend]
+    if: always()
+
+    steps:
+      - name: Check job results
+        run: |
+          echo "=== CI Quality Gates Summary ==="
+          echo "lint-backend: ${{ needs.lint-backend.result }}"
+          echo "lint-frontend: ${{ needs.lint-frontend.result }}"
+          echo "test-backend: ${{ needs.test-backend.result }}"
+          echo "test-frontend: ${{ needs.test-frontend.result }}"
+
+          if [ "${{ needs.test-backend.result }}" != "success" ] || [ "${{ needs.test-frontend.result }}" != "success" ]; then
+            echo "❌ Quality gates FAILED"
+            exit 1
+          fi
+
+          echo "✅ All quality gates PASSED"

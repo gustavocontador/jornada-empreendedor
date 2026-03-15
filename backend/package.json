@@ -9,6 +9,6 @@
     "build": "echo 'Python backend - no build step required'"
   },
   "dependencies": {
-    "@jornada/shared": "workspace:*"
+    "@jornada/shared": "*"
   }
 }

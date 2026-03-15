@@ -1,5 +1,10 @@
 # 🚀 Jornada do Empreendedor de Sucesso
 
+[![CI](https://github.com/gustavocontador/jornada-empreendedor/workflows/CI/badge.svg)](https://github.com/gustavocontador/jornada-empreendedor/actions)
+[![codecov](https://codecov.io/gh/gustavocontador/jornada-empreendedor/branch/main/graph/badge.svg)](https://codecov.io/gh/gustavocontador/jornada-empreendedor)
+[![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![Node Version](https://img.shields.io/badge/node-20-green.svg)](https://nodejs.org/)
+
 Sistema completo de assessment comportamental para empreendedores com 6 frameworks psicométricos integrados.
 
 ## ✨ O Que É
@@ -93,6 +98,51 @@ import { UserSchema, AssessmentSchema } from '@jornada/shared';
 - Cache compartilhado entre desenvolvedores
 - Execução paralela de tasks
 - Dependências entre workspaces gerenciadas automaticamente
+
+---
+
+## 🔄 CI/CD Pipeline
+
+### Automated Quality Gates
+
+O projeto utiliza **GitHub Actions** para garantir qualidade de código antes de cada merge:
+
+| Job | Checks | Threshold |
+|-----|--------|-----------|
+| **lint-backend** | Ruff + Black | Must pass |
+| **lint-frontend** | ESLint | Must pass |
+| **test-backend** | pytest + mypy | Coverage ≥ 80% |
+| **test-frontend** | Jest + tsc | Coverage ≥ 80% |
+
+### Triggers
+
+- Push para `main` ou `develop`
+- Pull requests para `main` ou `develop`
+
+### Running CI Locally
+
+**Backend:**
+```bash
+cd backend
+ruff check app/
+black --check app/
+pytest --cov=app --cov-fail-under=80
+mypy app/
+```
+
+**Frontend:**
+```bash
+cd frontend
+npm run lint
+npm run test -- --coverage
+npm run typecheck
+```
+
+### Branch Protection
+
+- Require status checks before merging
+- Require branches to be up to date
+- All 4 jobs (lint-backend, lint-frontend, test-backend, test-frontend) must pass
 
 ---
 
