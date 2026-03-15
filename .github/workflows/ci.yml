@@ -22,6 +22,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
@@ -60,17 +65,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
-        run: |
-          cd frontend
-          npm ci
+        run: npm ci
 
       - name: Run ESLint
-        run: |
-          cd frontend
-          npm run lint
+        run: npm run lint --workspace=@jornada/frontend
 
   test-backend:
     name: Test Backend (Python ${{ matrix.python-version }})
@@ -98,6 +98,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -148,22 +153,15 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
-        run: |
-          cd frontend
-          npm ci
+        run: npm ci
 
       - name: Run Jest with coverage
-        run: |
-          cd frontend
-          npm run test -- --coverage --coverageThreshold='{"global":{"lines":80,"statements":80,"functions":80,"branches":80}}'
+        run: npm run test --workspace=@jornada/frontend -- --coverage --coverageThreshold='{"global":{"lines":80,"statements":80,"functions":80,"branches":80}}'
 
       - name: Run TypeScript type checking
-        run: |
-          cd frontend
-          npm run typecheck
+        run: npm run typecheck --workspace=@jornada/frontend
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v4
