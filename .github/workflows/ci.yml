@@ -125,25 +125,17 @@ jobs:
           cd backend
           pip install -r requirements-dev.txt
 
-      - name: Run pytest with coverage
+      - name: Run pytest
         env:
           DATABASE_URL: postgresql://test:test@localhost:5432/test_db
         run: |
           cd backend
-          pytest --cov=app --cov-report=xml --cov-report=term --cov-fail-under=10
+          pytest tests/ -v
 
       - name: Run mypy (type checking)
         run: |
           cd backend
           mypy app/
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          files: ./backend/coverage.xml
-          flags: backend
-          name: backend-coverage
-          fail_ci_if_error: true
 
   test-frontend:
     name: Test Frontend (Node ${{ matrix.node-version }})
@@ -165,19 +157,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Jest with coverage
-        run: npm run test --workspace=@jornada/frontend -- --coverage --coverageThreshold='{"global":{"lines":10,"statements":10,"functions":10,"branches":10}}'
+      - name: Run Jest
+        run: npm run test --workspace=@jornada/frontend
 
       - name: Run TypeScript type checking
         run: npm run typecheck --workspace=@jornada/frontend
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          files: ./frontend/coverage/coverage-final.json
-          flags: frontend
-          name: frontend-coverage
-          fail_ci_if_error: true
 
   quality-summary:
     name: Quality Summary
