@@ -7,6 +7,22 @@
 
 Sistema completo de assessment comportamental para empreendedores com 6 frameworks psicométricos integrados.
 
+## 🚀 Deployed Environments
+
+### Production
+- **Frontend:** https://jornada-empreendedor.vercel.app
+- **Backend API:** https://api.jornada-empreendedor.railway.app
+- **API Docs:** https://api.jornada-empreendedor.railway.app/docs
+- **Health Check:** https://api.jornada-empreendedor.railway.app/api/v1/health
+- **Database:** Supabase (managed)
+
+### Staging
+- **Frontend:** https://jornada-empreendedor-staging.vercel.app
+- **Backend API:** https://api-staging.jornada-empreendedor.railway.app
+- **API Docs:** https://api-staging.jornada-empreendedor.railway.app/docs
+
+---
+
 ## ✨ O Que É
 
 Um sistema de assessment profissional de **30-35 minutos** que analisa o perfil comportamental, valores, estilo de gestão e potencial de crescimento de empreendedores através de **6 frameworks científicos**.
@@ -143,6 +159,63 @@ npm run typecheck
 - Require status checks before merging
 - Require branches to be up to date
 - All 4 jobs (lint-backend, lint-frontend, test-backend, test-frontend) must pass
+
+---
+
+## 🚢 Deploy Automatizado
+
+### Plataformas
+
+| Componente | Plataforma | URL |
+|------------|------------|-----|
+| Frontend | Vercel | https://jornada-empreendedor.vercel.app |
+| Backend API | Railway | https://api.jornada-empreendedor.railway.app |
+| Database | Supabase | Managed PostgreSQL 16+ |
+
+### Deploy Flow
+
+**Push para `main`:**
+1. CI Pipeline executa (lint + tests)
+2. Se PASS → Deploy automático para production
+3. Frontend: Vercel build + deploy (< 2min)
+4. Backend: Railway build + deploy (< 3min)
+5. Database: Supabase migrations auto-executadas
+6. Health checks validados
+7. ✅ Production live em < 3min
+
+**Push para `develop`:**
+- Deploy automático para staging (preview environments)
+
+### Health Checks & Rollback
+
+**Railway Healthcheck:**
+- Path: `/api/v1/health`
+- Timeout: 30s
+- Retry: 3x
+- **Rollback automático** se health check falhar 3x
+
+**Manual Rollback:**
+```bash
+# Vercel (Frontend)
+vercel rollback <deployment-url>
+
+# Railway (Backend)
+railway rollback
+```
+
+### Variáveis de Ambiente
+
+**Adicionar novas env vars:**
+
+```bash
+# Vercel (Frontend)
+vercel env add NEXT_PUBLIC_NEW_VAR production
+
+# Railway (Backend)
+railway variables --set NEW_VAR=value --environment production
+```
+
+Ver `.env.example` em cada workspace para lista completa.
 
 ---
 
