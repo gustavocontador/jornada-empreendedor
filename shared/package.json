@@ -1,0 +1,12 @@
+{
+  "name": "@jornada/shared",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "lint": "echo 'No linting configured for shared types'",
+    "build": "echo 'No build needed for shared types'",
+    "test": "echo 'No tests configured for shared types'"
+  }
+}

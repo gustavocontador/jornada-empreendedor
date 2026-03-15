@@ -42,6 +42,60 @@ Um sistema de assessment profissional de **30-35 minutos** que analisa o perfil 
 
 ---
 
+## 📦 Monorepo Turborepo
+
+Este projeto utiliza **Turborepo** para gerenciar um monorepo com múltiplos workspaces:
+
+```
+jornada-empreendedor/
+├── backend/              # Python FastAPI
+├── frontend/             # Next.js 15
+├── shared/               # Tipos TypeScript compartilhados
+├── turbo.json            # Configuração do pipeline Turborepo
+└── package.json          # Root package com workspaces
+```
+
+### Comandos Disponíveis
+
+```bash
+# Rodar todos os workspaces em modo dev
+npm run dev
+
+# Build de todos os workspaces
+npm run build
+
+# Lint em todos os workspaces
+npm run lint
+
+# Testes em todos os workspaces
+npm run test
+```
+
+### Tipos Compartilhados
+
+O workspace `shared/` contém tipos TypeScript compartilhados entre backend e frontend:
+
+```typescript
+// Frontend pode importar:
+import { UserSchema, AssessmentSchema } from '@jornada/shared';
+
+// Backend pode referenciar para documentação
+// (Python usa Pydantic models que espelham os tipos TS)
+```
+
+### Cache Turborepo
+
+- **Local:** Cache em `.turbo/` (gitignored)
+- **Remoto:** Vercel Remote Cache (configurável com `npx turbo login`)
+
+**Benefícios:**
+- Builds incrementais mais rápidos
+- Cache compartilhado entre desenvolvedores
+- Execução paralela de tasks
+- Dependências entre workspaces gerenciadas automaticamente
+
+---
+
 ## 📊 Estatísticas do Projeto
 
 | Métrica | Valor |

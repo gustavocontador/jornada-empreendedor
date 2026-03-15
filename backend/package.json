@@ -1,0 +1,14 @@
+{
+  "name": "@jornada/backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "lint": "echo 'Python linting via pip tools (ruff, black) - run from Python venv'",
+    "test": "echo 'Python tests via pytest - run from Python venv'",
+    "build": "echo 'Python backend - no build step required'"
+  },
+  "dependencies": {
+    "@jornada/shared": "workspace:*"
+  }
+}
