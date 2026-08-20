@@ -32,7 +32,7 @@ export function Footer() {
               unoptimized
             />
             <p className="site-footer__tagline">
-              Produtos artesanais feitos com carinho em {brand.city},{" "}
+              Granolas, mixes e geleias artesanais, feitos em {brand.city},{" "}
               {brand.state}.
             </p>
           </div>

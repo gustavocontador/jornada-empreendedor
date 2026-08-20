@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s · Petite Vallée",
   },
   description:
-    "Granolas, mixes e geleias artesanais feitos com carinho por mãe e filha em Valinhos. Compre direto da Petite Vallée.",
+    "Granolas, mixes e geleias artesanais, feitos à mão em pequenos lotes em Valinhos. Compre direto da Petite Vallée.",
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -38,14 +38,14 @@ export const metadata: Metadata = {
     siteName: brand.name,
     title: "Petite Vallée — Produtos artesanais de Valinhos",
     description:
-      "Granolas, mixes e geleias artesanais feitos com carinho em Valinhos.",
+      "Granolas, mixes e geleias artesanais, feitos à mão em Valinhos.",
     images: [{ url: brand.logo.src, width: 360, height: 96, alt: brand.name }],
   },
   twitter: {
     card: "summary",
     title: "Petite Vallée — Produtos artesanais de Valinhos",
     description:
-      "Granolas, mixes e geleias artesanais feitos com carinho em Valinhos.",
+      "Granolas, mixes e geleias artesanais, feitos à mão em Valinhos.",
   },
 };
 

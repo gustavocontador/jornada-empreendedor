@@ -74,14 +74,14 @@ export const products: Product[] = [
     slug: "granola-tradicional",
     name: "Granola Tradicional",
     category: "granolas",
-    // [PROVISÓRIO] descrição aguardando texto oficial
+    // [PROVISÓRIO] descrição aguardando texto manuscrito da cliente
     shortDescription:
-      "Nossa granola clássica, assada de forma artesanal em pequenos lotes.",
+      "A clássica da casa: crocante, dourada no forno em pequenos lotes.",
     description:
-      "A receita que apresenta a Petite Vallée: uma granola crocante, " +
-      "assada de forma artesanal em pequenos lotes, para acompanhar frutas, " +
-      "iogurtes e o seu café da manhã. (Descrição provisória — o texto " +
-      "oficial, com ingredientes e peso, será publicado em breve.)",
+      "Granola assada em pequenos lotes até o ponto certo de crocância. " +
+      "Vai bem com iogurte, frutas, açaí — ou direto do pote. (Descrição " +
+      "provisória — o texto oficial, com ingredientes e peso, será " +
+      "publicado em breve.)",
     priceInCents: 2990, // [PROVISÓRIO] R$ 29,90 — aguardando preço oficial
     image: "/images/products/granola-tradicional.svg",
     imageIsPlaceholder: true,
@@ -93,13 +93,13 @@ export const products: Product[] = [
     slug: "granola-naturel",
     name: "Granola Naturel",
     category: "granolas",
-    // [PROVISÓRIO] descrição aguardando texto oficial
+    // [PROVISÓRIO] descrição aguardando texto manuscrito da cliente
     shortDescription:
-      "Uma versão leve e delicada da nossa granola, feita à mão.",
+      "Leve e delicada, para quem prefere um sabor mais suave no dia a dia.",
     description:
-      "A Granola Naturel é a versão mais leve e delicada da casa, preparada " +
-      "à mão com o mesmo cuidado artesanal de sempre. (Descrição provisória — " +
-      "o texto oficial, com ingredientes e peso, será publicado em breve.)",
+      "A versão mais leve da nossa granola, de sabor suave, para comer " +
+      "todo dia sem enjoar. (Descrição provisória — o texto oficial, com " +
+      "ingredientes e peso, será publicado em breve.)",
     priceInCents: 3190, // [PROVISÓRIO] R$ 31,90 — aguardando preço oficial
     image: "/images/products/granola-naturel.svg",
     imageIsPlaceholder: true,
@@ -111,14 +111,13 @@ export const products: Product[] = [
     slug: "mix-de-castanhas",
     name: "Mix de Castanhas",
     category: "mixes",
-    // [PROVISÓRIO] descrição aguardando texto oficial
+    // [PROVISÓRIO] descrição aguardando texto manuscrito da cliente
     shortDescription:
-      "Seleção artesanal de castanhas para o dia a dia e para receber bem.",
+      "Castanhas selecionadas, prontas para o lanche ou para receber bem.",
     description:
-      "Uma seleção artesanal de castanhas, pensada para o lanche do dia a " +
-      "dia, para a tábua de queijos e para receber bem. (Descrição " +
-      "provisória — o texto oficial, com composição e peso, será publicado " +
-      "em breve.)",
+      "Castanhas selecionadas na medida: para o lanche da tarde, a tábua " +
+      "de queijos ou aquela visita de última hora. (Descrição provisória — " +
+      "o texto oficial, com composição e peso, será publicado em breve.)",
     priceInCents: 3490, // [PROVISÓRIO] R$ 34,90 — aguardando preço oficial
     image: "/images/products/mix-de-castanhas.svg",
     imageIsPlaceholder: true,
@@ -130,11 +129,11 @@ export const products: Product[] = [
     slug: "mix-de-sementes",
     name: "Mix de Sementes",
     category: "mixes",
-    // [PROVISÓRIO] descrição aguardando texto oficial
+    // [PROVISÓRIO] descrição aguardando texto manuscrito da cliente
     shortDescription:
-      "Combinação de sementes selecionadas para saladas, frutas e iogurtes.",
+      "Sementes escolhidas para incrementar saladas, frutas e iogurtes.",
     description:
-      "Uma combinação de sementes selecionadas para enriquecer saladas, " +
+      "Uma combinação de sementes para dar crocância e sabor a saladas, " +
       "frutas, iogurtes e pães. (Descrição provisória — o texto oficial, " +
       "com composição e peso, será publicado em breve.)",
     priceInCents: 2690, // [PROVISÓRIO] R$ 26,90 — aguardando preço oficial
@@ -148,14 +147,14 @@ export const products: Product[] = [
     slug: "geleia-de-morango",
     name: "Geleia de Morango",
     category: "geleias",
-    // [PROVISÓRIO] descrição aguardando texto oficial
+    // [PROVISÓRIO] descrição aguardando texto manuscrito da cliente
     shortDescription:
-      "Geleia artesanal de morango, feita em panelas pequenas, sem pressa.",
+      "Morango de verdade, cozinhado em panela pequena e sem pressa.",
     description:
-      "Nossa geleia de morango é feita de forma artesanal, em panelas " +
-      "pequenas e sem pressa, para acompanhar pães, torradas e a granola da " +
-      "casa. (Descrição provisória — o texto oficial, com ingredientes e " +
-      "peso, será publicado em breve.)",
+      "Geleia de morango feita em panela pequena, sem pressa, do jeito " +
+      "artesanal. Perfeita no pão, na torrada e por cima da granola. " +
+      "(Descrição provisória — o texto oficial, com ingredientes e peso, " +
+      "será publicado em breve.)",
     priceInCents: 2490, // [PROVISÓRIO] R$ 24,90 — aguardando preço oficial
     image: "/images/products/geleia-de-morango.svg",
     imageIsPlaceholder: true,

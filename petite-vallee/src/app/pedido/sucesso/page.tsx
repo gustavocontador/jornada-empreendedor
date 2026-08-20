@@ -19,9 +19,9 @@ export default function PedidoSucessoPage() {
       </span>
       <h1>Pagamento confirmado!</h1>
       <p>
-        Recebemos a confirmação do seu pagamento e seu pedido já está sendo
-        preparado com carinho. Você receberá as atualizações pelo e-mail
-        informado no checkout.
+        Recebemos a confirmação do seu pagamento e seu pedido já entrou na
+        fila de preparo. Você receberá as atualizações pelo e-mail informado
+        no checkout.
       </p>
       <div className="order-status-page__actions">
         <ButtonLink href="/produtos" variant="secondary">

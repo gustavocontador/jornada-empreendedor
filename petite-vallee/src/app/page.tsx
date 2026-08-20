@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Catalog } from "@/components/Catalog";
 import { SectionTitle } from "@/components/SectionTitle";
 import { ButtonLink } from "@/components/Button";
-import { VideoSection } from "@/components/VideoSection";
 import { BotanicalDecoration } from "@/components/BotanicalDecoration";
 import { products } from "@/data/products";
 
@@ -28,13 +27,13 @@ export default function HomePage() {
               <BotanicalDecoration size={16} />
               Feito à mão em Valinhos
             </p>
+            {/* [PROVISÓRIO] textos aguardando a versão manuscrita da cliente */}
             <h1 className="hero__title">
-              Granolas, mixes e geleias artesanais, feitos por mãe e filha.
+              Granola crocante, mixes na medida e geleia de verdade.
             </h1>
             <p className="hero__text">
-              Cada lote da Petite Vallée é preparado em pequenas quantidades,
-              com ingredientes escolhidos com cuidado — do nosso ateliê em
-              Valinhos para a sua mesa.
+              Tudo artesanal, assado e preparado em pequenos lotes, direto de
+              Valinhos. Escolha os seus e receba em casa.
             </p>
             <div className="hero__actions">
               <ButtonLink href="#produtos">Conheça nossos produtos</ButtonLink>
@@ -72,34 +71,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Nossa história (resumo) ── */}
+      {/* ── Convite para a história (o conteúdo completo, com o vídeo,
+            vive em /nossa-historia) ── */}
       <section className="section" aria-labelledby="titulo-historia">
-        <div className="container story-preview">
-          <div>
-            <SectionTitle
-              eyebrow="Nossa história"
-              title="Uma marca criada por mãe e filha"
-              id="titulo-historia"
-            />
-            <div className="story-preview__text">
-              <p>
-                A Petite Vallée nasceu em Valinhos, do encontro entre duas
-                gerações e do desejo de fazer, com as próprias mãos, alimentos
-                saudáveis e de alta qualidade.
-              </p>
-              <p>
-                Granolas, mixes e geleias são preparados de forma artesanal,
-                em pequenos lotes, com atenção a cada detalhe — do ingrediente
-                à embalagem.
-              </p>
-            </div>
-            <div className="editorial__cta">
-              <ButtonLink href="/nossa-historia" variant="secondary">
-                Conheça nossa história
-              </ButtonLink>
-            </div>
+        <div className="container">
+          <SectionTitle
+            eyebrow="Quem faz"
+            title="Prazer, somos a Petite Vallée"
+            description="Uma marca de Valinhos, nascida do trabalho de mãe e filha. A história completa — e o vídeo — estão na nossa página."
+            id="titulo-historia"
+            align="center"
+          />
+          <div className="editorial__cta" style={{ textAlign: "center", marginTop: 0 }}>
+            <ButtonLink href="/nossa-historia" variant="secondary">
+              Conheça nossa história
+            </ButtonLink>
           </div>
-          <VideoSection />
         </div>
       </section>
     </>
