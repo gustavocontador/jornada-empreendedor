@@ -2,7 +2,7 @@
 <!-- Favicon provisório derivado do placeholder da marca.
      Substituir por uma adaptação do logotipo oficial. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#E9DDE9"/>
+  <rect width="64" height="64" rx="14" fill="#E9EDD9"/>
   <g fill="none" stroke="#74785E" stroke-width="2.4" stroke-linecap="round">
     <path d="M24 48 C 24 32, 36 22, 42 17"/>
     <path d="M42 17 C 40 28, 34 37, 26 42"/>

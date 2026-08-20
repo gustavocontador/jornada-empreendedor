@@ -10,8 +10,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 /**
- * Botão padrão da loja. O CTA principal usa a cor "ameixa
- * profunda" (--color-button); o verde-oliva aparece apenas como
+ * Botão padrão da loja. O CTA principal usa a cor "marrom-café
+ * profundo" (--color-button); o verde-oliva aparece apenas como
  * detalhe de hover/borda, nunca como preenchimento dominante.
  */
 export function Button({

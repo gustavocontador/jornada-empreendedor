@@ -2,16 +2,16 @@
    PETITE VALLÉE — Sistema de Design
    ───────────────────────────────────────────────────────────────
    Todos os tokens visuais do site vivem aqui.
-   A cor predominante da marca é #E9DDE9 (não alterar sem
+   A cor predominante da marca é #E9EDD9 (não alterar sem
    autorização). O verde-oliva (#74785E) é usado APENAS em
    pequenos detalhes: ícones, hovers, etiquetas, linhas.
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
   /* ── Cores ── */
-  --color-background-primary: #e9dde9; /* base predominante da marca */
+  --color-background-primary: #e9edd9; /* base predominante da marca */
   --color-background-secondary: #f8f4f0; /* creme quente de apoio */
-  --color-background-tint: #f1e9f1; /* variação clara da base */
+  --color-background-tint: #f2f4e7; /* variação clara da base */
   --color-surface: #fffdfc; /* superfícies de cards */
   --color-text-primary: #5f5b57;
   --color-text-secondary: #7d7a73;
@@ -20,8 +20,8 @@
   --color-border-soft: rgba(95, 91, 87, 0.1);
   --color-accent: #74785e; /* verde-oliva: somente detalhes */
   --color-accent-dark: #5c6049;
-  --color-button: #564a56; /* ameixa profunda para CTAs */
-  --color-button-hover: #453b45;
+  --color-button: #4e4639; /* marrom-café profundo para CTAs */
+  --color-button-hover: #3e3830;
   --color-danger: #a05252;
   --color-success: #5f7355;
   --color-warning-bg: #f6ecd9;

@@ -164,7 +164,7 @@ por CEP.
 
 ## Design
 
-- Cor predominante: **`#E9DDE9`** (definida em
+- Cor predominante: **`#E9EDD9`** (definida em
   `src/styles/globals.css` — não alterar sem autorização).
 - Verde-oliva `#74785E` apenas em detalhes (ícones, etiquetas, hovers).
 - Tipografia: Fraunces (títulos, serifada) + Karla (corpo, sans).

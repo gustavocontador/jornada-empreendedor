@@ -126,7 +126,7 @@
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  background: rgba(233, 221, 233, 0.92); /* base #E9DDE9 translúcida */
+  background: rgba(233, 237, 217, 0.92); /* base #E9EDD9 translúcida */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border-soft);
 }
