@@ -1,6 +1,10 @@
 "use client";
 
-import { CATEGORY_LABELS, type ProductCategory } from "@/data/products";
+import {
+  CATEGORY_LABELS,
+  getActiveCategories,
+  type ProductCategory,
+} from "@/data/products";
 
 export type CategoryFilterValue = ProductCategory | "todos";
 
@@ -9,22 +13,28 @@ interface CategoryFilterProps {
   onChange: (value: CategoryFilterValue) => void;
 }
 
-const OPTIONS: Array<{ value: CategoryFilterValue; label: string }> = [
-  { value: "todos", label: "Todos" },
-  ...(Object.entries(CATEGORY_LABELS) as Array<[ProductCategory, string]>).map(
-    ([value, label]) => ({ value, label })
-  ),
-];
-
-/** Filtro de categorias em formato de "pills" acessíveis. */
+/**
+ * Filtro de categorias em formato de "pills" acessíveis.
+ * Mostra apenas categorias que têm produtos no catálogo — assim
+ * a categoria "Geleias" some sozinha enquanto não houver uma
+ * edição limitada à venda, e volta quando houver.
+ */
 export function CategoryFilter({ value, onChange }: CategoryFilterProps) {
+  const options: Array<{ value: CategoryFilterValue; label: string }> = [
+    { value: "todos", label: "Todos" },
+    ...getActiveCategories().map((cat) => ({
+      value: cat,
+      label: CATEGORY_LABELS[cat],
+    })),
+  ];
+
   return (
     <div
       className="category-filter"
       role="group"
       aria-label="Filtrar produtos por categoria"
     >
-      {OPTIONS.map((option) => (
+      {options.map((option) => (
         <button
           key={option.value}
           type="button"

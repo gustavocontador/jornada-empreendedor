@@ -25,15 +25,15 @@ export default function HomePage() {
           <div>
             <p className="hero__eyebrow">
               <BotanicalDecoration size={16} />
-              Feito à mão em Valinhos
+              Feito à mão, em pequenos lotes
             </p>
             {/* [PROVISÓRIO] textos aguardando a versão manuscrita da cliente */}
             <h1 className="hero__title">
-              Granola crocante, mixes na medida e geleia de verdade.
+              Granolas, mixes e barrinhas artesanais, sem conservantes.
             </h1>
             <p className="hero__text">
-              Tudo artesanal, assado e preparado em pequenos lotes, direto de
-              Valinhos. Escolha os seus e receba em casa.
+              Tudo sem glúten, assado e preparado em pequenos lotes. Escolha
+              os seus e receba em casa.
             </p>
             <div className="hero__actions">
               <ButtonLink href="#produtos">Conheça nossos produtos</ButtonLink>
@@ -78,7 +78,7 @@ export default function HomePage() {
           <SectionTitle
             eyebrow="Quem faz"
             title="Prazer, somos a Petite Vallée"
-            description="Uma marca de Valinhos, nascida do trabalho de mãe e filha. A história completa — e o vídeo — estão na nossa página."
+            description="Uma marca nascida do trabalho de mãe e filha. Conheça a história completa na nossa página."
             id="titulo-historia"
             align="center"
           />

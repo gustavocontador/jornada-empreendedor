@@ -94,16 +94,21 @@ placeholders **claramente identificados**, que devem ser trocados:
 2. **Fotos dos produtos** — salve as fotos reais em
    `public/images/products/` e atualize o campo `image` de cada produto
    em `src/data/products.ts` (remova `imageIsPlaceholder`).
-3. **Vídeo institucional** — em `src/app/page.tsx` e
-   `src/app/nossa-historia/page.tsx`, passe `fileSrc` (arquivo em
-   `/public/videos/...`) ou `embedUrl` (YouTube/Vimeo) ao componente
-   `<VideoSection />`.
-4. **Contatos** — preencha Instagram, WhatsApp, e-mail e telefone em
-   `src/lib/brand.ts`.
-5. **Preços e descrições** — os atuais são provisórios e estão marcados
-   como tal em `src/data/products.ts`.
-6. **Políticas** — os textos jurídicos são rascunhos marcados para
+3. **Preços e descrições** — os preços atuais são provisórios e estão
+   marcados como tal em `src/data/products.ts`. Ingredientes, tabela
+   nutricional, peso e validade já são os oficiais dos rótulos
+   (ago/2026).
+4. **Políticas** — os textos jurídicos são rascunhos marcados para
    revisão nas próprias páginas.
+5. **Fonte tipográfica** — a página temporária `/preview-fontes` mostra
+   4 opções para a cliente escolher; depois da escolha, aplicar no
+   `layout.tsx` e apagar a pasta `src/app/preview-fontes`.
+
+Decisões da marca já aplicadas: o vídeo institucional foi removido do
+site; as geleias saíram do catálogo fixo e voltarão como **edições
+limitadas** (ver instruções em `src/data/products.ts`); a entrega será
+para todo o Brasil pelos Correios com frete por CEP (integração
+documentada em `src/lib/shipping.ts`).
 
 ## Pagamentos (Pix e cartão)
 
@@ -151,7 +156,7 @@ por CEP.
 
 | Rota | Conteúdo |
 | --- | --- |
-| `/` | Home: hero, catálogo com filtros, história, vídeo |
+| `/` | Home: hero, catálogo com filtros, convite à história |
 | `/produtos` | Catálogo completo |
 | `/produto/[slug]` | Página individual do produto |
 | `/nossa-historia` | Página editorial + vídeo |

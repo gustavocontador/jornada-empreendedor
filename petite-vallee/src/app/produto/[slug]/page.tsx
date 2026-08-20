@@ -9,6 +9,7 @@ import {
 import { formatPrice } from "@/lib/format";
 import { getSiteUrl } from "@/lib/brand";
 import { ProductImage } from "@/components/ProductImage";
+import { NutritionTable } from "@/components/NutritionTable";
 import { AddToCartSection } from "./AddToCartSection";
 
 interface PageProps {
@@ -78,8 +79,10 @@ export default async function ProdutoPage({ params }: PageProps) {
         <div>
           <p className="product-card__category">
             {CATEGORY_LABELS[product.category]}
+            {product.weightLabel && ` · ${product.weightLabel}`}
           </p>
           <h1>{product.name}</h1>
+          {product.limited && <span className="tag tag--limited">Edição limitada</span>}
           <p className="product-page__price">
             {formatPrice(product.priceInCents)}
             <small>preço provisório — sujeito a confirmação</small>
@@ -88,7 +91,43 @@ export default async function ProdutoPage({ params }: PageProps) {
             {product.description ?? product.shortDescription}
           </p>
 
+          {product.badges && product.badges.length > 0 && (
+            <ul className="product-page__badges" aria-label="Características do produto">
+              {product.badges.map((badge) => (
+                <li key={badge} className="product-page__badge-item">
+                  {badge}
+                </li>
+              ))}
+            </ul>
+          )}
+
           <AddToCartSection productId={product.id} available={product.available} />
+
+          {product.ingredients && product.ingredients.length > 0 && (
+            <section className="product-page__section" aria-labelledby="titulo-ingredientes">
+              <h2 id="titulo-ingredientes" className="product-page__section-title">
+                Ingredientes
+              </h2>
+              <p className="product-page__ingredients">
+                {product.ingredients.join(", ")}.
+              </p>
+            </section>
+          )}
+
+          {product.nutrition && (
+            <section className="product-page__section" aria-labelledby="titulo-nutricional">
+              <h2 id="titulo-nutricional" className="visually-hidden">
+                Informação nutricional
+              </h2>
+              <NutritionTable nutrition={product.nutrition} />
+            </section>
+          )}
+
+          {product.shelfLife && (
+            <p className="product-page__shelf-life">
+              Validade: {product.shelfLife} a partir da produção.
+            </p>
+          )}
 
           <Link href="/produtos" className="product-page__back">
             ← Voltar para todos os produtos

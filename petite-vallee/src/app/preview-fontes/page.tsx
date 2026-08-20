@@ -106,7 +106,7 @@ export default function PreviewFontesPage() {
                 marginBottom: "var(--space-3)",
               }}
             >
-              Granola crocante, mixes na medida e geleia de verdade.
+              Granolas, mixes e barrinhas artesanais, sem conservantes.
             </h2>
             <p
               style={{
@@ -115,8 +115,8 @@ export default function PreviewFontesPage() {
                 marginBottom: "var(--space-4)",
               }}
             >
-              Tudo artesanal, assado e preparado em pequenos lotes, direto de
-              Valinhos. Vai bem com iogurte, frutas, açaí — ou direto do pote.
+              Tudo sem glúten, assado e preparado em pequenos lotes. Vai bem
+              com iogurte, frutas, açaí — ou direto do pote.
             </p>
             <p
               style={{

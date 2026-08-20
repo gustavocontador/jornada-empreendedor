@@ -32,8 +32,8 @@ export function Footer() {
               unoptimized
             />
             <p className="site-footer__tagline">
-              Granolas, mixes e geleias artesanais, feitos em {brand.city},{" "}
-              {brand.state}.
+              Granolas, mixes e barrinhas artesanais, sem conservantes e sem
+              glúten.
             </p>
           </div>
 

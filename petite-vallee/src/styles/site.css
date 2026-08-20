@@ -837,90 +837,108 @@
   }
 }
 
-/* ── Vídeo ── */
-.video-frame {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--color-background-secondary);
-  box-shadow: var(--shadow-soft);
-}
-
-.video-frame iframe,
-.video-frame video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.video-frame--placeholder {
+/* ── Página de produto: selos, ingredientes e nutrição ── */
+.product-page__badges {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-5);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-  border: 1px dashed var(--color-border);
-  box-shadow: none;
-  text-align: center;
-  padding: var(--space-5);
+  flex-wrap: wrap;
+  gap: var(--space-2);
 }
 
-.video-frame__placeholder-title {
-  font-family: var(--font-serif);
-  font-size: var(--text-xl);
+.product-page__badge-item {
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-accent); /* detalhe verde-oliva */
+  color: var(--color-accent-dark);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
-.video-frame__placeholder-note {
+.product-page__section {
+  margin-top: var(--space-6);
+}
+
+.product-page__section-title {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
+
+.product-page__ingredients {
+  color: var(--color-text-secondary);
   font-size: var(--text-sm);
+}
+
+.product-page__shelf-life {
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
   color: var(--color-text-secondary);
 }
 
-.video-frame__poster {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.video-frame__play {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3);
-  background: rgba(95, 91, 87, 0.12);
-  border: none;
-  cursor: pointer;
-  transition: background-color var(--transition-fast);
-}
-
-.video-frame__play:hover {
-  background: rgba(95, 91, 87, 0.2);
-}
-
-.video-frame__play-circle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--color-surface);
+.tag--limited {
+  background: var(--color-background-tint);
+  border: 1px solid var(--color-accent);
   color: var(--color-accent-dark);
-  box-shadow: var(--shadow-card);
 }
 
-.video-frame__play-label {
+.product-card__badge--limited {
+  color: var(--color-accent-dark);
+}
+
+.nutrition-table {
+  width: 100%;
+  max-width: 24rem;
+  border-collapse: collapse;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
   font-size: var(--text-sm);
+}
+
+.nutrition-table__caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--font-serif);
+  font-size: var(--text-lg);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-background-tint);
+  border: 1px solid var(--color-border);
+  border-bottom: 2px solid var(--color-text-primary);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.nutrition-table__portion {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.nutrition-table tbody th,
+.nutrition-table tbody td {
+  padding: var(--space-2) var(--space-4);
+  border-bottom: 1px solid var(--color-border-soft);
+  text-align: left;
+}
+
+.nutrition-table tbody tr:last-child th,
+.nutrition-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.nutrition-table tbody th {
+  font-weight: 400;
+  color: var(--color-text-secondary);
+}
+
+.nutrition-table tbody td {
+  text-align: right;
   font-weight: 700;
-  color: var(--color-surface);
-  text-shadow: 0 1px 6px rgba(95, 91, 87, 0.5);
+  white-space: nowrap;
 }
 
 /* ── Formulários ── */

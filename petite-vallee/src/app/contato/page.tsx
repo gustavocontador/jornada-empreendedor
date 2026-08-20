@@ -54,7 +54,11 @@ export default function ContatoPage() {
             <div className="contact-info__item">
               <h3>E-mail</h3>
               <p>
-                {brand.email || "Endereço de e-mail em breve. [informação pendente]"}
+                {brand.email ? (
+                  <a href={`mailto:${brand.email}`}>{brand.email}</a>
+                ) : (
+                  "Endereço de e-mail em breve. [informação pendente]"
+                )}
               </p>
             </div>
             <div className="contact-info__item">

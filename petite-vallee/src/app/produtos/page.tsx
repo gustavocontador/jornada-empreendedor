@@ -5,7 +5,7 @@ import { SectionTitle } from "@/components/SectionTitle";
 export const metadata: Metadata = {
   title: "Produtos",
   description:
-    "Granolas, mixes e geleias artesanais da Petite Vallée. Compre direto do nosso ateliê em Valinhos.",
+    "Granolas, mixes de castanhas e sementes e barrinhas artesanais da Petite Vallée, sem conservantes e sem glúten.",
   alternates: { canonical: "/produtos" },
 };
 
@@ -16,7 +16,7 @@ export default function ProdutosPage() {
         <SectionTitle
           eyebrow="Catálogo"
           title="Nossos produtos"
-          description="Feitos à mão, em pequenos lotes, com ingredientes escolhidos com cuidado."
+          description="Feitos à mão, em pequenos lotes, sem conservantes e sem glúten."
           as="h1"
         />
         <Catalog priorityCount={3} />

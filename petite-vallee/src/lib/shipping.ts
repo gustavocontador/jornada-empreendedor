@@ -1,18 +1,18 @@
 /**
  * Frete e entrega — arquitetura preparada para o futuro.
  *
- * As regras reais de frete da Petite Vallée AINDA NÃO FORAM
- * DEFINIDAS. Por isso, a única opção disponível hoje é uma opção
- * de demonstração, claramente identificada na interface, com
- * valor R$ 0,00.
+ * DEFINIÇÃO DA MARCA (ago/2026): entrega para todo o Brasil
+ * pelos Correios, com frete calculado automaticamente pelo CEP
+ * no checkout.
  *
- * QUANDO AS REGRAS FOREM DEFINIDAS, basta editar a lista
- * `getShippingOptions` abaixo — por exemplo:
- *   - frete fixo:        { id: "fixo", ..., priceInCents: 1500 }
- *   - retirada local:    { id: "retirada", ..., priceInCents: 0 }
- *   - cálculo por CEP:   transformar a função em assíncrona e
- *     consultar uma API de frete (Correios, Melhor Envio, etc.)
- *     usando o CEP recebido.
+ * PONTO DE INTEGRAÇÃO: quando a conta no serviço de frete for
+ * criada (SuperFrete e Melhor Envio são gratuitos e cotam
+ * Correios pelo CEP), transformar `getShippingOptions` em função
+ * assíncrona que consulta a API com o CEP e o peso dos itens
+ * (campo weightLabel/peso em src/data/products.ts) e retorna as
+ * opções reais (PAC, SEDEX...). Até lá, a única opção exibida é
+ * a de demonstração abaixo, com valor R$ 0,00 e claramente
+ * identificada na interface.
  *
  * O total final é SEMPRE recalculado no servidor
  * (src/lib/checkout.ts) antes de criar qualquer cobrança.
@@ -30,10 +30,11 @@ export function getShippingOptions(_cep?: string): ShippingOption[] {
   return [
     {
       id: "demo",
-      label: "Entrega em definição",
+      label: "Correios — cálculo por CEP em configuração",
       description:
-        "As opções e valores de entrega ainda serão configurados. " +
-        "Nenhum valor de frete é cobrado no modo de demonstração.",
+        "Entregamos para todo o Brasil pelos Correios. O cálculo " +
+        "automático do frete pelo CEP está sendo configurado; nenhum " +
+        "valor de frete é cobrado no modo de demonstração.",
       priceInCents: 0,
       isDemo: true,
     },

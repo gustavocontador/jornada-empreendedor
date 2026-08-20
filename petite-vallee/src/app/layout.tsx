@@ -26,26 +26,26 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Petite Vallée — Produtos artesanais de Valinhos",
+    default: "Petite Vallée — Granolas, mixes e barrinhas artesanais",
     template: "%s · Petite Vallée",
   },
   description:
-    "Granolas, mixes e geleias artesanais, feitos à mão em pequenos lotes em Valinhos. Compre direto da Petite Vallée.",
+    "Granolas, mixes de castanhas e sementes e barrinhas artesanais, sem conservantes e sem glúten. Compre direto da Petite Vallée.",
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: siteUrl,
     siteName: brand.name,
-    title: "Petite Vallée — Produtos artesanais de Valinhos",
+    title: "Petite Vallée — Granolas, mixes e barrinhas artesanais",
     description:
-      "Granolas, mixes e geleias artesanais, feitos à mão em Valinhos.",
+      "Granolas, mixes e barrinhas artesanais, sem conservantes e sem glúten.",
     images: [{ url: brand.logo.src, width: 360, height: 96, alt: brand.name }],
   },
   twitter: {
     card: "summary",
-    title: "Petite Vallée — Produtos artesanais de Valinhos",
+    title: "Petite Vallée — Granolas, mixes e barrinhas artesanais",
     description:
-      "Granolas, mixes e geleias artesanais, feitos à mão em Valinhos.",
+      "Granolas, mixes e barrinhas artesanais, sem conservantes e sem glúten.",
   },
 };
 

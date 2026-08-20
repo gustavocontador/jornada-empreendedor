@@ -34,6 +34,11 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         aria-label={`Ver detalhes de ${product.name}`}
       >
         <ProductImage product={product} priority={priority} />
+        {product.limited && (
+          <span className="product-card__badge product-card__badge--limited">
+            Edição limitada
+          </span>
+        )}
         {!product.available && (
           <span className="product-card__badge product-card__badge--unavailable">
             Indisponível no momento
@@ -44,6 +49,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       <div className="product-card__body">
         <p className="product-card__category">
           {CATEGORY_LABELS[product.category]}
+          {product.weightLabel && ` · ${product.weightLabel}`}
         </p>
         <h3 className="product-card__name">
           <Link href={`/produto/${product.slug}`}>{product.name}</Link>

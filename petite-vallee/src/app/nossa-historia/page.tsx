@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { SectionTitle } from "@/components/SectionTitle";
-import { VideoSection } from "@/components/VideoSection";
 import { ButtonLink } from "@/components/Button";
 import { BotanicalDivider } from "@/components/BotanicalDecoration";
 
@@ -40,7 +39,7 @@ export default function NossaHistoriaPage() {
           <h2>O jeito Petite Vallée de fazer</h2>
           <p>
             Acreditamos que alimento bom se faz sem pressa. Por isso, nossas
-            granolas, mixes e geleias são preparados de forma{" "}
+            granolas, mixes e barrinhas são preparados de forma{" "}
             <strong>artesanal, em pequenos lotes</strong>, com ingredientes
             escolhidos com atenção e o mesmo capricho em cada fornada.
           </p>
@@ -54,9 +53,6 @@ export default function NossaHistoriaPage() {
           </p>
 
           <BotanicalDivider />
-
-          <h2>Em vídeo</h2>
-          <VideoSection />
 
           <div className="editorial__cta">
             <ButtonLink href="/produtos">Conheça nossos produtos</ButtonLink>

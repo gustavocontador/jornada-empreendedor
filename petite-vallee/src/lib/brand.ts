@@ -14,7 +14,7 @@
 
 export const brand = {
   name: "Petite Vallée",
-  tagline: "Produtos artesanais feitos em Valinhos",
+  tagline: "Granolas, mixes e barrinhas artesanais",
   logo: {
     src: "/brand/logo.svg",
     width: 360,
@@ -23,10 +23,11 @@ export const brand = {
     /** true enquanto o arquivo oficial não for adicionado */
     isPlaceholder: true,
   },
-  instagramUrl: "", // [PENDENTE] preencher com o @ oficial
-  whatsappUrl: "", // [PENDENTE] preencher quando fornecido
-  email: "", // [PENDENTE]
-  phone: "", // [PENDENTE]
+  instagramHandle: "@petitevallee.nuts",
+  instagramUrl: "https://www.instagram.com/petitevallee.nuts",
+  whatsappUrl: "https://wa.me/5511998280631",
+  email: "petitevalle.nuts@gmail.com",
+  phone: "(11) 99828-0631",
   city: "Valinhos",
   state: "SP",
 } as const;
