@@ -1,0 +1,207 @@
+/* ═══════════════════════════════════════════════════════════════
+   PETITE VALLÉE — Sistema de Design
+   ───────────────────────────────────────────────────────────────
+   Todos os tokens visuais do site vivem aqui.
+   A cor predominante da marca é #E9DDE9 (não alterar sem
+   autorização). O verde-oliva (#74785E) é usado APENAS em
+   pequenos detalhes: ícones, hovers, etiquetas, linhas.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Cores ── */
+  --color-background-primary: #e9dde9; /* base predominante da marca */
+  --color-background-secondary: #f8f4f0; /* creme quente de apoio */
+  --color-background-tint: #f1e9f1; /* variação clara da base */
+  --color-surface: #fffdfc; /* superfícies de cards */
+  --color-text-primary: #5f5b57;
+  --color-text-secondary: #7d7a73;
+  --color-text-on-dark: #f8f4f0;
+  --color-border: rgba(95, 91, 87, 0.18);
+  --color-border-soft: rgba(95, 91, 87, 0.1);
+  --color-accent: #74785e; /* verde-oliva: somente detalhes */
+  --color-accent-dark: #5c6049;
+  --color-button: #564a56; /* ameixa profunda para CTAs */
+  --color-button-hover: #453b45;
+  --color-danger: #a05252;
+  --color-success: #5f7355;
+  --color-warning-bg: #f6ecd9;
+  --color-warning-text: #7a6234;
+
+  /* ── Tipografia ──
+     As famílias são injetadas pelo next/font em layout.tsx */
+  --font-serif: var(--font-fraunces), "Georgia", serif;
+  --font-sans: var(--font-karla), "Helvetica Neue", Arial, sans-serif;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: clamp(1.75rem, 4vw, 2.25rem);
+  --text-3xl: clamp(2.125rem, 5.5vw, 3rem);
+
+  --leading-tight: 1.15;
+  --leading-normal: 1.65;
+
+  /* ── Espaçamentos ── */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* ── Containers ── */
+  --container-max: 72rem;
+  --container-narrow: 46rem;
+  --container-pad: clamp(1.125rem, 4vw, 2.5rem);
+
+  /* ── Bordas e sombras ── */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.375rem;
+  --radius-full: 999px;
+  --shadow-soft: 0 2px 14px rgba(95, 91, 87, 0.08);
+  --shadow-card: 0 6px 26px rgba(95, 91, 87, 0.1);
+  --shadow-drawer: -8px 0 40px rgba(95, 91, 87, 0.18);
+
+  /* ── Transições ── */
+  --transition-fast: 160ms ease;
+  --transition-base: 260ms ease;
+
+  /* ── Z-index ── */
+  --z-header: 40;
+  --z-drawer-backdrop: 60;
+  --z-drawer: 70;
+  --z-toast: 80;
+}
+
+/* ── Reset suave ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-primary);
+  min-height: 100dvh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+  overflow-wrap: break-word;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+}
+
+/* ── Acessibilidade ── */
+:focus-visible {
+  outline: 2px solid var(--color-accent-dark);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  z-index: 100;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Utilitários de layout ── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+main {
+  display: block;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- PLACEHOLDER: substituir pela foto oficial do produto "Geleia de Morango" (mesmo nome de arquivo, formato .jpg/.webp) e atualizar o campo image em src/data/products.ts -->
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="Geleia de Morango — foto oficial em breve">
+  <rect width="900" height="900" fill="#F7EFF0"/>
+  <rect x="40" y="40" width="820" height="820" rx="28" fill="none" stroke="#5F5B57" stroke-opacity="0.16" stroke-width="2" stroke-dasharray="3 10"/>
+  <g fill="none" stroke="#74785E" stroke-width="3" stroke-linecap="round" opacity="0.55">
+    <path d="M450 560 C 450 440, 520 380, 560 350"/>
+    <path d="M560 350 C 548 410, 512 460, 462 490"/>
+    <path d="M492 470 c -26 -4 -44 -20 -48 -44 c 28 2 44 18 48 44 z" fill="#74785E" stroke="none" opacity="0.7"/>
+    <path d="M520 420 c -20 -8 -30 -26 -26 -46 c 24 6 30 26 26 46 z" fill="#74785E" stroke="none" opacity="0.5"/>
+    <path d="M545 380 c -14 -10 -18 -26 -12 -42 c 18 8 20 26 12 42 z" fill="#74785E" stroke="none" opacity="0.35"/>
+  </g>
+  <text x="450" y="655" text-anchor="middle" font-family="Georgia, serif" font-size="46" fill="#5F5B57">Geleia de Morango</text>
+  <text x="450" y="705" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" letter-spacing="3" fill="#7D7A73">GELEIAS</text>
+  <text x="450" y="775" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="21" fill="#9a948d">Foto oficial em breve</text>
+</svg>
