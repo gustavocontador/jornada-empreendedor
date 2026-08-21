@@ -38,7 +38,7 @@
  * FONTE DOS DADOS:
  *   Ingredientes, porções, tabela nutricional, peso e validade
  *   vêm dos rótulos oficiais fornecidos pela Petite Vallée
- *   (ago/2026). Os PREÇOS seguem provisórios até confirmação.
+ *   (ago/2026). Os preços são os da tabela oficial de ago/2026.
  * ═══════════════════════════════════════════════════════════════
  */
 
@@ -102,7 +102,7 @@ export const products: Product[] = [
       "Granola assada em pequenos lotes até o ponto certo de crocância, " +
       "adoçada com açúcar de coco e melado de cana. Vai bem com iogurte, " +
       "frutas, açaí — ou direto do pote.",
-    priceInCents: 2990, // [PROVISÓRIO] R$ 29,90 — aguardando preço oficial
+    priceInCents: 4500, // R$ 45,00 (tabela oficial ago/2026)
     image: "/images/products/granola-tradicional.svg",
     imageIsPlaceholder: true,
     available: true,
@@ -143,7 +143,7 @@ export const products: Product[] = [
     description:
       "A versão mais leve da nossa granola, adoçada com eritritol, de " +
       "sabor suave para comer todo dia sem enjoar.",
-    priceInCents: 3190, // [PROVISÓRIO] R$ 31,90 — aguardando preço oficial
+    priceInCents: 4500, // R$ 45,00 (tabela oficial ago/2026)
     image: "/images/products/granola-naturel.svg",
     imageIsPlaceholder: true,
     available: true,
@@ -183,7 +183,7 @@ export const products: Product[] = [
     description:
       "Granola sem adição de açúcar — a doçura vem das tâmaras e das " +
       "frutas secas. Crocância artesanal para o café da manhã de todo dia.",
-    priceInCents: 3290, // [PROVISÓRIO] R$ 32,90 — aguardando preço oficial
+    priceInCents: 5000, // R$ 50,00 (tabela oficial ago/2026)
     image: "/images/products/granola-sans-sucre.svg",
     imageIsPlaceholder: true,
     available: true,
@@ -224,7 +224,7 @@ export const products: Product[] = [
       "Castanhas selecionadas na medida — com direito a pecan " +
       "caramelizada — para o lanche da tarde, a tábua de queijos ou " +
       "aquela visita de última hora.",
-    priceInCents: 3490, // [PROVISÓRIO] R$ 34,90 — aguardando preço oficial
+    priceInCents: 7500, // R$ 75,00 (tabela oficial ago/2026)
     image: "/images/products/mix-de-castanhas.svg",
     imageIsPlaceholder: true,
     available: true,
@@ -262,7 +262,7 @@ export const products: Product[] = [
     description:
       "Sementes de abóbora e girassol com um toque de sal — crocância e " +
       "sabor para saladas, frutas, iogurtes e pães.",
-    priceInCents: 2690, // [PROVISÓRIO] R$ 26,90 — aguardando preço oficial
+    priceInCents: 5500, // R$ 55,00 (tabela oficial ago/2026)
     image: "/images/products/mix-de-sementes.svg",
     imageIsPlaceholder: true,
     available: true,
@@ -292,7 +292,7 @@ export const products: Product[] = [
       "A barrinha artesanal da Petite Vallée: chia, sementes, noz pecan e " +
       "cranberry, adoçada com eritritol. Caixa com 10 unidades, para a " +
       "bolsa, a mochila e a gaveta do escritório.",
-    priceInCents: 2990, // [PROVISÓRIO] R$ 29,90 — aguardando preço oficial
+    priceInCents: 6000, // R$ 60,00 — caixa com 10 unidades (tabela oficial ago/2026)
     image: "/images/products/barrinha-petite-sucree.svg",
     imageIsPlaceholder: true,
     available: true,

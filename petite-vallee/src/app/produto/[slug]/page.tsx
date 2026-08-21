@@ -85,7 +85,6 @@ export default async function ProdutoPage({ params }: PageProps) {
           {product.limited && <span className="tag tag--limited">Edição limitada</span>}
           <p className="product-page__price">
             {formatPrice(product.priceInCents)}
-            <small>preço provisório — sujeito a confirmação</small>
           </p>
           <p className="product-page__description">
             {product.description ?? product.shortDescription}

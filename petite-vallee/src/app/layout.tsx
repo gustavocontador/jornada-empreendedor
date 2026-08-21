@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Karla } from "next/font/google";
+import { Lora } from "next/font/google";
 import { CartProvider } from "@/lib/cart/CartContext";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -8,16 +8,12 @@ import { brand, getSiteUrl } from "@/lib/brand";
 import "@/styles/globals.css";
 import "@/styles/site.css";
 
-// Serifada elegante para títulos; sans limpa para corpo/preços/botões.
-const fraunces = Fraunces({
+// Tipografia oficial: Lora em todo o site — a serifada mais
+// próxima da usada nos rótulos e no material impresso da marca
+// (escolha da cliente, ago/2026).
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
-
-const karla = Karla({
-  subsets: ["latin"],
-  variable: "--font-karla",
+  variable: "--font-lora",
   display: "swap",
 });
 
@@ -70,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={`${fraunces.variable} ${karla.variable}`}>
+    <html lang="pt-BR" className={lora.variable}>
       <body>
         <script
           type="application/ld+json"

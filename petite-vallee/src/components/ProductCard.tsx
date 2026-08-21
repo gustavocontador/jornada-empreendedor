@@ -59,7 +59,6 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <div className="product-card__footer">
           <p className="product-card__price">
             {formatPrice(product.priceInCents)}
-            <span className="product-card__price-note">preço provisório</span>
           </p>
 
           {product.available ? (

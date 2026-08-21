@@ -94,15 +94,11 @@ placeholders **claramente identificados**, que devem ser trocados:
 2. **Fotos dos produtos** — salve as fotos reais em
    `public/images/products/` e atualize o campo `image` de cada produto
    em `src/data/products.ts` (remova `imageIsPlaceholder`).
-3. **Preços e descrições** — os preços atuais são provisórios e estão
-   marcados como tal em `src/data/products.ts`. Ingredientes, tabela
-   nutricional, peso e validade já são os oficiais dos rótulos
-   (ago/2026).
+3. **Descrições** — os textos de produto seguem provisórios até a
+   versão manuscrita da marca. Preços, ingredientes, tabela
+   nutricional, peso e validade já são os oficiais (ago/2026).
 4. **Políticas** — os textos jurídicos são rascunhos marcados para
    revisão nas próprias páginas.
-5. **Fonte tipográfica** — a página temporária `/preview-fontes` mostra
-   4 opções para a cliente escolher; depois da escolha, aplicar no
-   `layout.tsx` e apagar a pasta `src/app/preview-fontes`.
 
 Decisões da marca já aplicadas: o vídeo institucional foi removido do
 site; as geleias saíram do catálogo fixo e voltarão como **edições
@@ -172,6 +168,7 @@ por CEP.
 - Cor predominante: **`#E9EDD9`** (definida em
   `src/styles/globals.css` — não alterar sem autorização).
 - Verde-oliva `#74785E` apenas em detalhes (ícones, etiquetas, hovers).
-- Tipografia: Fraunces (títulos, serifada) + Karla (corpo, sans).
+- Tipografia: Lora (serifada) em todo o site, acompanhando os rótulos
+  e o material impresso da marca.
 - Mobile-first, acessível (foco, ARIA, `prefers-reduced-motion`,
   trava de foco no carrinho e no menu).

@@ -28,9 +28,12 @@
   --color-warning-text: #7a6234;
 
   /* ── Tipografia ──
-     As famílias são injetadas pelo next/font em layout.tsx */
-  --font-serif: var(--font-fraunces), "Georgia", serif;
-  --font-sans: var(--font-karla), "Helvetica Neue", Arial, sans-serif;
+     A família é injetada pelo next/font em layout.tsx.
+     O site inteiro usa Lora (serifada), acompanhando os rótulos
+     e o material impresso da marca — os dois tokens apontam para
+     a mesma família e os pesos fazem a hierarquia. */
+  --font-serif: var(--font-lora), "Georgia", serif;
+  --font-sans: var(--font-lora), "Georgia", serif;
 
   --text-xs: 0.8125rem;
   --text-sm: 0.9375rem;
