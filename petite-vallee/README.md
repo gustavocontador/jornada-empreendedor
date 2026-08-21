@@ -108,43 +108,73 @@ documentada em `src/lib/shipping.ts`).
 
 ## 📋 PARA SER FEITO AINDA (backlog acordado)
 
-Itens combinados que **não travam o uso atual do site**, priorizados
-para a fase de lançamento:
+Itens que **não travam o uso atual do site**. Numerados para irmos
+resolvendo um a um.
 
-**Conteúdo (depende da Petite Vallée):**
-- [ ] Fotos reais dos produtos
-- [ ] Arquivo oficial do logotipo (+ favicon derivado dele)
-- [ ] Textos manuscritos definitivos
-- [ ] Dados de alergênicos e instruções de conservação por produto
-- [ ] CNPJ / razão social para o rodapé (exigência do Decreto
-      7.962/2013 do e-commerce)
-- [ ] Revisão final das políticas (privacidade, trocas, entrega)
+### A. Conteúdo — a Petite Vallée envia, o site recebe
 
-**Técnico (fase de lançamento):**
-- [ ] Banco de dados de pedidos + número amigável de pedido
-- [ ] Gateway de pagamento (Pix + cartão) com página segura e
-      confirmação automática via webhook
-- [ ] Frete real por CEP (SuperFrete/Melhor Envio → Correios), com
-      prazo e opções; suporte a entrega própria para CEPs próximos
-- [ ] Status completos do pedido (aguardando pagamento → entregue)
-      + página de acompanhamento com rastreio
-- [ ] Painel com login: pedidos (status/rastreio/estoque interno) e
-      estatísticas de venda (receita, ticket médio, comparação com o
-      mês anterior, gráfico de vendas, mix por produto, líquida
-      estimada pós-taxas, exportação CSV)
-- [ ] E-mails transacionais ao cliente (confirmação de pedido,
-      pedido enviado com rastreio)
-- [ ] Compra do domínio + migração para hospedagem gratuita
-      (Cloudflare)
+- [ ] **1.** Fotos reais dos produtos (salvar em
+      `public/images/products/`; o site já otimiza sozinho)
+- [ ] **2.** Arquivo oficial do logotipo (exportar do Canva em PNG,
+      ideal com fundo transparente) + favicon derivado dele
+- [ ] **3.** Textos manuscritos definitivos (hero, produtos, história)
+- [ ] **4.** Alergênicos e instruções de conservação de cada produto
+- [ ] **5.** CNPJ / razão social para o rodapé (Decreto 7.962/2013
+      do e-commerce)
+- [ ] **6.** Revisão final das políticas (privacidade, trocas,
+      entrega, termos)
 
-**Já implementado e aguardando apenas ativação:**
-- [x] Notificação de novo pedido por e-mail para a equipe — ativa ao
-      definir `RESEND_API_KEY` e `ORDER_NOTIFY_EMAIL` (conta
-      gratuita em resend.com; ver `src/lib/notifications.ts`)
-- [x] Estimativa de frete por CEP no carrinho (mostra as opções
-      reais automaticamente quando a integração de frete chegar)
-- [x] Pedido pelo WhatsApp (carrinho monta a mensagem pronta) +
-      botão discreto de WhatsApp no canto do site
+### B. Contas e cadastros — criar (gratuitos), depois eu conecto
+
+- [ ] **7.** Conta no Resend (resend.com) → ativa a notificação de
+      venda já implementada (`RESEND_API_KEY` + `ORDER_NOTIFY_EMAIL`)
+- [ ] **8.** Conta no gateway de pagamento com Pix + cartão
+      (Mercado Pago, Pagar.me ou Asaas)
+- [ ] **9.** Conta no SuperFrete ou Melhor Envio (cotação Correios
+      por CEP + etiquetas com desconto)
+- [ ] **10.** Domínio próprio (registro.br, ~R$ 40/ano)
+- [ ] **11.** Catálogo Meta: WhatsApp Business + Instagram Shopping
+      com os produtos marcados nos posts (configuração nos apps da
+      Meta; o site fornece as páginas de produto para linkar)
+
+### C. Desenvolvimento — fase de lançamento (dependem dos itens B)
+
+- [ ] **12.** Banco de dados de pedidos + número amigável de pedido
+- [ ] **13.** Integração do gateway: Pix + cartão, página segura de
+      pagamento e confirmação automática via webhook (depende do 8)
+- [ ] **14.** Frete real por CEP com valor, prazo e opções no
+      carrinho e no checkout + regra de entrega própria para
+      CEPs/cidades próximas (depende do 9)
+- [ ] **15.** Status completos do pedido (aguardando pagamento →
+      entregue) + página de acompanhamento com código de rastreio
+- [ ] **16.** Painel com login — aba Pedidos (mudar status, colar
+      rastreio, estoque interno) e aba Vendas (receita, nº de
+      pedidos, ticket médio, comparação vs. mês anterior, gráfico
+      de vendas, mix por produto, receita líquida estimada
+      pós-taxas, exportação CSV)
+- [ ] **17.** E-mails transacionais ao cliente: confirmação de
+      pedido e aviso de envio com rastreio (depende do 7)
+- [ ] **18.** "Avise-me quando voltar" nas edições limitadas
+      (captura de e-mail para avisar do próximo lote; depende do 7)
+- [ ] **19.** Campo "É presente? 🎁" no checkout, com mensagem para
+      o cartãozinho
+- [ ] **20.** Migração para hospedagem gratuita definitiva
+      (Cloudflare) + conexão do domínio (depende do 10)
+
+### D. Automático quando o conteúdo chegar
+
+- [ ] **21.** Prévias bonitas ao compartilhar links no
+      WhatsApp/Instagram (foto + nome + preço) — já preparado,
+      passa a valer quando as fotos (item 1) forem adicionadas
+
+### Já implementado e aguardando apenas ativação
+
+- [x] Notificação de novo pedido por e-mail para a equipe (ativa
+      com o item 7)
+- [x] Estimativa de frete por CEP no carrinho (mostra valores
+      reais automaticamente após o item 14)
+- [x] Pedido pelo WhatsApp com mensagem pronta + botão discreto de
+      WhatsApp no site
 
 ## Pagamentos (Pix e cartão)
 
