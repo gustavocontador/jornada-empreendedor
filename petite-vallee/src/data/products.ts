@@ -290,14 +290,14 @@ export const products: Product[] = [
       "A barrinha da casa: 10 unidades para levar para qualquer lugar.",
     description:
       "A barrinha artesanal da Petite Vallée: chia, sementes, noz pecan e " +
-      "cranberry, adoçada com eritritol. Caixa com 10 unidades, para a " +
-      "bolsa, a mochila e a gaveta do escritório.",
+      "cranberry, adoçada com eritritol. Caixa com 10 barrinhas de 20g " +
+      "cada, para a bolsa, a mochila e a gaveta do escritório.",
     priceInCents: 6000, // R$ 60,00 — caixa com 10 unidades (tabela oficial ago/2026)
     image: "/images/products/barrinha-petite-sucree.svg",
     imageIsPlaceholder: true,
     available: true,
     featured: true,
-    weightLabel: "200g · 10 unidades",
+    weightLabel: "10 barrinhas de 20g · 200g",
     ingredients: [
       "Chia",
       "Semente de Abóbora",
@@ -309,7 +309,7 @@ export const products: Product[] = [
       "Sal",
     ],
     nutrition: {
-      portionLabel: "20g",
+      portionLabel: "20g (1 barrinha)",
       energyKcal: 90,
       carbsG: 8.4,
       proteinG: 2.7,
