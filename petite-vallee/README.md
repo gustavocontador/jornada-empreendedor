@@ -161,6 +161,15 @@ resolvendo um a um.
 - [ ] **20.** Migração para hospedagem gratuita definitiva
       (Cloudflare) + conexão do domínio (depende do 10)
 
+### Ajustes de interface pedidos
+
+- [ ] **22.** Compactar o bloco "Calcular frete e prazo" no carrinho
+      lateral — hoje ocupa espaço demais e esconde a lista de
+      produtos. Deixar discreto/recolhido (ex.: abrir só ao tocar em
+      "Calcular frete"), priorizando a visualização dos itens do
+      carrinho. Não é para reduzir tamanho de letra, e sim liberar
+      espaço para a lista.
+
 ### D. Automático quando o conteúdo chegar
 
 - [ ] **21.** Prévias bonitas ao compartilhar links no
