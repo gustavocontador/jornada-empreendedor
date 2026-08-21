@@ -163,12 +163,10 @@ resolvendo um a um.
 
 ### Ajustes de interface pedidos
 
-- [ ] **22.** Compactar o bloco "Calcular frete e prazo" no carrinho
-      lateral — hoje ocupa espaço demais e esconde a lista de
-      produtos. Deixar discreto/recolhido (ex.: abrir só ao tocar em
-      "Calcular frete"), priorizando a visualização dos itens do
-      carrinho. Não é para reduzir tamanho de letra, e sim liberar
-      espaço para a lista.
+- [x] **22.** Compactar o bloco "Calcular frete e prazo" no carrinho
+      lateral — feito: agora fica recolhido num link discreto e só
+      abre ao tocar; de quebra, corrigido um estouro de largura do
+      rodapé do carrinho em telas pequenas.
 
 ### D. Automático quando o conteúdo chegar
 

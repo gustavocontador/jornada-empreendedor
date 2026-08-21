@@ -19,8 +19,8 @@ export function CartItem({ item }: CartItemProps) {
         <Image
           src={product.image}
           alt=""
-          width={72}
-          height={72}
+          width={64}
+          height={64}
           unoptimized={product.image.endsWith(".svg")}
         />
       </div>
