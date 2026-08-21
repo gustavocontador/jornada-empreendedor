@@ -2,7 +2,9 @@
 
 import { useCart } from "@/lib/cart/CartContext";
 import { formatPrice } from "@/lib/format";
+import { buildWhatsAppOrderUrl } from "@/lib/whatsapp";
 import { CartItem } from "@/components/CartItem";
+import { CartShippingEstimate } from "@/components/CartShippingEstimate";
 import { EmptyState } from "@/components/EmptyState";
 import { LoadingState } from "@/components/LoadingState";
 import { ButtonLink } from "@/components/Button";
@@ -34,16 +36,22 @@ export function CartPageContent() {
       </ul>
 
       <div className="cart-drawer__footer" style={{ borderRadius: "var(--radius-lg)", marginTop: "var(--space-5)" }}>
+        <CartShippingEstimate />
         <div className="cart-drawer__subtotal">
           <span>Subtotal</span>
           <strong>{formatPrice(subtotalInCents)}</strong>
         </div>
-        <p className="cart-drawer__note">
-          Frete e entrega serão definidos no checkout.
-        </p>
         <ButtonLink href="/checkout" className="btn--block">
           Finalizar compra
         </ButtonLink>
+        <a
+          href={buildWhatsAppOrderUrl(items, subtotalInCents)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cart-drawer__whatsapp-link"
+        >
+          ou feche seu pedido pelo WhatsApp
+        </a>
         <div className="cart-drawer__secondary-actions">
           <ButtonLink href="/produtos" variant="ghost">
             Continuar comprando

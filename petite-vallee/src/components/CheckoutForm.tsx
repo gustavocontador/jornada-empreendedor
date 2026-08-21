@@ -93,6 +93,18 @@ export function CheckoutForm() {
   const [demoMode, setDemoMode] = useState<boolean | null>(null);
   const errorSummaryRef = useRef<HTMLDivElement>(null);
 
+  // Pré-preenche o CEP estimado no carrinho, se houver.
+  useEffect(() => {
+    try {
+      const savedCep = window.localStorage.getItem("petite-vallee-cep");
+      if (savedCep) {
+        setValues((prev) => (prev.cep ? prev : { ...prev, cep: savedCep }));
+      }
+    } catch {
+      // sem localStorage, segue com o campo vazio
+    }
+  }, []);
+
   // Descobre se a loja está em modo de demonstração.
   useEffect(() => {
     let cancelled = false;

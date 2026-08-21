@@ -5,7 +5,9 @@ import { useRef } from "react";
 import { formatPrice } from "@/lib/format";
 import { useCart } from "@/lib/cart/CartContext";
 import { useFocusTrap } from "@/lib/useFocusTrap";
+import { buildWhatsAppOrderUrl } from "@/lib/whatsapp";
 import { CartItem } from "./CartItem";
+import { CartShippingEstimate } from "./CartShippingEstimate";
 import { EmptyState } from "./EmptyState";
 import { ButtonLink } from "./Button";
 
@@ -75,16 +77,22 @@ export function CartDrawer() {
             </ul>
 
             <footer className="cart-drawer__footer">
+              <CartShippingEstimate />
               <div className="cart-drawer__subtotal">
                 <span>Subtotal</span>
                 <strong>{formatPrice(subtotalInCents)}</strong>
               </div>
-              <p className="cart-drawer__note">
-                Frete e entrega serão definidos no checkout.
-              </p>
               <ButtonLink href="/checkout" className="btn--block">
                 Finalizar compra
               </ButtonLink>
+              <a
+                href={buildWhatsAppOrderUrl(items, subtotalInCents)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cart-drawer__whatsapp-link"
+              >
+                ou feche seu pedido pelo WhatsApp
+              </a>
               <div className="cart-drawer__secondary-actions">
                 <button type="button" className="link-button" onClick={closeCart}>
                   Continuar comprando

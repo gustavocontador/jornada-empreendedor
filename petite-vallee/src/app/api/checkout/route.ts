@@ -12,6 +12,7 @@
 
 import { NextResponse } from "next/server";
 import { CheckoutValidationError, validateCheckout } from "@/lib/checkout";
+import { notifyNewOrder } from "@/lib/notifications";
 import { orderStore } from "@/lib/orders/store";
 import {
   DemoModeError,
@@ -45,6 +46,9 @@ export async function POST(request: Request) {
       paymentStatus: "pending",
       isDemo: provider.isDemo,
     });
+
+    // Avisa a equipe sobre o novo pedido (nunca derruba o checkout).
+    await notifyNewOrder(order);
 
     if (provider.isDemo) {
       // Nunca simular um pagamento aprovado: o modo demo devolve

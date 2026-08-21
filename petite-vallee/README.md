@@ -106,6 +106,46 @@ limitadas** (ver instruções em `src/data/products.ts`); a entrega será
 para todo o Brasil pelos Correios com frete por CEP (integração
 documentada em `src/lib/shipping.ts`).
 
+## 📋 PARA SER FEITO AINDA (backlog acordado)
+
+Itens combinados que **não travam o uso atual do site**, priorizados
+para a fase de lançamento:
+
+**Conteúdo (depende da Petite Vallée):**
+- [ ] Fotos reais dos produtos
+- [ ] Arquivo oficial do logotipo (+ favicon derivado dele)
+- [ ] Textos manuscritos definitivos
+- [ ] Dados de alergênicos e instruções de conservação por produto
+- [ ] CNPJ / razão social para o rodapé (exigência do Decreto
+      7.962/2013 do e-commerce)
+- [ ] Revisão final das políticas (privacidade, trocas, entrega)
+
+**Técnico (fase de lançamento):**
+- [ ] Banco de dados de pedidos + número amigável de pedido
+- [ ] Gateway de pagamento (Pix + cartão) com página segura e
+      confirmação automática via webhook
+- [ ] Frete real por CEP (SuperFrete/Melhor Envio → Correios), com
+      prazo e opções; suporte a entrega própria para CEPs próximos
+- [ ] Status completos do pedido (aguardando pagamento → entregue)
+      + página de acompanhamento com rastreio
+- [ ] Painel com login: pedidos (status/rastreio/estoque interno) e
+      estatísticas de venda (receita, ticket médio, comparação com o
+      mês anterior, gráfico de vendas, mix por produto, líquida
+      estimada pós-taxas, exportação CSV)
+- [ ] E-mails transacionais ao cliente (confirmação de pedido,
+      pedido enviado com rastreio)
+- [ ] Compra do domínio + migração para hospedagem gratuita
+      (Cloudflare)
+
+**Já implementado e aguardando apenas ativação:**
+- [x] Notificação de novo pedido por e-mail para a equipe — ativa ao
+      definir `RESEND_API_KEY` e `ORDER_NOTIFY_EMAIL` (conta
+      gratuita em resend.com; ver `src/lib/notifications.ts`)
+- [x] Estimativa de frete por CEP no carrinho (mostra as opções
+      reais automaticamente quando a integração de frete chegar)
+- [x] Pedido pelo WhatsApp (carrinho monta a mensagem pronta) +
+      botão discreto de WhatsApp no canto do site
+
 ## Pagamentos (Pix e cartão)
 
 A loja está em **modo de demonstração** enquanto não há conta em um
