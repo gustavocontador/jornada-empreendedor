@@ -103,8 +103,7 @@ export const products: Product[] = [
       "adoçada com açúcar de coco e melado de cana. Vai bem com iogurte, " +
       "frutas, açaí — ou direto do pote.",
     priceInCents: 4500, // R$ 45,00 (tabela oficial ago/2026)
-    image: "/images/products/granola-tradicional.svg",
-    imageIsPlaceholder: true,
+    image: "/images/products/granola-tradicional.jpg", // foto oficial (ago/2026)
     available: true,
     featured: true,
     weightLabel: "300g",
@@ -144,8 +143,7 @@ export const products: Product[] = [
       "A versão mais leve da nossa granola, adoçada com eritritol, de " +
       "sabor suave para comer todo dia sem enjoar.",
     priceInCents: 4500, // R$ 45,00 (tabela oficial ago/2026)
-    image: "/images/products/granola-naturel.svg",
-    imageIsPlaceholder: true,
+    image: "/images/products/granola-naturel.jpg", // foto oficial (ago/2026)
     available: true,
     featured: true,
     weightLabel: "300g",
@@ -225,8 +223,7 @@ export const products: Product[] = [
       "caramelizada — para o lanche da tarde, a tábua de queijos ou " +
       "aquela visita de última hora.",
     priceInCents: 7500, // R$ 75,00 (tabela oficial ago/2026)
-    image: "/images/products/mix-de-castanhas.svg",
-    imageIsPlaceholder: true,
+    image: "/images/products/mix-de-castanhas.jpg", // foto oficial (ago/2026)
     available: true,
     featured: true,
     weightLabel: "300g",
@@ -263,8 +260,7 @@ export const products: Product[] = [
       "Sementes de abóbora e girassol com um toque de sal — crocância e " +
       "sabor para saladas, frutas, iogurtes e pães.",
     priceInCents: 5500, // R$ 55,00 (tabela oficial ago/2026)
-    image: "/images/products/mix-de-sementes.svg",
-    imageIsPlaceholder: true,
+    image: "/images/products/mix-de-sementes.jpg", // foto oficial (ago/2026)
     available: true,
     featured: true,
     weightLabel: "300g",

@@ -1,13 +1,10 @@
 /**
  * Referências centrais da marca.
  *
- * ⚠️ O arquivo em /public/brand/logo.svg é um PLACEHOLDER
- * tipográfico provisório. Quando o arquivo oficial do logotipo
- * for fornecido pela Petite Vallée:
- *   1. Salve-o em public/brand/ (ex.: logo.svg ou logo.png).
- *   2. Atualize os caminhos abaixo, se o nome mudar.
- *   3. Gere o favicon a partir do próprio arquivo oficial e
- *      substitua src/app/icon.svg.
+ * LOGOTIPO OFICIAL (ago/2026): emblema circular "Nuts — Petite
+ * Vallée". O arquivo deve existir em public/brand/logo.png,
+ * recortado em QUADRADO com o círculo centralizado. Para trocar
+ * a logo no futuro, basta substituir esse arquivo (mesmo nome).
  * Todos os usos (header, footer, Open Graph, dados estruturados)
  * leem deste arquivo, então a troca acontece em um único lugar.
  */
@@ -16,12 +13,11 @@ export const brand = {
   name: "Petite Vallée",
   tagline: "Granolas, mixes e barrinhas artesanais",
   logo: {
-    src: "/brand/logo.svg",
-    width: 360,
-    height: 96,
+    src: "/brand/logo.png",
+    width: 512,
+    height: 512,
     alt: "Petite Vallée",
-    /** true enquanto o arquivo oficial não for adicionado */
-    isPlaceholder: true,
+    isPlaceholder: false,
   },
   instagramHandle: "@petitevallee.nuts",
   instagramUrl: "https://www.instagram.com/petitevallee.nuts",

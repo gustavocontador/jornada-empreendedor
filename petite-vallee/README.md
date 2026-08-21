@@ -113,10 +113,13 @@ resolvendo um a um.
 
 ### A. Conteúdo — a Petite Vallée envia, o site recebe
 
-- [ ] **1.** Fotos reais dos produtos (salvar em
-      `public/images/products/`; o site já otimiza sozinho)
-- [ ] **2.** Arquivo oficial do logotipo (exportar do Canva em PNG,
-      ideal com fundo transparente) + favicon derivado dele
+- [x] **1.** Fotos reais dos produtos — 4 de 6 aplicadas
+      (Tradicional, Naturel, Mix de Castanhas, Mix de Sementes);
+      FALTAM as fotos da Granola Sans Sucre e da Barrinha Petite
+      Sucrée (seguem com placeholder)
+- [x] **2.** Logotipo oficial aplicado (emblema circular) — arquivo
+      em `public/brand/logo.png`; favicon segue com a folha
+      provisória por legibilidade em tamanho pequeno
 - [ ] **3.** Textos manuscritos definitivos (hero, produtos, história)
 - [ ] **4.** Alergênicos e instruções de conservação de cada produto
 - [ ] **5.** CNPJ / razão social para o rodapé (Decreto 7.962/2013

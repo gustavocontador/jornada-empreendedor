@@ -27,9 +27,8 @@ export function Footer() {
             <Image
               src={brand.logo.src}
               alt={brand.logo.alt}
-              width={200}
-              height={53}
-              unoptimized
+              width={96}
+              height={96}
             />
             <p className="site-footer__tagline">
               Granolas, mixes e barrinhas artesanais, sem conservantes e sem

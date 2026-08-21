@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: "Petite Vallée — Granolas, mixes e barrinhas artesanais",
     description:
       "Granolas, mixes e barrinhas artesanais, sem conservantes e sem glúten.",
-    images: [{ url: brand.logo.src, width: 360, height: 96, alt: brand.name }],
+    images: [{ url: brand.logo.src, width: 512, height: 512, alt: brand.name }],
   },
   twitter: {
     card: "summary",

@@ -47,10 +47,9 @@ export function Header() {
           <Image
             src={brand.logo.src}
             alt={brand.logo.alt}
-            width={180}
-            height={48}
+            width={64}
+            height={64}
             priority
-            unoptimized
           />
         </Link>
 
